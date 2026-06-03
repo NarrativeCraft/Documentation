@@ -12,11 +12,11 @@ hero:
       link: /introduction/what-is-narrativecraft
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Create narrative game in Minecraft
+    details: Express yourself without learning a game engine!
+  - title: All-in-one
+    details: No addons, everything is in NarrativeCraft directly.
+  - title: No coding
+    details: Only text, expressions and some logic!
 ---
 

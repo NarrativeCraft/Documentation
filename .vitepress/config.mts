@@ -14,7 +14,19 @@ export default defineConfig({
 
   themeConfig: {
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
+      { icon: "modrinth", link: "https://modrinth.com/mod/narrativecraft" },
+      { icon: "github", link: "https://github.com/NarrativeCraft/NarrativeCraft" },
+      { icon: "discord", link: "https://discord.gg/E3zzNv79DN" },
+    ],
+    search: {
+      provider: "local",
+    },
+  },
+   markdown: {
+    theme: {
+      light: 'catppuccin-latte',
+      dark: 'catppuccin-mocha',
+    }
+  },
+
 })

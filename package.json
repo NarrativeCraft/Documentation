@@ -6,5 +6,8 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@catppuccin/vitepress": "^0.1.2"
   }
 }

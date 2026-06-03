@@ -2,9 +2,9 @@
 
 ## Basic knowledge of ink   
 
-You need to have at least a bit of knowledge of [ink](https://www.inklestudios.com/ink/) before processing to not be too lost after.
+You need to have at least a bit of knowledge of [ink](https://www.inklestudios.com/ink/) before proceeding to not be too lost after.
 
-Follow the [documentation](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md), for a basic understanding, you can read until part 5.
+Follow the [documentation](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md), for a basic understanding, you can read until section 5 of part one.
 
 ## Inky
 

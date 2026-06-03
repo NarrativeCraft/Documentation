@@ -8,7 +8,12 @@ export const frConfig: LocaleConfig = {
   link: '/fr/',
   themeConfig: {
     nav: [
-      { text: 'Accueil', link: '/fr/' },
+      {
+        text: '2.0.0',
+        items: [
+          { text: '2.0.0', link: '/fr/' },
+        ]
+      },
     ],
     sidebar: [
       {

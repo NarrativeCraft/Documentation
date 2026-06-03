@@ -4,7 +4,7 @@
 
 ## How does this work?
 
-**NarrativeCraft** work thanks to the amazing project [ink](https://www.inklestudios.com/ink/), a narrative scripting language with an intuitive syntax where you write first, then apply logic later. It's not coding, but scripting, it's way more accessible for non techi
+**NarrativeCraft** works thanks to the amazing project [ink](https://www.inklestudios.com/ink/), a narrative scripting language with an intuitive syntax where you write first, then apply logic later. It's not coding, but scripting, it's way more accessible for non-technical users
 
 ## What are the features?
 
@@ -21,6 +21,6 @@ NarrativeCraft comes with a lot of built-in features to create your narrative ga
 - Main screen (new game, continue...)
 - Multiplayer
 
-Multiplayer is mentionned, but it does not mean **co-op**, but means that you can run the mod on a dedicated server and play a story, cutscene, show characters... to a single player to create more immersion.
+Multiplayer is mentioned, but it does not mean **co-op**, but means that you can run the mod on a dedicated server and play a story, cutscene, show characters... to a single player to create more immersion.
 
-Keep in mind that NarrativeCraft is singleplayer com, meaning that features are written for singleplayer in mind, because the mod is mainly to create solo map.
+Keep in mind that NarrativeCraft is singleplayer-compatible, meaning that features are written with singleplayer in mind, because the mod is mainly designed for solo maps.
