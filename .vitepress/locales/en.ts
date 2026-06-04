@@ -13,6 +13,7 @@ export const enConfig: LocaleConfig = {
           { text: '2.0.0', link: '/' },
         ]
       },
+      { text: 'NarrativeCraft', link: '/introduction/what-is-narrativecraft' },
       { text: 'API Reference', link: '/api/getting-started' },
     ],
     sidebar: {
@@ -96,6 +97,7 @@ export const enConfig: LocaleConfig = {
         },
         {
           text: 'Tags',
+          collapsed: false,
           items: [
             { text: 'Animation', link: '/tags/animation' },
             { text: 'Border', link: '/tags/border' },
@@ -107,7 +109,6 @@ export const enConfig: LocaleConfig = {
             { text: 'Interaction', link: '/tags/interaction' },
             { text: 'Kill', link: '/tags/kill' },
             { text: 'On Enter', link: '/tags/on_enter' },
-            { text: 'Save', link: '/tags/save' },
             { text: 'Shake', link: '/tags/shake' },
             { text: 'Sound', link: '/tags/sound' },
             { text: 'Subscene', link: '/tags/subscene' },

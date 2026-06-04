@@ -11,6 +11,10 @@ export default defineConfig({
     root: enConfig,
     fr: frConfig,
   },
+  cleanUrls: true,
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+  ],
 
   themeConfig: {
     socialLinks: [
