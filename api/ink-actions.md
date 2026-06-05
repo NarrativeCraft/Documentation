@@ -48,12 +48,20 @@ command.getBoolean("loop")   // boolean
 command.flag("block")        // boolean, true if the flag was present in the tag
 ```
 
+## Client Ink Action
+
+Implementing a client ink action differs from a standard one. Start by writing your ink class with only the `doValidation` method implemented, `doExecute` should simply return `InkActionResult.ignored()` for now.
+
+Next, create a new class prefixed with `Client` followed by the name of your ink action (e.g. `ClientMyInkAction`), and have it extend the class you just created. This is where you implement `doExecute`.
+
 ## Registering
 
 ```java
 NarrativeCraftAPI.getInstance().getInkTagDispatcher()
     .register(TeleportAction.class, TeleportAction::new);
 ```
+
+If your Ink Action is client side, also register is client ink action in the same dispatcher.
 
 ## @InkCommand
 
