@@ -79,6 +79,7 @@ export const enConfig: LocaleConfig = {
             { text: 'First camera angle', link: '/first-story/first-camera-angle' },
             { text: 'First interaction', link: '/first-story/first-interaction' },
             { text: 'Writing the story', link: '/first-story/writing-the-story' },
+            { text: 'Play the story', link: '/first-story/play-the-story' },
           ]
         },
         {

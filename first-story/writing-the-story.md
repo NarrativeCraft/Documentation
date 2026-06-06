@@ -101,16 +101,23 @@ Now for interactions, earlier we defined `my_zone` and `my_point` stitch.
 
 To executes then when the player interacts with it, you habe to define the stitch on the script
 
-```
+```ink
 = my_zone
 I entered a zone!
+# gameplay
+-> DONE
 
 = my_point
 I clicked the point! yay!
+# gameplay
+-> DONE
 ```
+
 
 If the player enter `zone1` from the interaction, it will executes the stitch `my_zone`.
 If the player click `point1` from the interaction, it will executes the stitch `my_point`.
+
+`gameplay` tag is used here to keep the gameplay state, otherwise, the story will end!
 
 ## Tags
 
@@ -121,4 +128,3 @@ There are two types of tag :
 [cutscene](/tags/cutscene) is a blocking tag, it waits for the cutscene to finish before continuing the story
 
 When the script is done, save it `CTRL + S` and go back in game and execute `/nc story reload`. It will compile the story, and will do validation on tags and the story itself. If everything goes well the story will compile successfully, but if there are errors the story will not compile and will tell you exactly where you made the error.
-
