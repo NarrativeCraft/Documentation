@@ -40,7 +40,7 @@ text <id:string> <action:string> [param1] [param2] [param3] [--block]
 
 ```ink
 // Create a centered white subtitle
-# text subtitle create Hello world
+# text subtitle create "Hello world"
 ```
 
 ```ink

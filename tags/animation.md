@@ -28,7 +28,7 @@ animation <action:string> <animationName:string> [loop:boolean=false] [unique:bo
 
 ```ink
 // Play a looping idle animation
-# animation play npc_idle loop=true
+# animation play npc_idle loop:true
 ```
 
 ```ink

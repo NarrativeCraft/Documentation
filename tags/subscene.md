@@ -28,7 +28,7 @@ subscene <action:string> <subsceneName:string> [loop:boolean=false] [unique:bool
 
 ```ink
 // Play a looping ambient crowd subscene
-# subscene play crowd_idle loop=true
+# subscene play crowd_idle loop:true
 ```
 
 ```ink

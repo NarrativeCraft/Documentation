@@ -31,7 +31,7 @@ time <action:string> <from:string> [to:string] [for:float=0] [unit:string=second
 
 ```ink
 // Transition smoothly from noon to night over 10 seconds
-# time set noon to=night for=10
+# time set noon to:night for:10
 ```
 
 ```ink
