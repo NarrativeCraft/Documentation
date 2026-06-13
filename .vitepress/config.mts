@@ -1,16 +1,19 @@
-import { defineConfig } from 'vitepress'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 import { enConfig } from './locales/en'
 import { frConfig } from './locales/fr'
+import defineVersionedConfig from 'vitepress-versioning-plugin'
 
-// https://vitepress.dev/reference/site-config
-export default defineConfig({
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+export default defineVersionedConfig({
   title: "NarrativeCraft",
   description: "Official documentation of NarrativeCraft",
 
   locales: {
     root: enConfig,
     fr: frConfig,
-  },
+  } as any,
   cleanUrls: true,
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -26,11 +29,23 @@ export default defineConfig({
       provider: "local",
     },
   },
-   markdown: {
+  markdown: {
     theme: {
       light: 'catppuccin-latte',
       dark: 'catppuccin-mocha',
     }
   },
 
-})
+  versioning: {
+    latestVersion: '2.0.1',
+    rewrites: {
+      localePrefix: 'translated',
+    },
+    sidebars: {
+      sidebarPathResolver: (version) => {
+        return fileURLToPath(new URL(`./sidebars/versioned/${version}.json`, import.meta.url))
+      }
+    }
+  },
+
+}, __dirname)

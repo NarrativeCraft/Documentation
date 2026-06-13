@@ -9,30 +9,29 @@ Implement `ITextEffect`. It receives the letter index, the current tick, the par
 It can be a lambda:
 
 ```java
-ITextEffect wave = (letterIndex, tick, partialTick, params) -> {
+registry.register("wave", (letterIndex, tick, partialTick, params) -> {
     float amplitude = Float.parseFloat(params.getOrDefault("amplitude", "2"));
     float offset = (float) Math.sin(tick * 0.1 + letterIndex * 0.5) * amplitude;
     return new Vec2(0, offset);
-};
-```
-
-Or a full class if you need state:
-
-```java
-public class WaveEffect implements ITextEffect {
-    @Override
-    public Vec2 apply(int letterIndex, int tick, float partialTick, Map<String, String> params) {
-        float amplitude = Float.parseFloat(params.getOrDefault("amplitude", "2"));
-        float offset = (float) Math.sin(tick * 0.1 + letterIndex * 0.5) * amplitude;
-        return new Vec2(0, offset);
-    }
-}
+});
 ```
 
 ## Registering
 
 ```java
-ctx.registerTextEffect("wave", wave);
+NarrativeCraftAPI.getInstance().getTextEffectRegistry()
+    .register("my-effect", new MyEffect());
 ```
 
-The name you register is what you use in the Ink tag to activate the effect.
+## IDialogPresetProvider
+
+Lets you expose dialog presets to the editor.
+
+```java
+public class MyPresetProvider implements IDialogPresetProvider {
+    @Override
+    public void providePresets(IDialogPresetConsumer consumer) {
+        consumer.registerPreset("my-preset", myPresetObject);
+    }
+}
+```

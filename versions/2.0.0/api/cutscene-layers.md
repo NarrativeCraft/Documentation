@@ -28,7 +28,8 @@ public class MyLayer extends CutsceneLayer {
 ## Registering
 
 ```java
-ctx.registerCutsceneLayer(new MyLayerType());
+NarrativeCraftAPI.getInstance().getCutsceneLayerRegistry()
+    .register(new MyLayerType());
 ```
 
 ## Executing at a tick
@@ -46,20 +47,18 @@ public boolean execute(float tick) {
 }
 ```
 
-## Working with keyframes
+## CutsceneLayer helpers
 
-Inside your layer, use these protected helpers:
+Inside your layer, use these protected helpers to work with keyframes:
 
 ```java
-// keyframes sorted by tick, filtered to a specific subtype
+// Keyframes sorted by tick, filtered to a specific subtype
 List<K> sorted = getSortedKeyframes(MyKeyframe.class);
 
-// segment bracketing a given tick (used for interpolation)
+// Segment bracketing a given tick (used for interpolation)
 KeyframeSegment<K> seg = findSegment(sorted, tick);
 
-// tick coverage checks
+// Tick coverage checks
 boolean covered = isTickCoveredBy(tick);
 boolean exact   = isExactTick(tick);
 ```
-
-See [Keyframes](/api/keyframes) for how to implement a custom `Keyframe` and interpolate between them.

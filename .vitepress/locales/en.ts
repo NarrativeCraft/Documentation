@@ -1,17 +1,16 @@
-import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress'
+import type { LocaleSpecificConfig } from 'vitepress'
+import type { Versioned } from 'vitepress-versioning-plugin'
 
-type LocaleConfig = LocaleSpecificConfig<DefaultTheme.Config> & { label: string; link?: string }
+type LocaleConfig = LocaleSpecificConfig<Versioned.ThemeConfig> & { label: string; link?: string }
 
 export const enConfig: LocaleConfig = {
   label: 'English',
   lang: 'en',
   themeConfig: {
+    versionSwitcher: false,
     nav: [
-      {
-        text: '2.0.0',
-        items: [
-          { text: '2.0.0', link: '/' },
-        ]
+      { 
+        component: 'VersionSwitcher', 
       },
       { text: 'NarrativeCraft', link: '/introduction/what-is-narrativecraft' },
       { text: 'API Reference', link: '/api/getting-started' },
@@ -27,7 +26,6 @@ export const enConfig: LocaleConfig = {
         {
           text: 'Core',
           items: [
-            { text: 'NarrativeCraftAPI', link: '/api/entry-point' },
             { text: 'Events', link: '/api/events' },
           ]
         },

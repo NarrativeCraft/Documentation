@@ -4,7 +4,7 @@ Ink actions are classes bound to an Ink tag keyword (`# keyword:arg1:arg2`). Whe
 
 ## Creating an Ink action
 
-Extend `InkAction` and annotate it with `@InkCommand`.
+Extend `InkAction` and annotate it with `@InkCommand`:
 
 ```java
 @InkCommand(
@@ -19,7 +19,6 @@ public class TeleportAction extends InkAction {
 
     @Override
     protected InkActionResult doValidate(ParsedCommand command, IScene scene) {
-        // doValidate is where you read and assign all your data
         x = command.getFloat("x");
         y = command.getFloat("y");
         z = command.getFloat("z");
@@ -34,7 +33,7 @@ public class TeleportAction extends InkAction {
 }
 ```
 
-`doValidate` is mandatory. It receives the `ParsedCommand` and is where you read and assign all your data. `doExecute` only receives the player session.
+`doValidate` runs first and receives the parsed arguments. Read and store everything you need there, because `doExecute` only receives the player session.
 
 ## Reading arguments
 
@@ -48,68 +47,105 @@ command.getBoolean("loop")   // boolean
 command.flag("block")        // boolean, true if the flag was present in the tag
 ```
 
-## Client Ink Action
+See [Syntax](/api/ink-syntax) for how to declare argument types in `@InkCommand`.
 
-Implementing a client ink action differs from a standard one. Start by writing your ink class with only the `doValidation` method implemented, `doExecute` should simply return `InkActionResult.ignored()` for now.
+## Client-side Ink actions
 
-Next, create a new class prefixed with `Client` followed by the name of your ink action (e.g. `ClientMyInkAction`), and have it extend the class you just created. This is where you implement `doExecute`.
+Server actions run on the server, client actions run on the client. The split is done through inheritance rather than duplication.
+
+Start with a base class where `doExecute` returns `InkActionResult.ignored()`, this is what the server sees:
+
+```java
+@InkCommand(
+    keyword = "shake",
+    syntax = "shake <amplitude:float>",
+    side = Side.CLIENT
+)
+public class ShakeAction extends InkAction {
+
+    protected float amplitude;
+
+    @Override
+    protected InkActionResult doValidate(ParsedCommand command, IScene scene) {
+        amplitude = command.getFloat("amplitude");
+        return InkActionResult.ok();
+    }
+
+    @Override
+    protected InkActionResult doExecute(IPlayerSession session) {
+        return InkActionResult.ignored();
+    }
+}
+```
+
+Then create a `Client`-prefixed subclass that overrides `doExecute` with the actual client logic:
+
+```java
+public class ClientShakeAction extends ShakeAction {
+
+    @Override
+    protected InkActionResult doExecute(IPlayerSession session) {
+        // client-side screen shake logic
+        return InkActionResult.ok();
+    }
+}
+```
 
 ## Registering
 
+Register both classes through your `AddonContext`:
+
 ```java
-NarrativeCraftAPI.getInstance().getInkTagDispatcher()
-    .register(TeleportAction.class, TeleportAction::new);
+ctx.registerInkAction(ShakeAction.class, ShakeAction::new);
+ctx.registerInkAction(ClientShakeAction.class, ClientShakeAction::new);
 ```
 
-If your Ink Action is client side, also register is client ink action in the same dispatcher.
+## Multi-tick actions
 
-## @InkCommand
+If your action runs over multiple ticks, override the relevant lifecycle methods:
 
-| Attribute | Type | Description |
-|---|---|---|
-| `keyword` | `String` | Tag keyword |
-| `description` | `String` | Short description |
-| `syntax` | `String`| Syntax declaration, see [Syntax](/api/ink-syntax) |
-| `side` | `Side` | `SERVER` (default) or `CLIENT` |
+```java
+@Override
+public void tick() {
+    // called every server tick while isRunning
+}
 
-## Side
+@Override
+public void partialTick(float partialTick) {
+    // called every frame on the client
+}
 
-- `SERVER`: executes server-side
-- `CLIENT`: executes client-side
+@Override
+public void render(GuiGraphicsExtractor graphics, float partialTick) {
+    // client-side rendering
+}
 
-## InkAction protected fields
+@Override
+public void stop() {
+    // cleanup when the action ends
+}
+```
 
-| Field | Type | Description |
-|---|---|---|
-| `instanceId` | `long` | Unique instance identifier |
-| `canBeExecuted` | `boolean` | Whether the action can run |
-| `isRunning` | `boolean` | True while executing |
-| `blocking` | `boolean` | If `true`, pauses the action queue |
-| `tick` | `int` | Current tick |
-| `totalTick` | `int` | Scheduled total duration |
-
-## Lifecycle overrides
-
-You can override `tick()`, `partialTick(float)`, `render(GuiGraphicsExtractor, float)`, and `stop()` if your action needs to run logic over multiple ticks or render something client-side.
+Set `blocking = true` in `doValidate` if the action should pause the Ink script until it finishes.
 
 ## InkActionResult
 
-Returned by `doValidate` and `doExecute`.
+Returned by both `doValidate` and `doExecute`:
 
 ```java
-InkActionResult.ok()
-InkActionResult.ignored()
-InkActionResult.block()       // pauses the action queue
-InkActionResult.error("msg")
-InkActionResult.warn("msg")
+InkActionResult.ok()           // success
+InkActionResult.ignored()      // this side doesn't handle it
+InkActionResult.block()        // pauses the action queue
+InkActionResult.error("msg")   // validation or execution failure
+InkActionResult.warn("msg")    // non-fatal warning
 ```
 
 ## InkActionUtil
 
 ```java
-// Converts a time value (e.g. 2.5, "m") to seconds
+// converts a time value (e.g. 2.5, "minute") to seconds
 double seconds = InkActionUtil.getSecondsFromTimeValue(2.5, "minute");
 
-// Replaces %variable% with their Ink story value
+// replaces %variable% with their Ink story value
 String resolved = InkActionUtil.parseVariables(story, "Hello %player_name%!");
 ```
