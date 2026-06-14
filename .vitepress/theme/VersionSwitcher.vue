@@ -53,9 +53,20 @@ function linkFor(version: string) {
   return `${locale}/${version}${page}`
 }
 
+function semverDesc(a: string, b: string) {
+  const ap = a.split('.').map(Number)
+  const bp = b.split('.').map(Number)
+  for (let i = 0; i < Math.max(ap.length, bp.length); i++) {
+    const diff = (bp[i] ?? 0) - (ap[i] ?? 0)
+    if (diff !== 0) return diff
+  }
+  return 0
+}
+
 const otherVersions = computed(() =>
   [props.versioningPlugin.latestVersion, ...props.versioningPlugin.versions]
     .filter(v => v !== currentVersion.value)
+    .sort(semverDesc)
 )
 </script>
 

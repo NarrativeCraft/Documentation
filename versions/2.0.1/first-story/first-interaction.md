@@ -4,7 +4,7 @@ Now, let's create our first interaction.
 
 Interactions are created when the player can explore an area, where you can create area triggers and clickable points that execute a certain point in the story.
 
-To create your interaction, open the story manager, click on `Interactions`, create a new one and name it `my interaction`. Then enter the interaction editor maker by clicking on the new created interaction button.
+To create your interaction, open the story manager, click on `Interactions`, create a new one and name it `my_interaction`. Then enter the interaction editor maker by clicking on the new created interaction button.
 
 To access it, press `T` (or your key to open your chat)
 
