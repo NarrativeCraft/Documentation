@@ -2,6 +2,7 @@ import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import { enConfig } from './locales/en'
 import { frConfig } from './locales/fr'
+import { ruConfig } from './locales/ru'
 import defineVersionedConfig from 'vitepress-versioning-plugin'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -15,6 +16,7 @@ export default defineVersionedConfig({
   locales: {
     root: enConfig,
     fr: frConfig,
+    ru: ruConfig,
   } as any,
   cleanUrls: true,
   head: [
