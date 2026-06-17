@@ -25,7 +25,6 @@ text <id:string> <action:string> [param1] [param2] [param3] [--block]
 | `remove` | | | |
 | `edit` | new text content *(required)* | | |
 | `position` / `pos` | position value *(required)* | | |
-| `space` | x value *(required)* | y value *(required)* | |
 | `color` | hex color *(required)* | | |
 | `opacity` | opacity float 0.0 to 1.0 *(required)* | | |
 | `scale` | scale float *(required)* | | |
