@@ -1,15 +1,15 @@
-# Prerequisites
+# Предварительные требования
 
-## Basic knowledge of ink   
+## Базовые знания ink
 
-You need to have at least a bit of knowledge of [ink](https://www.inklestudios.com/ink/) before proceeding to not be too lost after.
+Вам нужно хотя бы немного знать [ink](https://www.inklestudios.com/ink/) перед началом, чтобы не запутаться в дальнейшем.
 
-Follow the [documentation](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md), for a basic understanding, you can read until section 5 of part one.
+Ознакомьтесь с [документацией](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md) — для базового понимания достаточно прочитать до раздела 5 первой части.
 
 ## Inky
 
-[Inky](https://github.com/inkle/inky/releases) is an **IDE** to write your story, it is highly recommended to install it because you have autocompletion and a lot of tools to make your story writing experience much better.
+[Inky](https://github.com/inkle/inky/releases) — это **IDE**(Интегрированная среда разработки) для написания вашего сюжета. Настоятельно рекомендуется установить его, так как он предлагает автодополнение и множество инструментов, которые сделают написание сюжета гораздо удобнее.
 
 ::: tip
-Assign `.ink` files to Inky
+Назначьте `.ink` файлы на открытие в Inky
 :::

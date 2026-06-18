@@ -1,26 +1,26 @@
-# What is NarrativeCraft
+# Что такое NarrativeCraft
 
-**NarrativeCraft** is an open source Minecraft mod that allows you to create narrative games with Minecraft. No need to learn code and a game engine, only text and logic are applied. The goal is to make story creation the most accessible as possible.
+**NarrativeCraft** — это open source Minecraft мод, который позволяет создавать сюжетные игры в Minecraft. Не нужно изучать код и игровой движок — достаточно текста и логики. Цель — сделать создание сюжетов максимально доступным.
 
-## How does this work?
+## Как это работает?
 
-**NarrativeCraft** works thanks to the amazing project [ink](https://www.inklestudios.com/ink/), a narrative scripting language with an intuitive syntax where you write first, then apply logic later. It's not coding, but scripting, it's way more accessible for non-technical users
+**NarrativeCraft** работает благодаря замечательному проекту [ink](https://www.inklestudios.com/ink/), языку повествовательных сценариев с интуитивным синтаксисом, где вы сначала пишете, а затем добавляете логику. Это не программирование, а скриптинг, что гораздо доступнее для пользователей без технического бэкграунда.
 
-## What are the features?
+## Какие возможности?
 
-NarrativeCraft comes with a lot of built-in features to create your narrative games :
-- Cutscenes
-- Player recording
-- Dialogs rendering (on screen or a character speaking)
-- Camera angles for character dialog focus
-- Interactions with trigger zones and clickable points
-- Characters and NPCs
-- Full management of your story
-- Choices
-- Saves
-- Main screen (new game, continue...)
-- Multiplayer
+NarrativeCraft содержит множество встроенных функций для создания сюжетных игр:
+- Катсцены
+- Запись игрока
+- Отображение диалогов (на экране или от лица персонажа)
+- Ракурсы для фокуса на персонаже во время диалога
+- Взаимодействия с триггерными зонами и кликабельными точками
+- Персонажи и NPC
+- Полное управление вашим сюжетом
+- Выборы
+- Сохранения
+- Главный экран (новая игра, продолжить...)
+- Мультиплеер
 
-Multiplayer is mentioned, but it does not mean **co-op**, but means that you can run the mod on a dedicated server and play a story, cutscene, show characters... to a single player to create more immersion.
+Упоминается **многопользовательский режим**, но это не означает кооператив — это скорее возможность запустить мод на выделенном сервере и воспроизводить сюжет, катсцены, показывать персонажей и т.д. для одного игрока, чтобы усилить погружение.
 
-Keep in mind that NarrativeCraft is singleplayer-compatible, meaning that features are written with singleplayer in mind, because the mod is mainly designed for solo maps.
+NarrativeCraft ориентирован на одиночную игру. Следовательно, все функции созданы с расчётом на одиночный режим и однопользовательские карты.

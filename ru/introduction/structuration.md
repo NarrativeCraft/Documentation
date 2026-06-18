@@ -1,16 +1,16 @@
-# Structuration
+# Структурирование
 
-NarrativeCraft follows a simple structuration with **chapters** and **scenes**.
+NarrativeCraft использует простую структуру с **главами** и **сценами**.
 
-You have a chapter that contains the main topic, and you have scenes that separate it by parts.
+У вас есть глава, содержащая основную тему, и сцены, разделяющие её на части.
 
-Chapters are sorted by index, and scenes too meaning that if you first chapter is `foo` and your first scene is `bar`, then the player will start the story with chapter `foo` and scene `bar`.
+Главы сортируются по индексу, и сцены тоже — то есть если ваша первая глава называется `foo`, а первая сцена — `bar`, то игрок начнёт сюжет с главы `foo` и сцены `bar`.
 
-Each scene starts with a new objective, a new environment, to have a clean save point.
+Каждая сцена начинается с новой цели и нового окружения, чтобы создать чистую точку сохранения.
 
-## Folder
+## Папка
 
-In your world directory you will have a folder called `narrativecraft` with inside :
+В директории вашего мира будет папка `narrativecraft`, внутри которой находятся:
 
 - chapters
 - characters
@@ -23,29 +23,29 @@ In your world directory you will have a folder called `narrativecraft` with insi
 
 ### chapters
 
-`chapters` directory contains all your chapters, and inside each chapters contains your scenes.
-In each chapter, you'll have ink files, to have separated scripts and keep it organized for each entry.
+Директория `chapters` содержит все ваши главы, а внутри каждой главы — её сцены.
+В каждой главе будут ink-файлы, чтобы хранить скрипты раздельно и поддерживать порядок.
 
 ### characters
 
-This is the folders of all your characters, with their data and skin.
+Это папки всех ваших персонажей с их данными и скином.
 
 ### data
 
-Misc data are stored here, you don't really need it for your case
+Разные данные хранятся здесь — вам вряд ли понадобится сюда заходить.
 
 ### saves
 
-Stores saves for each players. If your server is premium it will store with player uuid, however if it is a cracked server then it will save as player username.
+Хранит сохранения для каждого игрока. Если ваш сервер лицензионный, сохранения будут привязаны к UUID игрока; если пиратский — к имени игрока.
 
 ### main.ink
 
-This is your main ink file. **Do not edit it** because each modification will be overwritten. The only purpose of this file is to open it with [Inky](https://github.com/inkle/inky/releases) so every chapters and scenes ink files are imported and listed directly in the IDE.
+Это ваш главный ink-файл. **Не редактируйте его** — любые изменения будут перезаписаны. Единственное назначение этого файла — открывать его в [Inky](https://github.com/inkle/inky/releases), чтобы все ink-файлы глав и сцен импортировались и отображались напрямую в IDE.
 
 ### variables.ink
 
-Contains all your global [variables](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md#1-global-variables), can be edited and accessible anywhere in the project
+Содержит все ваши глобальные [переменные](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md#1-global-variables). Можно редактировать и использовать в любом месте проекта.
 
 ### functions.ink
 
-Contains all your global [functions](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md#5-functions), can be edited and accessible anywhere in the project
+Содержит все ваши глобальные [функции](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md#5-functions). Можно редактировать и использовать в любом месте проекта.

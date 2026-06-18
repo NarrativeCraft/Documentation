@@ -74,10 +74,10 @@ export const ruConfig: LocaleConfig = {
             { text: 'Сессия', link: '/ru/first-story/session' },
             { text: 'Создание анимаций', link: '/ru/first-story/making-animations' },
             { text: 'Первая катсцена', link: '/ru/first-story/first-cutscene' },
-            { text: 'Первый ракурс камеры', link: '/ru/first-story/first-camera-angle' },
+            { text: 'Первый ракурс', link: '/ru/first-story/first-camera-angle' },
             { text: 'Первое взаимодействие', link: '/ru/first-story/first-interaction' },
-            { text: 'Написание истории', link: '/ru/first-story/writing-the-story' },
-            { text: 'Запустите историю', link: '/ru/first-story/play-the-story' },
+            { text: 'Написание сюжета', link: '/ru/first-story/writing-the-story' },
+            { text: 'Запустите сюжет', link: '/ru/first-story/play-the-story' },
           ]
         },
         {
@@ -110,7 +110,7 @@ export const ruConfig: LocaleConfig = {
             { text: 'При входе', link: '/ru/tags/on_enter' },
             { text: 'Тряска', link: '/ru/tags/shake' },
             { text: 'Звук', link: '/ru/tags/sound' },
-            { text: 'Субсцена', link: '/ru/tags/subscene' },
+            { text: 'Подсцена', link: '/ru/tags/subscene' },
             { text: 'Текст', link: '/ru/tags/text' },
             { text: 'Время', link: '/ru/tags/time' },
             { text: 'Ожидание', link: '/ru/tags/wait' },

@@ -4,19 +4,18 @@ layout: home
 
 hero:
   name: "NarrativeCraft"
-  text: "Create your narrative game in Minecraft"
-  tagline: Official documentation of NarrativeCraft
+  text: "Создавайте сюжетные игры в Minecraft"
+  tagline: Официальная документация NarrativeCraft
   actions:
     - theme: brand
-      text: Getting started
-      link: /introduction/what-is-narrativecraft
+      text: Начать
+      link: /ru/introduction/what-is-narrativecraft
 
 features:
-  - title: Create narrative game in Minecraft
-    details: Express yourself without learning a game engine!
-  - title: All-in-one
-    details: No addons, everything is in NarrativeCraft directly.
-  - title: No coding
-    details: Only text, expressions and some logic!
+  - title: Создавайте сюжетные игры в Minecraft
+    details: Выражайте себя без изучения игровых движков!
+  - title: Всё в одном
+    details: Никаких дополнений — всё уже встроено в NarrativeCraft.
+  - title: Без программирования
+    details: Только текст, выражения и немного логики!
 ---
-
