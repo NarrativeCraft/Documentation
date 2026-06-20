@@ -37,7 +37,7 @@ export default defineVersionedConfig({
   },
 
   versioning: {
-    latestVersion: '2.0.5',
+    latestVersion: '2.0.6',
     rewrites: {
       localePrefix: 'translated',
     },

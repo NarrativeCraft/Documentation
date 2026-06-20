@@ -8,18 +8,19 @@ SERVER
 ## Syntax
 
 ```
-gameplay [gamemode:string=adventure]
+gameplay
 ```
 
 ## Parameters
 
-- `gamemode` *(string, optional)*: Set the gameplay of the player when entering in gameplay mode. Default to adventure
+This action takes no parameters.
+
 ## Examples
 
 ```ink
-// Return control to the player after a cutscene and set it to survival gamemode
+// Return control to the player after a cutscene
 # cutscene boss_reveal
-# gameplay gamemode:survival
+# gameplay
 ```
 
 ```ink

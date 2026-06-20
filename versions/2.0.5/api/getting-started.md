@@ -18,7 +18,7 @@ maven {
 ```
 
 ```groovy
-compileOnly 'fr.loudo.narrativecraft:narrativecraft-api:2.0.6+mc{minecraft_version}'
+compileOnly 'fr.loudo.narrativecraft:narrativecraft-api:2.0.5+mc{minecraft_version}'
 ```
 
 ## Maven
@@ -36,7 +36,7 @@ Add the repository and dependency in your `pom.xml`:
 <dependency>
     <groupId>fr.loudo.narrativecraft</groupId>
     <artifactId>narrativecraft-api</artifactId>
-    <version>2.0.6+mc{minecraft_version}</version>
+    <version>2.0.5+mc{minecraft_version}</version>
 </dependency>
 ```
 
