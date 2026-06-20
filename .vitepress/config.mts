@@ -6,10 +6,7 @@ import defineVersionedConfig from 'vitepress-versioning-plugin'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-// Single source of truth for the current mod version.
-// Bumping a patch = change this one line; every `{{VERSION}}` token in the docs
-// is filled automatically, version-aware for past snapshots under versions/.
-const latestVersion = '2.0.6'
+const latestVersion = '2.0.7'
 
 export default defineVersionedConfig({
   title: "NarrativeCraft",
@@ -40,8 +37,6 @@ export default defineVersionedConfig({
       dark: 'catppuccin-mocha',
     },
     config: (md) => {
-      // Replace {{VERSION}} tokens with the page's own version: a snapshot under
-      // versions/2.0.3/ renders "2.0.3", everything else renders latestVersion.
       md.core.ruler.before('normalize', 'version-substitution', (state) => {
         const path: string = state.env?.relativePath ?? ''
         const match = path.match(/(?:^|\/)versions\/(\d+\.\d+\.\d+)\//)
