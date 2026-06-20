@@ -1,13 +1,13 @@
-# Play the story
+# Запуск сюжета
 
-Now that you have done everything, it's time to play the story!
+Теперь, когда всё готово, пора запустить сюжет!
 
-For this, first reload your story by doing `/nc story reload`.
+Сначала перезагрузите сюжет командой `/nc story reload`.
 
 ::: warning
-For each modification in your story, you must always do `/nc story reload` to apply your modifications!
+После каждого изменения сюжета нужно выполнять `/nc story reload`, чтобы изменения применились!
 :::
 
-And then, do `/nc story play`.
+Затем выполните `/nc story play`.
 
-Enjoy your creation!
+Наслаждайтесь своим творением!

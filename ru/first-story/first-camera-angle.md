@@ -1,52 +1,52 @@
-# First camera angle
+# Первый ракурс
 
-Now that we have our cutscene, let's create camera angles to show the characters talking after the cutscene ended.
+Теперь, когда у нас есть катсцена, давайте создадим ракурсы, чтобы показывать персонажей во время разговора после окончания катсцены.
 
-We are going to create 3 camera angles, one close up to Steve, one close up to Alex and an angle showing both characters.
+Мы создадим три ракурса: крупный план Steve, крупный план Alex и ракурс, показывающий обоих персонажей.
 
-Open story management, click on `Camera angles`, add a camera angle, name it `end walk`, and enter the camera angle maker editor by clicking the button with the camera angle name.
+Откройте менеджер сюжета, нажмите `Ракурсы`, добавьте ракурс, назовите его `end walk` и войдите в редактор ракурсов, нажав на кнопку с именем ракурса.
 
-You'll have 4 buttons at the bottom :
+Внизу появятся четыре кнопки:
 
-- Camera icon : Add a camera angle
-- Character : Spawn a character in the world
-- Template : Add template character
-- Burger : Manager to edit and delete what you have added
-  
-To access it, press `T` (or your key to open your chat)
+- `Добавить камеру`
+- `Добавить персонажа / NPC`
+- `Добавить шаблон`
+- `Открыть меню` — редактирование и удаление добавленного
 
-## Character and Template
+Чтобы открыть его, нажмите `T` (или вашу клавишу открытия чата).
 
-Adding a character through the character button will spawn a character on your current location
+## Character и Template
 
-Adding characters through the template button will spawn characters from animation, subscenes or cutscenes at the last tick.
+Добавление персонажа через кнопку Character создаст персонажа на вашей текущей позиции.
 
-If you add a character through the character button, when you invoke the camera angle in the story **they will spawn**
+Добавление персонажей через кнопку Template создаст персонажей из анимации, подсцен или катсцен на последнем тике.
 
-However, if you add template characters and you invoke the camera angle, **they will not spawn**.
+Если добавить персонажа через кнопку Character, то при вызове ракурса в сюжете **они появятся**.
 
-NarrativeCraft story workflow works like this :
-- You start any animation, subscenes or cutscene
-- At the end, every spawned entity from an entry will not be killed by default
+Однако если добавить шаблонных персонажей и вызвать ракурс, **они не появятся**.
 
-Because we assume that the characters will speak at some point.
+Логика работы NarrativeCraft такова:
+- Вы запускаете любую анимацию, подсцену или катсцену
+- В конце каждая созданная сущность по умолчанию не удаляется
 
-In our case we are going to add template characters from our cutscene `walk cut`, so we can have a way to correctly point our camera when the characters are speaking after the cutscene ended.
+Мы предполагаем, что персонажи в какой-то момент будут говорить.
 
-Click on the template button, select `Cutscenes` and select `walk cut`, it will spawn our two characters from our cutscene, now we want to create camera angle.
+В нашем случае мы добавим шаблонных персонажей из катсцены `walk cut`, чтобы можно было правильно направить камеру, когда персонажи заговорят после завершения катсцены.
 
-Go to Steve and click the camera icon, give it the name `steve_view`, then to enter it, open the manager and click on the `Preview` button from our created camera.
+Нажмите `Добавить шаблон`, выберите `Катсцены` и выберите `walk cut` — появятся два наших персонажа из катсцены. Теперь создадим ракурс.
 
-From there you can edit the position and edit dialog values.
+Подойдите к Steve и нажмите `Добавить камеру`, дайте название `steve_view`. Затем, чтобы войти в неё, откройте менеджер (кнопка `Открыть меню`) и нажмите `Предпросмотр` у созданного ракурса.
 
-In a camera angle, you can assign custom offset and scale to a character for this camera only.
+Отсюда можно редактировать позицию и настройки диалога.
 
-To do so, press `G` and you will enter in dialog preview editor.
+В ракурсе можно назначить собственное смещение и масштаб для персонажа только для этого ракурса.
 
-Change the offset and scale so we can clearly see the dialog and then leave the camera angle.
+Для этого нажмите `G` — вы попадёте в редактор предпросмотра диалога.
 
-Do the same for alex `alex_view`, and create the camera angle pointing at both characters `both_view`.
+Измените смещение и масштаб так, чтобы было хорошо видно диалог, затем выйдите из ракурса.
 
-Now we have our camera angles set!
+Проделайте то же самое для `alex_view` (Alex) и создайте ракурс, показывающий обоих персонажей, — `both_view`.
 
-Leave and save.
+Теперь ракурсы готовы!
+
+Выйдите и сохраните.

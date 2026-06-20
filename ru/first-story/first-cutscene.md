@@ -1,41 +1,41 @@
-# First cutscene
+# Первая катсцена
 
-Now that we have our 2 animations saved and our subscene `walk sub`, we can now create our first cutscene.
+Теперь, когда у нас есть 2 анимации и подсцена `walk sub`, можно создать первую катсцену.
 
-For this, open the story management, go to `Cutscenes`, create a new one, we will call it `walk cut` and click on the gear icon to assign the subscene `walk sub`.
+Откройте менеджер сюжета, перейдите в `Катсцены`, создайте новую, назовите её `walk cut` и нажмите на иконку шестерёнки, чтобы назначить подсцену `walk sub`.
 
 ::: tip
-If you want to assign only animations instead of subscenes, click on the gear icon while pressing **shift**
+Если нужно назначить только анимации вместо подсцен, нажмите на шестерёнку, удерживая **shift**.
 :::
 
-Then, click on the button with the name `walk cut` to enter the cutscene maker editor.
+Затем нажмите на кнопку с названием `walk cut`, чтобы войти в редактор катсцен.
 
-You will be teleported to one of the recording in spectator mode.
+Вы будете телепортированы в одну из записей в режиме наблюдателя.
 
-## Timeline
+## Временная шкала
 
-You'll be greeted by a timeline on the bottom. This timeline works with layers and keyframe.
+Внизу появится временная шкала. Она работает со слоями и ключевыми кадрами.
 
-To access it, press `T` (or your key to open your chat)
+Чтобы открыть её, нажмите `T` (или вашу клавишу открытия чата).
 
-On this cutscene, we are going to create two path, one of a camera following their movements walking on the side, and then a little zoom in front of them when they are stopping.
+В этой катсцене мы создадим две траектории: первая — камера следует за их движением сбоку, а затем небольшое приближение спереди, когда они останавливаются.
 
-To do so, first add the first layer by pressing the `+` button, you'll have a menu with different layers, choose `Camera`.
+Для начала добавьте первый слой, нажав кнопку `+`. Появится меню с разными слоями — выберите `Камера`.
 
-It will add a camera layer on the timeline. Now, position yourself on the first location, and press the `+` button on the layer to add a keyframe, a white point will appear.
+Будет добавлен слой камеры на временной шкале. Встаньте на первую позицию и нажмите `+` на слое, чтобы добавить ключевой кадр — появится белая точка.
 
-You can move it, edit the values on clicking on it, and delete it.
+Её можно перемещать, редактировать значения, нажав на неё, и удалять.
 
-Now go to the second location on moving the playhead and going to the second location and press the `+` button to add the second keyframe.
+Теперь перейдите на вторую позицию, переместив ползунок воспроизведения, и нажмите `+`, чтобы добавить второй ключевой кадр.
 
-Now, to preview your path, go to the beginning on the timeline and press the play button and you'll preview your camera path.
+Чтобы просмотреть траекторию, вернитесь в начало временной шкалы и нажмите кнопку воспроизведения.
 
-Now, we are going to add a **transition**.
+Теперь добавим **переход**.
 
-To do so, add a new `Camera` layer.
+Для этого добавьте новый слой `Камера`.
 
-Bring your playhead to the last keyframe of the first layer, go to the first location on where you want the transition to start and press the `+` button on the second layer, then go to the second location, and add the second keyframe on the second layer.
+Переместите ползунок воспроизведения на последний ключевой кадр первого слоя, встаньте на первую позицию, где должен начаться переход, и нажмите `+` на втором слое. Затем перейдите на вторую позицию и добавьте второй ключевой кадр на втором слое.
 
-Now, you have created your first cutscene, with a transition!
+Готово — вы создали первую катсцену с переходом!
 
-If you are satisfied with your cutscene, press the cross button and click `yes` if you want to save.
+Если катсцена вас устраивает, нажмите кнопку крестика и выберите `Да` для сохранения.

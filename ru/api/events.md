@@ -1,10 +1,10 @@
-# Events
+# События
 
-The event bus is a typed pub/sub system. All events are immutable Java records.
+Шина событий — это типизированная система pub/sub. Все события — неизменяемые Java-записи (records).
 
-## Subscribing
+## Подписка
 
-Register a listener through your `AddonContext`:
+Зарегистрируйте обработчик через ваш `AddonContext`:
 
 ```java
 ctx.registerEvent(DialogStartEvent.class, event -> {
@@ -12,80 +12,80 @@ ctx.registerEvent(DialogStartEvent.class, event -> {
 });
 ```
 
-To unsubscribe later, keep a reference to the listener:
+Чтобы отписаться позже, сохраните ссылку на обработчик:
 
 ```java
 EventListener<DialogStartEvent> listener = event -> { ... };
 ctx.registerEvent(DialogStartEvent.class, listener);
 
-// later
+// позже
 ctx.unregister(DialogStartEvent.class, listener);
 ```
 
-## Available events
+## Доступные события
 
-### Session lifecycle
+### Жизненный цикл сессии
 
-| Event | Fired when |
+| Событие | Когда срабатывает |
 |---|---|
-| `PlayerSessionStartEvent` | A player session starts |
-| `PlayerSessionEndEvent` | A player session ends |
-| `StoryStartEvent` | A story begins |
-| `StoryEndEvent` | A story ends |
-| `SceneEndEvent` | A scene ends |
-| `ChapterSceneStartEvent` | A scene starts inside a chapter |
-| `ChapterSceneChangeEvent` | Scene changes within a chapter |
+| `PlayerSessionStartEvent` | Запуск сессии игрока |
+| `PlayerSessionEndEvent` | Завершение сессии игрока |
+| `StoryStartEvent` | Начало сюжета |
+| `StoryEndEvent` | Завершение сюжета |
+| `SceneEndEvent` | Завершение сцены |
+| `ChapterSceneStartEvent` | Запуск сцены внутри главы |
+| `ChapterSceneChangeEvent` | Смена сцены внутри главы |
 
-### Characters
+### Персонажи
 
-| Event | Fired when |
+| Событие | Когда срабатывает |
 |---|---|
-| `CharacterSpawnEvent` | A character spawns |
-| `CharacterDespawnEvent` | A character despawns |
+| `CharacterSpawnEvent` | Появление персонажа |
+| `CharacterDespawnEvent` | Исчезновение персонажа |
 
-### Cutscenes
+### Катсцены
 
-| Event | Fired when |
+| Событие | Когда срабатывает |
 |---|---|
-| `CutsceneStartEvent` | A cutscene starts |
-| `CutsceneEndEvent` | A cutscene ends |
+| `CutsceneStartEvent` | Запуск катсцены |
+| `CutsceneEndEvent` | Завершение катсцены |
 
-### Dialogs
+### Диалоги
 
-| Event | Fired when |
+| Событие | Когда срабатывает |
 |---|---|
-| `DialogStartEvent` | A dialog line starts |
-| `DialogEndEvent` | A dialog line ends |
-| `DialogChoiceEvent` | A choice is made |
+| `DialogStartEvent` | Начало строки диалога |
+| `DialogEndEvent` | Завершение строки диалога |
+| `DialogChoiceEvent` | Сделан выбор |
 
-### Interactions
+### Взаимодействия
 
-| Event | Fired when |
+| Событие | Когда срабатывает |
 |---|---|
-| `InteractionTriggerEvent` | An interaction triggers |
-| `InteractionZoneEnterEvent` | Player enters a zone |
-| `InteractionZoneLeaveEvent` | Player leaves a zone |
+| `InteractionTriggerEvent` | Срабатывание взаимодействия |
+| `InteractionZoneEnterEvent` | Вход игрока в зону |
+| `InteractionZoneLeaveEvent` | Выход игрока из зоны |
 
 ### Ink actions
 
-| Event | Fired when |
+| Событие | Когда срабатывает |
 |---|---|
-| `InkActionStopEvent` | An Ink action stops |
-| `InkTagProcessedEvent` | An Ink tag is processed |
+| `InkActionStopEvent` | Остановка Ink action |
+| `InkTagProcessedEvent` | Обработка Ink-тега |
 
-### Recording
+### Запись
 
-| Event | Fired when |
+| Событие | Когда срабатывает |
 |---|---|
-| `RecordingStartEvent` | Recording starts |
-| `RecordingStopEvent` | Recording stops |
-| `RecordingSaveEvent` | Recording is saved |
+| `RecordingStartEvent` | Начало записи |
+| `RecordingStopEvent` | Остановка записи |
+| `RecordingSaveEvent` | Сохранение записи |
 
-### Playback
+### Воспроизведение
 
-| Event | Fired when |
+| Событие | Когда срабатывает |
 |---|---|
-| `PlaybackStartEvent` | Playback starts |
-| `PlaybackEndEvent` | Playback ends |
-| `PlaybackPauseEvent` | Playback pauses |
-| `PlaybackResumeEvent` | Playback resumes |
+| `PlaybackStartEvent` | Начало воспроизведения |
+| `PlaybackEndEvent` | Завершение воспроизведения |
+| `PlaybackPauseEvent` | Пауза воспроизведения |
+| `PlaybackResumeEvent` | Возобновление воспроизведения |

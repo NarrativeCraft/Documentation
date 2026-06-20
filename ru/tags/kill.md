@@ -1,34 +1,34 @@
 # Kill
 
-Removes a named character from the scene by despawning their entity. Works for both global characters and NPCs defined in the current scene.
+Удаляет именованного персонажа из сцены, убирая его сущность. Работает как для глобальных персонажей, так и для NPC, заданных в текущей сцене.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 kill <characterName:string>
 ```
 
-## Parameters
+## Параметры
 
-- `characterName` *(string, required)*: Name of the character to despawn, as defined in the character manager or scene editor.
+- `characterName` *(string, обязательный)*: Имя персонажа для удаления, заданное в менеджере персонажей или редакторе сцен.
 
-## Examples
+## Примеры
 
 ```ink
-// Despawn the guard character after the scene ends
+// Удалить охранника после завершения сцены
 # kill guard
 ```
 
 ```ink
-// Remove an NPC after their dialogue
+// Удалить NPC после его диалога
 # kill merchant_npc
 ```
 
 ```ink
-// Clean up multiple characters at once
+// Очистить несколько персонажей разом
 # kill soldier_1
 # kill soldier_2
 ```

@@ -1,14 +1,14 @@
-# Getting Started
+# Начало работы
 
-Add the NarrativeCraft API as a `compileOnly` dependency in your mod. It gives you access to all public interfaces without bundling the mod itself.
+Добавьте NarrativeCraft API как `compileOnly` зависимость в ваш мод. Это даст доступ ко всем публичным интерфейсам без включения самого мода.
 
 :::info
-Current API version of NarrativeCraft is **1**
+Текущая версия API NarrativeCraft — **1**
 :::
 
 ## Gradle
 
-Add the repository in your `settings.gradle` (or `build.gradle` depending on your setup), then declare the dependency in your `build.gradle`:
+Добавьте репозиторий в `settings.gradle` (или `build.gradle`, в зависимости от настроек), затем объявите зависимость в `build.gradle`:
 
 ```groovy
 maven {
@@ -18,12 +18,12 @@ maven {
 ```
 
 ```groovy
-compileOnly 'fr.loudo.narrativecraft:narrativecraft-api:2.0.2+mc{minecraft_version}'
+compileOnly 'fr.loudo.narrativecraft:narrativecraft-api:{{VERSION}}+mc{minecraft_version}'
 ```
 
 ## Maven
 
-Add the repository and dependency in your `pom.xml`:
+Добавьте репозиторий и зависимость в `pom.xml`:
 
 ```xml
 <repository>
@@ -36,43 +36,43 @@ Add the repository and dependency in your `pom.xml`:
 <dependency>
     <groupId>fr.loudo.narrativecraft</groupId>
     <artifactId>narrativecraft-api</artifactId>
-    <version>2.0.2+mc{minecraft_version}</version>
+    <version>{{VERSION}}+mc{minecraft_version}</version>
 </dependency>
 ```
 
-## Minecraft versions for API
+## Версии Minecraft для API
 
-Current minecraft versions available: `26.1.2` and `1.21.1`
+Текущие доступные версии Minecraft: `26.2` и `1.21.1`
 
-## Registering your addon
+## Регистрация аддона
 
-Everything goes through an `AddonContext`. Create one in your mod initializer, before any registration call:
+Всё делается через `AddonContext`. Создайте его в инициализаторе вашего мода до любых вызовов регистрации:
 
 ```java
 AddonContext ctx = NarrativeCraftAPI.getInstance().createAddon(
-    "my-mod-id",        // your mod id
-    "My Addon",         // display name
+    "my-mod-id",        // id вашего мода
+    "My Addon",         // отображаемое имя
     "A brief description",
     "AuthorName",
-    null,               // homeLink, nullable. Links to your mod (e.g Modrinth)
+    null,               // homeLink, может быть null. Ссылка на ваш мод (например Modrinth)
     NarrativeCraftAPI.VERSION
 );
 ```
 
-The last argument is your target API version. It must equal `NarrativeCraftAPI.VERSION` exactly. If it doesn't, the addon is set to `DISABLED` and every `register*` call silently becomes a no-op. No crash, but nothing gets registered. Always pass `NarrativeCraftAPI.VERSION` directly rather than a hardcoded integer, so the check stays in sync automatically.
+Последний аргумент — целевая версия API. Она должна точно равняться `NarrativeCraftAPI.VERSION`. Если нет, аддон устанавливается в `DISABLED`, и все вызовы `register*` молча игнорируются. Без краша, но ничего не регистрируется. Всегда передавайте `NarrativeCraftAPI.VERSION` напрямую, а не жёстко заданное число — тогда проверка будет синхронизироваться автоматически.
 
-You can guard against a disabled addon if you need to:
+При необходимости можно проверить, отключён ли аддон:
 
 ```java
 if (ctx.isDisabled()) {
-    // incompatible API version, bail out
+    // несовместимая версия API, выход
     return;
 }
 ```
 
-## Registering extensions
+## Регистрация расширений
 
-Once you have a context, use it to register everything your addon provides:
+Когда контекст получен, используйте его для регистрации всего, что предоставляет ваш аддон:
 
 ```java
 ctx.registerEvent(StoryStartEvent.class, event -> { ... });
@@ -82,10 +82,10 @@ ctx.registerTextEffect("my-effect", new MyTextEffect());
 ctx.registerRecordingAction("my_action", tick -> new MyAction(tick));
 ```
 
-Each registration type has its own page:
+У каждого типа регистрации есть своя страница:
 
-- [Events](/api/events)
-- [Ink Actions](/api/ink-actions)
-- [Cutscene Layers](/api/cutscene-layers)
-- [Text Effects](/api/text-effects)
-- [Recording](/api/recording)
+- [События](/ru/api/events)
+- [Ink Actions](/ru/api/ink-actions)
+- [Слои катсцен](/ru/api/cutscene-layers)
+- [Текстовые эффекты](/ru/api/text-effects)
+- [Запись](/ru/api/recording)

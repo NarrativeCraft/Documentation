@@ -1,46 +1,46 @@
 # Border
 
-Draws solid rectangles along the screen edges to create cinematic letterboxing or vignettes. Supports animated transitions in and out with easing.
+Рисует сплошные прямоугольники по краям экрана для создания кинематографических рамок или виньеток. Поддерживает анимированные переходы с плавностью.
 
-## Side
+## Сторона
 CLIENT
 
-## Syntax
+## Синтаксис
 
 ```
 border <verb:string> [up:int=0] [right:int=0] [down:int=0] [left:int=0] [color:string=000000] [opacity:float=1.0] [duration:float=0] [easing:string=SMOOTH]
 ```
 
-## Parameters
+## Параметры
 
-- `verb` *(string, required)*: What to do with the border. Accepted values: `in` (animate borders appearing), `out` (animate borders disappearing), `set` (instantly set borders), `clear` (instantly remove all borders).
-- `up` *(int, optional)*: Height of the top border in pixels. Defaults to `0`.
-- `right` *(int, optional)*: Width of the right border in pixels. Defaults to `0`.
-- `down` *(int, optional)*: Height of the bottom border in pixels. Defaults to `0`.
-- `left` *(int, optional)*: Width of the left border in pixels. Defaults to `0`.
-- `color` *(string, optional)*: Hex color of the borders without `#`. Defaults to `000000` (black). Ignored by `out` and `clear`.
-- `opacity` *(float, optional)*: Opacity of the borders from `0.0` to `1.0`. Defaults to `1.0`. Ignored by `out` and `clear`.
-- `duration` *(float, optional)*: Duration of the `in` or `out` animation in seconds. Defaults to `0` (instant).
-- `easing` *(string, optional)*: Easing function used for the animation. Defaults to `SMOOTH`.
+- `verb` *(string, обязательный)*: Что делать с рамкой. Допустимые значения: `in` (анимировать появление), `out` (анимировать исчезновение), `set` (мгновенно установить), `clear` (мгновенно убрать все рамки).
+- `up` *(int, необязательный)*: Высота верхней рамки в пикселях. По умолчанию `0`.
+- `right` *(int, необязательный)*: Ширина правой рамки в пикселях. По умолчанию `0`.
+- `down` *(int, необязательный)*: Высота нижней рамки в пикселях. По умолчанию `0`.
+- `left` *(int, необязательный)*: Ширина левой рамки в пикселях. По умолчанию `0`.
+- `color` *(string, необязательный)*: Шестнадцатеричный цвет рамок без `#`. По умолчанию `000000` (чёрный). Игнорируется для `out` и `clear`.
+- `opacity` *(float, необязательный)*: Прозрачность рамок от `0.0` до `1.0`. По умолчанию `1.0`. Игнорируется для `out` и `clear`.
+- `duration` *(float, необязательный)*: Длительность анимации `in` или `out` в секундах. По умолчанию `0` (мгновенно).
+- `easing` *(string, необязательный)*: Функция плавности для анимации. По умолчанию `SMOOTH`.
 
-## Examples
+## Примеры
 
 ```ink
-// Instantly add cinematic black bars top and bottom
+// Мгновенно добавить кинематографические чёрные полосы сверху и снизу
 # border set up:60 down:60
 ```
 
 ```ink
-// Animate borders in over 1 second with smooth easing
+// Анимировать появление рамок за 1 секунду с плавностью
 # border in up:60 down:60 duration:1.0
 ```
 
 ```ink
-// Animate borders out over 0.5 seconds
+// Анимировать исчезновение рамок за 0.5 секунды
 # border out duration=0.5
 ```
 
 ```ink
-// Remove all borders instantly
+// Мгновенно убрать все рамки
 # border clear
 ```

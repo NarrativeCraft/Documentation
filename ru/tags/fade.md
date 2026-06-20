@@ -1,36 +1,36 @@
 # Fade
 
-Fades the screen to a solid color, holds for a duration, then fades back out.
+Плавно затемняет экран до сплошного цвета, выдерживает паузу, затем плавно возвращает изображение.
 
-## Side
+## Сторона
 CLIENT
 
-## Syntax
+## Синтаксис
 
 ```
 fade <fadeIn:float> <stay:float> <fadeOut:float> [color:string=000000]
 ```
 
-## Parameters
+## Параметры
 
-- `fadeIn` *(float, required)*: Duration of the fade-in phase in seconds.
-- `stay` *(float, required)*: Duration the screen stays fully covered in seconds.
-- `fadeOut` *(float, required)*: Duration of the fade-out phase in seconds.
-- `color` *(string, optional)*: Hex color of the overlay without `#`. Defaults to `000000` (black).
+- `fadeIn` *(float, обязательный)*: Длительность затемнения в секундах.
+- `stay` *(float, обязательный)*: Длительность удержания экрана полностью затемнённым в секундах.
+- `fadeOut` *(float, обязательный)*: Длительность появления в секундах.
+- `color` *(string, необязательный)*: Шестнадцатеричный цвет наложения без `#`. По умолчанию `000000` (чёрный).
 
-## Examples
+## Примеры
 
 ```ink
-// Classic black fade, short and snappy
+// Классическое чёрное затемнение, короткое и чёткое
 # fade 0.5 0.5 0.5
 ```
 
 ```ink
-// Slow white flash for a dream sequence
+// Медленная белая вспышка для сцены сна
 # fade 1.5 2.0 1.5 FFFFFF
 ```
 
 ```ink
-// Instant cut to black with a long hold before revealing
+// Мгновенное вырезание в чёрный с долгой паузой перед появлением
 # fade 0 3.0 1.0
 ```

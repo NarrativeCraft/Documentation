@@ -1,34 +1,34 @@
 # Wait
 
-Pauses story progression for a given duration before advancing to the next line. This action is always blocking.
+Приостанавливает выполнение сюжета на заданную длительность перед переходом к следующей строке. Это действие всегда блокирующее.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 wait <duration:float> <unit:string>
 ```
 
-## Parameters
+## Параметры
 
-- `duration` *(float, required)*: How long to wait.
-- `unit` *(string, required)*: Time unit for the duration. Accepted values: `second`, `seconds`, `minute`, `minutes`, `hour`, `hours`.
+- `duration` *(float, обязательный)*: Длительность ожидания.
+- `unit` *(string, обязательный)*: Единица времени. Допустимые значения: `second`, `seconds`, `minute`, `minutes`, `hour`, `hours`.
 
-## Examples
+## Примеры
 
 ```ink
-// Wait 3 seconds before continuing
+// Подождать 3 секунды перед продолжением
 # wait 3 seconds
 ```
 
 ```ink
-// Short pause of half a second
+// Короткая пауза в полсекунды
 # wait 0.5 seconds
 ```
 
 ```ink
-// Wait 1 minute
+// Подождать 1 минуту
 # wait 1 minute
 ```

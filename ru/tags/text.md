@@ -1,65 +1,66 @@
 # Text
 
-Creates, edits, and removes named text overlays displayed on the client HUD. Each text is identified by an id and can be repositioned, recolored, faded, and animated independently.
+Создаёт, редактирует и удаляет именованные текстовые наложения, отображаемые на HUD клиента. Каждый текст идентифицируется по id и может независимо перемещаться, менять цвет, исчезать и анимироваться.
 
-## Side
+## Сторона
 CLIENT
 
-## Syntax
+## Синтаксис
 
 ```
 text <id:string> <action:string> [param1] [param2] [param3] [--block]
 ```
 
-## Parameters
+## Параметры
 
-- `id` *(string, required)*: Unique identifier for this text overlay. Used to reference it in subsequent actions.
-- `action` *(string, required)*: Operation to perform. See the table below for each action and its expected parameters.
-- `--block` *(flag, optional)*: Used with the `type` action. Pauses story progression until the typewriter effect finishes.
+- `id` *(string, обязательный)*: Уникальный идентификатор текстового наложения. Используется для обращения к нему в последующих действиях.
+- `action` *(string, обязательный)*: Выполняемая операция. См. таблицу ниже для каждой операции и её параметров.
+- `--block` *(флаг, необязательный)*: Используется с действием `type`. Приостанавливает выполнение сюжета до завершения эффекта печати.
 
-### Actions
+### Действия
 
-| Action | param1 | param2 | param3 |
+| Действие | param1 | param2 | param3 |
 |---|---|---|---|
-| `create` | text content *(required)* | hex color *(optional)* | |
+| `create` | текст *(обязательный)* | hex-цвет *(необязательный)* | |
 | `remove` | | | |
-| `edit` | new text content *(required)* | | |
-| `position` / `pos` | position value *(required)* | | |
-| `color` | hex color *(required)* | | |
-| `opacity` | opacity float 0.0 to 1.0 *(required)* | | |
-| `scale` | scale float *(required)* | | |
-| `width` | wrap width in pixels *(required)* | | |
-| `fade` | fadeIn seconds *(required)* | stay seconds *(required)* | fadeOut seconds *(required)* |
-| `fadein` | duration seconds *(required)* | | |
-| `fadeout` | duration seconds *(required)* | | |
-| `type` | scroll speed *(optional)* | | |
+| `edit` | новый текст *(обязательный)* | | |
+| `position` / `pos` | значение позиции *(обязательный)* | | |
+| `space` | значение x *(обязательный)* | значение y *(обязательный)* | |
+| `color` | hex-цвет *(обязательный)* | | |
+| `opacity` | прозрачность от 0.0 до 1.0 *(обязательный)* | | |
+| `scale` | масштаб *(обязательный)* | | |
+| `width` | ширина обёртки в пикселях *(обязательный)* | | |
+| `fade` | fadeIn секунд *(обязательный)* | stay секунд *(обязательный)* | fadeOut секунд *(обязательный)* |
+| `fadein` | длительность в секундах *(обязательный)* | | |
+| `fadeout` | длительность в секундах *(обязательный)* | | |
+| `type` | скорость печати *(необязательный)* | | |
 
-**Position values:** `top_left`, `top`, `top_right`, `middle_left`, `middle`, `middle_right`, `bottom_left`, `bottom`, `bottom_right`
+**Значения позиции:** `top_left`, `top`, `top_right`, `middle_left`, `middle`, `middle_right`, `bottom_left`, `bottom`, `bottom_right`
 
-## Examples
+## Примеры
 
 ```ink
-// Create a centered white subtitle
+// Создать центрированный белый субтитр
 # text subtitle create "Hello world"
 ```
 
 ```ink
-// Move an existing text to the bottom center
+// Переместить существующий текст в нижний центр
 # text subtitle position bottom
 ```
 
 ```ink
-// Change the text color to red
+// Изменить цвет текста на красный
 # text subtitle color FF0000
 ```
 
 ```ink
-// Play a typewriter effect and block until it finishes
+// Воспроизвести эффект печати с блокировкой до завершения
 # text subtitle type 1.5 --block
 ```
 
 ```ink
-// Fade the text out over 1 second then remove it
+// Плавно скрыть текст за 1 секунду, затем удалить
 # text subtitle fadeout 1.0
 # text subtitle remove
 ```

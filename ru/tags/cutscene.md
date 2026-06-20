@@ -1,33 +1,33 @@
 # Cutscene
 
-Triggers a pre-built cutscene sequence by name and blocks story progression until it finishes.
+Запускает заранее созданную катсцену по имени и блокирует выполнение сюжета до её завершения.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 cutscene <cutsceneName:string>
 ```
 
-## Parameters
+## Параметры
 
-- `cutsceneName` *(string, required)*: Name of the cutscene as defined in the scene editor.
+- `cutsceneName` *(string, обязательный)*: Имя катсцены, заданное в редакторе сцен.
 
-## Examples
+## Примеры
 
 ```ink
-// Play the opening cutscene
+// Воспроизвести вступительную катсцену
 # cutscene intro_sequence
 ```
 
 ```ink
-// Trigger a cutscene before a boss fight
+// Запустить катсцену перед битвой с боссом
 # cutscene boss_reveal
 ```
 
 ```ink
-// Play the ending credits cutscene
+// Воспроизвести финальную катсцену
 # cutscene ending_credits
 ```

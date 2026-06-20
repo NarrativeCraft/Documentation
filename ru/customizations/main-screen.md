@@ -1,32 +1,33 @@
-# Main Screen
+# Главный экран
 
-On a singleplayer world, you can create a main screen that the player will see when they join the world
-![Custom background image](/assets/customizations/main-screen/cutsom-background-main-screen.png)
+В одиночном мире можно создать главный экран, который игрок увидит при входе в мир.
 
-## Making the background
+![Пользовательское фоновое изображение](/assets/customizations/main-screen/cutsom-background-main-screen.png)
 
-Open the story manager, click the gear icon and click on `Main Screen Editor`, you will enter an editor exactly like a camera angle, but the differences are that :
-- You can add only one camera view
-- You can't add template characters
+## Создание фона
 
-When you're done setting up your scene, save and leave.
+Откройте менеджер сюжета, нажмите на иконку шестерёнки и выберите `Редактор главного экрана`. Вы войдёте в редактор, точно такой же, как для ракурса, но с отличиями:
+- Можно добавить только один ракурс
+- Нельзя добавить шаблонных персонажей
 
-## Play music
+Когда закончите настройку сцены, сохраните и выйдите.
 
-If you want to play music when the screen is shown, take your music, convert it to ogg, and name it exactly `main_screen.ogg`.
+## Воспроизведение музыки
 
-Then, in your resource pack, place your `main_screen.ogg` in `narrativecraft/assets/sounds/music/main_screen.ogg`
+Если хотите, чтобы при показе экрана играла музыка, возьмите ваш трек, конвертируйте в ogg и назовите `main_screen.ogg`.
 
-## Logo
+Затем поместите `main_screen.ogg` в ресурс-пак по пути `narrativecraft/assets/sounds/music/main_screen.ogg`.
 
-You can set a logo in `narrativecraft/textures/gui/sprites/logo.png` in your resource pack to display a logo that will be rendered on top of buttons
+## Логотип
 
-![Main screen with logo](/assets/customizations/main-screen/main-screen-with-logo.png)
+Вы можете установить логотип в `narrativecraft/textures/gui/sprites/logo.png` в вашем ресурс-паке. Он будет отображаться поверх кнопок.
 
-## Enable main screen on join
+![Главный экран с логотипом](/assets/customizations/main-screen/main-screen-with-logo.png)
 
-Go back to story manager, click the gear icon, then click `World Settings` and set `Show Main Screen on Join` to `yes`.
+## Включение главного экрана при входе
 
-Now, when you will join your world, the main screen will appear.
+Вернитесь в менеджер сюжета, нажмите на иконку шестерёнки, затем выберите `Настройки мира` и установите `Показывать главный экран при входе` в значение `Да`.
 
-To leave the main screen **without** leaving the world, just press ctrl left 10 times and a button `Leave Screen` will appear at up right of the screen.
+Теперь при входе в мир будет появляться главный экран.
+
+Чтобы покинуть главный экран **без** выхода из мира, нажмите Ctrl влево 10 раз — появится кнопка `Закрыть экран` в правом верхнем углу.

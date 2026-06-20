@@ -1,35 +1,35 @@
-# Create your characters
+# Создание персонажей
 
-Before anything, you need to create characters.
+Прежде всего нужно создать персонажей.
 
-To access **character manager** press `n` and click on `C` button on the left.
+Чтобы открыть **менеджер персонажей**, нажмите `n` и кликните на кнопку `C` слева.
 
-Here, will be stored all your characters. At first, it will be empty, so click on the `+` button and create a character.
+Здесь будут храниться все ваши персонажи. Сначала список пуст, так что нажмите `+` и создайте персонажа.
 
-We will call it `Steve`. Before saving, we will label him as a **main character**. A main character is the character that will be the center of the story. Click on `Main Character Settings` and set `Main Character` from `no` to `yes`. The button `Skin` will be enabled.
+Назовём его `Steve`. Перед сохранением пометим его как **главного персонажа**. Главный персонаж — это персонаж, вокруг которого строится сюжет. Нажмите `Настройки главного персонажа` и установите `Главный персонаж` с `Нет` на `Да`. Кнопка `Скин` станет активной.
 
-The `Skin` button has 3 modes :
+У кнопки `Скин` есть 3 режима:
 
-1. Skin from file - The character will have the skin from his folder if it exists
-2. Skin of player - The character will have the skin of the client
-3. Client has character skin - The client and the character will have the skin from the character folder.
+1. Скин из файла — у персонажа будет скин из его папки, если он существует
+2. Скин игрока — у персонажа будет скин клиента
+3. У клиента скин персонажа — у клиента и персонажа будет скин из папки персонажа
 
-The 3 modes really depend on your needs.
-- If your main character is an OC, then choose 1
-- If you want the main character to be the client, then choose 2
-- If your main character is an OC and you want full immersion by having the skin from the folder for both character and client, then choose 3
+Выбор режима зависит от ваших задач:
+- Если ваш главный персонаж — оригинальный, выберите первое
+- Если хотите, чтобы главным персонажем был сам игрок, выберите второе
+- Если главный персонаж оригинальный и вы хотите полного погружения, чтобы скин из папки был и у персонажа, и у игрока, выберите третье
 
-Client means the person who's playing Minecraft.
+Клиент — это человек, который играет в Minecraft.
 
 ::: tip
-Creating a character requires a name, but you might want to have the main character to be named like the client.
-To achieve this, just name the character as `user`. The main character will be automatically named as the client.
+Для создания персонажа нужно имя, но возможно, вы захотите, чтобы главный персонаж назывался так же, как игрок.
+Для этого просто назовите персонажа `user`. Главный персонаж будет автоматически назван именем игрока.
 :::
 
-Create a second character, call it `Alex`, we will need it for later.
+Создайте второго персонажа, назовите его `Alex` — он понадобится позже.
 
-## Skin
+## Скин
 
-If you want to assign a skin to your character, go to the `narrativecraft` folder of your world and go to the `characters` and enter your character folder.
+Если хотите назначить персонажу скин, перейдите в папку `narrativecraft` вашего мира, затем в `characters` и войдите в папку персонажа.
 
-Just place your skin, and it must be named `skin.png` in order to work.
+Просто поместите скин, он должен называться `skin.png`, чтобы работать.

@@ -1,24 +1,24 @@
 # On Enter
 
-Notifies NarrativeCraft that the player has entered a new scene or chapter based on the current ink knot. This tag must be at the top of a knot to register the scene transition when the story reaches that point.
+Уведомляет NarrativeCraft, что игрок вошёл в новую сцену или главу, основываясь на текущем ink-узле (knot). Этот тег должен быть в начале узла (knot), чтобы зарегистрировать переход сцены, когда сюжет достигает этой точки.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 on_enter
 ```
 
-## Parameters
+## Параметры
 
-This action takes no parameters.
+Это действие не имеет параметров.
 
-## Examples
+## Примеры
 
 ```ink
 === chapter_1_forest ===
 # on_enter
-The trees close in around you.
+Деревья смыкаются вокруг тебя.
 ```

@@ -1,33 +1,33 @@
 # Command
 
-Executes a vanilla Minecraft command with full operator permissions. The command is run as the player but bypasses permission checks. `@p` is automatically replaced by the player's name. Curly braces must be escaped as `\{` and `\}`.
+Выполняет обычную команду Minecraft с полными правами оператора. Команда запускается от имени игрока, но проверки прав пропускаются. `@p` автоматически заменяется на имя игрока. Фигурные скобки нужно экранировать как `\{` и `\}`.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 command <commandValue:string>
 ```
 
-## Parameters
+## Параметры
 
-- `commandValue` *(string, required)*: The Minecraft command to execute, without the leading `/`.
+- `commandValue` *(string, обязательный)*: Команда Minecraft для выполнения без ведущего `/`.
 
-## Examples
+## Примеры
 
 ```ink
-// Give the player a diamond sword
+// Выдать игроку алмазный меч
 # command "give @p diamond_sword 1"
 ```
 
 ```ink
-// Trigger a custom advancement
+// Выдать кастомное достижение
 # command "advancement grant @p only mymod:secret_found"
 ```
 
 ```ink
-// Play a title screen message
-# command "title @p title \{"text":"Chapter 2","bold":true\}"
+// Показать заголовок на экране
+# command "title @p title \{\"text\":\"Chapter 2\",\"bold\":true\}"
 ```

@@ -1,36 +1,36 @@
 # Gameplay
 
-Restores standard player controls after a cutscene or camera sequence. Puts the player in Adventure mode and teleports them to the main character's last position.
+Возвращает игроку стандартное управление после катсцены или ракурса. Переключает игрока в режим приключения и телепортирует на последнюю позицию главного персонажа.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
-gameplay
+gameplay [gamemode:string=adventure]
 ```
 
-## Parameters
+## Параметры
 
-This action takes no parameters.
+- `gamemode` *(string, необязательный)*: Устанавливает режим игры при входе в режим геймплея. По умолчанию adventure
 
-## Examples
+## Примеры
 
 ```ink
-// Return control to the player after a cutscene
+// Вернуть управление игроку после катсцены и переключить на режим выживания
 # cutscene boss_reveal
-# gameplay
+# gameplay gamemode:survival
 ```
 
 ```ink
-// Give the player back control after a camera angle
+// Вернуть управление после ракурса
 # camera dungeon dramatic_angle
 # gameplay
 ```
 
 ```ink
-// End a scripted sequence and let the player explore
+// Завершить скриптовую последовательность и позволить игроку исследовать
 # wait 2 seconds
 # gameplay
 ```

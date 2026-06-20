@@ -1,44 +1,44 @@
 # Sound
 
-Plays or stops a sound effect or music track on the client. Supports looping, pitch and volume control, and fade-in/out transitions.
+Воспроизводит или останавливает звуковой эффект или музыку на клиенте. Поддерживает зацикливание, регулировку громкости и высоты, а также плавные переходы.
 
-## Side
+## Сторона
 CLIENT
 
-## Syntax
+## Синтаксис
 
 ```
 sound <type:string> <action:string> <name:string> [volume:float=1.0] [pitch:float=1.0] [--loop] [fadeTime:float=0]
 ```
 
-## Parameters
+## Параметры
 
-- `type` *(string, required)*: Category of the sound. Accepted values: `sfx` (sound effect), `song` (music track), `stop` (used with `all` to stop every active sound).
-- `action` *(string, required)*: What to do with the sound. Accepted values: `play`, `stop`.
-- `name` *(string, required)*: Sound identifier. Use `namespace:sound_name` format for custom sounds, or just `sound_name` to target the `minecraft` namespace. Use `all` with `action stop` to stop all sounds of the given type.
-- `volume` *(float, optional)*: Playback volume from `0.0` to `1.0`. Defaults to `1.0`.
-- `pitch` *(float, optional)*: Playback pitch multiplier. Defaults to `1.0`.
-- `--loop` *(flag, optional)*: Makes the sound loop indefinitely until stopped.
-- `fadeTime` *(float, optional)*: Duration in seconds to fade the volume in (on play) or out (on stop). Defaults to `0`.
+- `type` *(string, обязательный)*: Категория звука. Допустимые значения: `sfx` (звуковой эффект), `song` (музыка), `stop` (используется с `all` для остановки всех активных звуков).
+- `action` *(string, обязательный)*: Что делать со звуком. Допустимые значения: `play`, `stop`.
+- `name` *(string, обязательный)*: Идентификатор звука. Используйте формат `namespace:sound_name` для кастомных звуков или просто `sound_name` для пространства имён `minecraft`. Используйте `all` с `action stop`, чтобы остановить все звуки данного типа.
+- `volume` *(float, необязательный)*: Громкость воспроизведения от `0.0` до `1.0`. По умолчанию `1.0`.
+- `pitch` *(float, необязательный)*: Множитель высоты звука. По умолчанию `1.0`.
+- `--loop` *(флаг, необязательный)*: Зацикливает звук до остановки.
+- `fadeTime` *(float, необязательный)*: Длительность плавного изменения громкости в секундах при включении (play) или остановке (stop). По умолчанию `0`.
 
-## Examples
+## Примеры
 
 ```ink
-// Play a sound effect at full volume
+// Воспроизвести звуковой эффект на полной громкости
 # sound sfx play minecraft:entity.thunder_clap
 ```
 
 ```ink
-// Play a looping music track with fade-in
+// Воспроизвести зацикленную музыку с плавным появлением
 # sound song play mymod:music.theme --loop fadeTime:2.0
 ```
 
 ```ink
-// Stop a specific track with a fade-out
+// Остановить конкретный трек с плавным затуханием
 # sound song stop mymod:music.theme fadeTime:1.5
 ```
 
 ```ink
-// Stop all active sounds immediately
+// Остановить все активные звуки мгновенно
 # sound stop stop all
 ```

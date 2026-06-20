@@ -1,34 +1,34 @@
 # Camera
 
-Transitions the player's camera to a pre-configured angle defined in the scene editor. The camera angle is composed of a parent group and a specific view within that group.
+Переключает камеру игрока на заранее настроенный ракурс, заданный в редакторе сцен. Ракурс состоит из родительской группы и конкретного вида внутри этой группы.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 camera <parentName:string> <childName:string>
 ```
 
-## Parameters
+## Параметры
 
-- `parentName` *(string, required)*: Name of the camera angle group as defined in the scene editor.
-- `childName` *(string, required)*: Name of the specific camera view within that group.
+- `parentName` *(string, обязательный)*: Имя группы ракурсов, заданное в редакторе сцен.
+- `childName` *(string, обязательный)*: Имя конкретного вида внутри этой группы.
 
-## Examples
+## Примеры
 
 ```ink
-// Switch to a close-up view of the throne room
+// Переключиться на крупный план тронного зала
 # camera throne_room close_up
 ```
 
 ```ink
-// Move to the wide establishing shot
+// Перейти к широкому общему плану
 # camera forest_entry wide_shot
 ```
 
 ```ink
-// Cut to a dramatic low-angle view
+// Резкий переход на драматичный нижний ракурс
 # camera dungeon low_angle
 ```

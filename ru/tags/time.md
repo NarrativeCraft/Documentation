@@ -1,40 +1,40 @@
 # Time
 
-Changes the in-game day time instantly or transitions smoothly from one value to another. Supports named time presets and raw tick values.
+Мгновенно изменяет внутриигровое время суток или плавно переходит от одного значения к другому. Поддерживает именованные пресеты времени и сырые значения тиков.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 time <action:string> <from:string> [to:string] [for:float=0] [unit:string=seconds] [easing:string=SMOOTH]
 ```
 
-## Parameters
+## Параметры
 
-- `action` *(string, required)*: What to do. Accepted values: `set` (set to a specific time), `add` (add ticks to the current time).
-- `from` *(string, required)*: The starting time or the amount to add. Accepts named presets (`day`, `noon`, `night`, `midnight`) or a raw tick value.
-- `to` *(string, optional)*: The target time for a smooth transition. Only used with `set`. Same format as `from`.
-- `for` *(float, optional)*: Duration of the transition. Defaults to `0` (instant).
-- `unit` *(string, optional)*: Time unit for `for`. Accepted values: `seconds`, `minutes`, `hours`. Defaults to `seconds`.
-- `easing` *(string, optional)*: Easing function for the transition. Defaults to `SMOOTH`.
+- `action` *(string, обязательный)*: Что делать. Допустимые значения: `set` (установить конкретное время), `add` (добавить тики к текущему времени).
+- `from` *(string, обязательный)*: Начальное время или количество для добавления. Принимает именованные пресеты (`day`, `noon`, `night`, `midnight`) или сырое значение тиков.
+- `to` *(string, необязательный)*: Целевое время для плавного перехода. Используется только с `set`. Тот же формат, что и `from`.
+- `for` *(float, необязательный)*: Длительность перехода. По умолчанию `0` (мгновенно).
+- `unit` *(string, необязательный)*: Единица времени для `for`. Допустимые значения: `seconds`, `minutes`, `hours`. По умолчанию `seconds`.
+- `easing` *(string, необязательный)*: Функция плавности для перехода. По умолчанию `SMOOTH`.
 
-**Named presets:** `day` = 1000, `noon` = 6000, `night` = 13000, `midnight` = 18000.
+**Именованные пресеты:** `day` = 1000, `noon` = 6000, `night` = 13000, `midnight` = 18000.
 
-## Examples
+## Примеры
 
 ```ink
-// Jump instantly to dawn
+// Мгновенно переключиться на рассвет
 # time set day
 ```
 
 ```ink
-// Transition smoothly from noon to night over 10 seconds
+// Плавно перейти от полудня к ночи за 10 секунд
 # time set noon to:night for:10
 ```
 
 ```ink
-// Add 2000 ticks to the current time
+// Добавить 2000 тиков к текущему времени
 # time add 2000
 ```

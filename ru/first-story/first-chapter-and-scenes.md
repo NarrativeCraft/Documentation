@@ -1,43 +1,42 @@
-# First chapter and scenes
+# Первая глава и сцены
 
-Now that you have `Steve` and `Alex`, let's create one chapter.
+Теперь, когда у вас есть `Steve` и `Alex`, давайте создадим главу.
 
-To create one chapter, press the button `S` at the left and it will show you the chapters list.
+Чтобы создать главу, нажмите кнопку `S` слева — откроется список глав.
 
-Create one clicking on the `+` icon and fill a name, we will call it `my chapter`.
+Создайте главу, нажав на иконку `+`, и введите имя. Назовём её `my chapter`.
 
-After this, click on your created chapter and create a scene `scene one` and another one `scene two`.
+После этого нажмите на созданную главу и создайте сцену `scene one` и ещё одну — `scene two`.
 
-If you click on one of the two scenes you will have a sub screen with a list of data :
+Если нажать на одну из сцен, откроется подэкран со списком данных:
 
-- Animations
-- Camera angles
-- Cutscenes
-- Interactions
+- Анимации
+- Ракурсы
+- Катсцены
+- Взаимодействия
 - NPC
-- Subscenes
+- Подсцены
 
+### Анимация
 
-### Animation
+Анимация — это список заранее записанных действий, которые можно воспроизводить в мире.
 
-An animation is a list of actions pre-recorded that you can play as a playback on the world
+### Ракурсы
 
-### Camera angles
+Ракурс — это статичная сцена, где вы размещаете неподвижную камеру, чтобы направить её на персонажей. В основном используется для разговоров между персонажами.
 
-A camera angle is a static scene where you place static camera to point characters that are talking, this is mostly used for conversation between characters
+### Катсцены
 
-### Cutscenes
+Катсцена — это способ показать действия или представить локации с помощью траектории ключевых кадров с анимацией и/или воспроизведением подсцен.
 
-A cutscene is a way to show actions or present areas with keyframe path with animation and/or subscene playing.
+### Взаимодействия
 
-### Interactions
-
-An interaction is a zone area and a click point to execute a certain point in the story.
+Взаимодействие — это зона и точка для клика, которые запускают определённую точку сюжета.
 
 ### NPC
 
-A npc is like a character but is **throwaway**, meaning that it is only accessible for this scene and this scene only. This is used for character background, and giving life to an environment.
+NPC — как персонаж, но **одноразовый**, то есть доступен только для этой сцены и только в ней. Используется для фоновых персонажей и оживления окружения.
 
-###  Subscenes
+### Подсцены
 
-A subscene is a list of animations to play them at the same time.
+Подсцена — это список анимаций, которые воспроизводятся одновременно.

@@ -1,42 +1,42 @@
 # Animation
 
-Plays or stops a named character animation defined in the scene editor. Supports looping and blocking until the animation finishes.
+Воспроизводит или останавливает именованную анимацию персонажа, заданную в редакторе сцен. Поддерживает зацикливание и блокировку до завершения анимации.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 animation <action:string> <animationName:string> [loop:boolean=false] [unique:boolean=false] [--block]
 ```
 
-## Parameters
+## Параметры
 
-- `action` *(string, required)*: What to do. Accepted values: `play`, `stop`.
-- `animationName` *(string, required)*: Name of the animation as defined in the scene editor.
-- `loop` *(boolean, optional)*: If `true`, the animation restarts automatically when it ends. Defaults to `false`.
-- `unique` *(boolean, optional)*: If `true`, the character entity is killed when the animation ends. Defaults to `false`.
-- `--block` *(flag, optional)*: Pauses story progression until the animation finishes. Only applies to `play`.
+- `action` *(string, обязательный)*: Что делать. Допустимые значения: `play`, `stop`.
+- `animationName` *(string, обязательный)*: Имя анимации, заданное в редакторе сцен.
+- `loop` *(boolean, необязательный)*: Если `true`, анимация автоматически перезапускается после завершения. По умолчанию `false`.
+- `unique` *(boolean, необязательный)*: Если `true`, сущность персонажа удаляется после завершения анимации. По умолчанию `false`.
+- `--block` *(флаг, необязательный)*: Приостанавливает выполнение сюжета до завершения анимации. Работает только с `play`.
 
-## Examples
+## Примеры
 
 ```ink
-// Play a walking animation without blocking
+// Воспроизвести анимацию ходьбы без блокировки
 # animation play guard_patrol
 ```
 
 ```ink
-// Play a looping idle animation
+// Воспроизвести зацикленную анимацию бездействия
 # animation play npc_idle loop:true
 ```
 
 ```ink
-// Play a death animation and wait for it to finish
+// Воспроизвести анимацию смерти и ждать завершения
 # animation play boss_death --block
 ```
 
 ```ink
-// Stop a running animation
+// Остановить текущую анимацию
 # animation stop guard_patrol
 ```

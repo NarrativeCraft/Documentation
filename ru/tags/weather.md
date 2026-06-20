@@ -1,34 +1,34 @@
 # Weather
 
-Changes the world weather for the player. In multiplayer or with the `--instant` flag, the change is applied immediately via a client packet.
+Изменяет погоду в мире для игрока. В мультиплеере или с флагом `--instant` изменение применяется мгновенно через клиентский пакет.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 weather <type:string> [--instant]
 ```
 
-## Parameters
+## Параметры
 
-- `type` *(string, required)*: The weather to apply. Accepted values: `clear`, `rain`, `thunder`.
-- `--instant` *(flag, optional)*: Forces the weather change to apply immediately via a direct client packet, bypassing the normal world weather transition.
+- `type` *(string, обязательный)*: Погода для применения. Допустимые значения: `clear`, `rain`, `thunder`.
+- `--instant` *(флаг, необязательный)*: Принудительно применяет изменение погоды мгновенно через прямой клиентский пакет, минуя обычный переход погоды в мире.
 
-## Examples
+## Примеры
 
 ```ink
-// Clear the sky at the start of a hopeful scene
+// Ясное небо в начале радостной сцены
 # weather clear
 ```
 
 ```ink
-// Start a storm instantly for a dramatic moment
+// Мгновенно начать грозу для драматического момента
 # weather thunder --instant
 ```
 
 ```ink
-// Transition to rain as tension builds
+// Переход к дождю для нарастания напряжения
 # weather rain
 ```

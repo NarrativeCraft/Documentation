@@ -1,35 +1,35 @@
 # Interaction
 
-Activates or deactivates a named interaction zone within the current scene. Starting an interaction gives the player the ability to interact with defined triggers in the world.
+Активирует или деактивирует именованную зону взаимодействия в текущей сцене. Запуск взаимодействия даёт игроку возможность взаимодействовать с заданными триггерами в мире.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 interaction <action:string> <interactionName:string>
 ```
 
-## Parameters
+## Параметры
 
-- `action` *(string, required)*: What to do. Accepted values: `start` (activate the interaction), `remove` (deactivate it).
-- `interactionName` *(string, required)*: Name of the interaction zone as defined in the scene editor.
+- `action` *(string, обязательный)*: Что делать. Допустимые значения: `start` (активировать взаимодействие), `remove` (деактивировать).
+- `interactionName` *(string, обязательный)*: Имя зоны взаимодействия, заданное в редакторе сцен.
 
-## Examples
+## Примеры
 
 ```ink
-// Activate the door interaction zone
+// Активировать зону взаимодействия у двери замка
 # interaction start door_to_castle
 ```
 
 ```ink
-// Remove the interaction after the player uses it
+// Удалить взаимодействие после использования
 # interaction remove door_to_castle
 ```
 
 ```ink
-// Swap from one interaction zone to another
+// Сменить одну зону взаимодействия на другую
 # interaction remove puzzle_step_1
 # interaction start puzzle_step_2
 ```

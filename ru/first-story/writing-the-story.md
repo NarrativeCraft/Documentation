@@ -1,29 +1,29 @@
-# Writing the story
+# Написание сюжета
 
-Now, let's write the story!
+Теперь напишем сюжет!
 
 ::: warning
-I'm assuming you already know the basics of Ink, if not please see [prerequisites](/introduction/prerequisites.md)
+Предполагается, что вы уже знаете основы Ink. Если нет, прочтите [предварительные требования](/ru/introduction/prerequisites.md).
 :::
 
-Open [Inky](https://github.com/inkle/inky/releases), click on `File` up left and click `Open...`
+Откройте [Inky](https://github.com/inkle/inky/releases), нажмите `File` в левом верхнем углу и выберите `Open...`.
 
-Navigate to your world folder, then go to `narrativecraft` and open `main.ink`
+Перейдите в папку вашего мира, затем в `narrativecraft` и откройте `main.ink`.
 
-You will see an error at the top middle saying something like "Expected at least one line within the knot but saw end of line".
+Вы увидите ошибку в верхней части: «Expected at least one line within the knot but saw end of line».
 
-That's normal, when you create a chapter and its scenes, in inky, you need to manually write the knot.
+Это нормально. Когда вы создаёте главу и её сцены, в Inky нужно вручную написать knot.
 
-Go to `chapter_1.ink` and write `-> chapter_1_scene_one`
+Перейдите в `chapter_1.ink` и напишите `-> chapter_1_scene_one`.
 
-it will looks like
+Это будет выглядеть так:
 
 ```ink
 === chapter_1 ===
 -> chapter_1_scene_one
 ```
 
-then go to `scene_one.ink` and you will see this
+Затем перейдите в `scene_one.ink` — вы увидите:
 
 ```ink
 === chapter_1_scene_one ===
@@ -31,55 +31,52 @@ then go to `scene_one.ink` and you will see this
 -> END
 ```
 
-So, you see `# on_enter`? **Do not remove it**. This must be here to make the scene switching working correctly.
+Видите `# on_enter`? **Не удаляйте его**. Он должен быть здесь для корректного переключения сцен.
 
-So now, what are we going to do is :
+Итак, что мы будем делать:
 
-- Play `scene one`
-- Play cutscene `walk cut`
-- Invoke camera angle `steve_view`
-- Then making them talk
-- After talking, invoke our interaction `my interaction` and enters in gameplay mode
+- Воспроизведём `scene one`
+- Воспроизведём катсцену `walk cut`
+- Вызовем ракурс `steve_view`
+- Затем заставим их говорить
+- После разговора вызовем взаимодействие `my interaction` и перейдём в режим геймплея
 
-
-It will looks like this
+Это будет выглядеть так:
 
 ```ink
 === chapter_1_scene_one ===
 # on_enter
-# cutscene "walk cut" // Play the cutscene
-# camera "end walk" steve_view // After the cutscene has finished, invoke the camera steve_view from end walk
+# cutscene "walk cut" // Воспроизвести катсцену
+# camera "end walk" steve_view // После катсцены включить ракурс steve_view из end walk
 Steve: hey! how are you?
 # camera "end walk" alex_view
 Alex: I'm great, thanks for asking
 # camera "end walk" both_view
 Steve: Nice, let's explore the area!
-# interaction start "my interaction" // After the talking, start the interacion "my interaction"
-# gameplay // And enter in "gameplay" mode, so the story does not end instantly
+# interaction start "my interaction" // После разговора запустить взаимодействие «my interaction»
+# gameplay // Перейти в режим геймплея, чтобы сюжет не закончился сразу
 -> END
-
 ```
 
-This is a very basic script, it will spawn the characters, make them talk, and we will be able to play after.
+Это очень простой скрипт. Он создаст персонажей, заставит их говорить, и вы сможете продолжить игру.
 
-In this script, there are commands starting with `#`, they are called **tags**
+В этом скрипте есть команды, начинающиеся с `#`. Они называются **тегами**.
 
-A tag is a custom command that NarrativeCraft interprets and execute it in Minecraft.
+Тег — это кастомная команда, которую NarrativeCraft интерпретирует и выполняет в Minecraft.
 
-For example
+Например:
+
 ```
-# cutscene "walk cut" 
+# cutscene "walk cut"
 ```
 
-Start the cutscene "walk cut" from chapter 1 scene one.
+Запускает катсцену «walk cut» из главы 1 сцены 1.
 
-## Change scene
+## Смена сцены
 
-To change a scene, you need to call the knot you want the player to continue.
+Чтобы сменить сцену, нужно вызвать knot, с которого хотите продолжить.
 
-For example, after scene one, I want the player to start scene two.
-
-It will look like this :
+Например, после сцены 1 игрок должен начать сцену 2:
 
 ```ink{10}
 === chapter_1_scene_one ===
@@ -94,12 +91,11 @@ Steve: Nice, let's explore the area!
 -> chapter_1_scene_two
 ```
 
+## Взаимодействия
 
-## Interactions
+Ранее мы определили переходы `my_zone` и `my_point`.
 
-Now for interactions, earlier we defined `my_zone` and `my_point` stitch.
-
-To executes then when the player interacts with it, you habe to define the stitch on the script
+Чтобы они выполнялись при взаимодействии игрока, нужно определить эти переходы в скрипте:
 
 ```ink
 = my_zone
@@ -113,18 +109,17 @@ I clicked the point! yay!
 -> DONE
 ```
 
+Если игрок войдёт в `zone1` из взаимодействия, выполнится переход `my_zone`.
+Если игрок нажмёт на `point1` из взаимодействия, выполнится переход `my_point`.
 
-If the player enter `zone1` from the interaction, it will executes the stitch `my_zone`.
-If the player click `point1` from the interaction, it will executes the stitch `my_point`.
+Тег `gameplay` используется здесь, чтобы сохранить состояние геймплея. Иначе сюжет завершится!
 
-`gameplay` tag is used here to keep the gameplay state, otherwise, the story will end!
+## Теги
 
-## Tags
+Есть два типа тегов:
+- Обычные — выполняются, и сюжет продолжается
+- Блокирующие — останавливают выполнение сюжета и ждут завершения тега, прежде чем продолжить
 
-There are two types of tag :
-- Normal one, being executed and continuing the story
-- Blocking one, stops the story execution and waits for the tag to finish before continuing.
+[cutscene](/ru/tags/cutscene) — блокирующий тег. Он ждёт завершения катсцены, прежде чем продолжить сюжет.
 
-[cutscene](/tags/cutscene) is a blocking tag, it waits for the cutscene to finish before continuing the story
-
-When the script is done, save it `CTRL + S` and go back in game and execute `/nc story reload`. It will compile the story, and will do validation on tags and the story itself. If everything goes well the story will compile successfully, but if there are errors the story will not compile and will tell you exactly where you made the error.
+Когда скрипт готов, сохраните его (`CTRL + S`) и вернитесь в игру. Выполните `/nc story reload`. Он скомпилирует сюжет и проверит теги и сам сюжет. Если всё хорошо, сюжет скомпилируется успешно. Если есть ошибки, компиляция не удастся, и вам укажут точное место ошибки.

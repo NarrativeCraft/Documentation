@@ -1,51 +1,47 @@
-# Dialog
+# Диалог
 
-You can customize how a dialog can render in game for a character.
+Вы можете настроить отображение диалога для персонажа в игре.
 
-For this, open story manager and click on the `D` button.
+Для этого откройте менеджер сюжета и нажмите кнопку `D`.
 
-A fake player will appear and a dialog will be rendered.
+Появится фейковый игрок, и будет отображён диалог.
 
-From here, you can personalize pretty much anything you want. If you want advanced customization, click on the little three dots on the left panel and a right panel will appear with more customization options.
+Здесь можно настроить практически всё. Если нужны расширенные настройки, нажмите на три точки на левой панели — справа появится панель с дополнительными опциями.
 
-## Background and Sounds
+## Фон и звуки
 
-You can also set a background image and a custom letter sound.
+Вы также можете установить фоновое изображение и кастомный звук печати.
 
-To make it work, it has to be a resource location link.
+Для этого нужно указать ресурс-локацию.
 
-For example, if your image is stored here in your resource pack `minecraft/assets/textures/dialog-bg.png`
+Например, если ваше изображение находится в ресурс-паке `minecraft/assets/textures/dialog-bg.png`,
+то в поле фонового изображения укажите `textures/dialog-bg.png`.
 
-then on BG image set `textures/dialog-bg.png`
+Если изображение находится в другом пространстве имён, например `mycustomid/assets/textures/dialog-bg.png`,
+то укажите `mycustomid:textures/dialog-bg.png`.
 
-If your image is stored on another id like `mycustomid/assets/textures/dialog-bg.png`
+То же самое для звука печати.
 
-then on BG image set `mycustomid:textures/dialog-bg.png`
+Значение `default` — это путь к стандартному звуку печати.
 
-The same applies for letter sound.
+## Слой
 
-`default` label is the path of the default letter sound
+Есть 3 типа слоя:
+- Глобальные данные
+- Данные персонажа
+- Данные ракурса
 
-## Layer
+Чтобы настроить отображение диалога персонажа, перейдите в список персонажей, выберите нужного и нажмите кнопку `D`.
 
-There's 3 types of layer :
-- Global data
-- Character data
-- Camera view data
+Для персонажа можно изменить только:
+- цвет фона
+- прозрачность цвета фона
+- цвет текста
+- видимость хвостика облачка
+- тень текста
+- фоновое изображение
+- звук печати
 
-
-To customize a character dialog rendering, go to character list, select your character and press `D` button.
-
-On a character, you can only edit :
-- bg color
-- opacity of bg color
-- text color
-- tail visibility
-- text shadow
-- bg image
-- letter sound
-
-
-on a camera view :
-- offset x and y
-- scale
+Для ракурса:
+- смещение X и Y
+- масштаб

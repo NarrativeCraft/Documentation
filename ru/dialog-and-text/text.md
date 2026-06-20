@@ -1,13 +1,14 @@
-# Text
+# Текст
 
-With NarrativeCraft you can make a character speak or render a dialog on screen.
+С помощью NarrativeCraft можно заставить персонажа говорить или отобразить диалог на экране.
 
-For example
+Например:
+
 ```
 === chapter_1_scene_one ===
 # on_enter
-# cutscene "walk cut" // Play the cutscene
-# camera "end walk" steve_view // After the cutscene has finished, invoke the camera steve_view from end walk
+# cutscene "walk cut" // Воспроизвести катсцену
+# camera "end walk" steve_view // После катсцены включить ракурс steve_view из группы end walk
 Steve: hey! how are you?
 I hope she's doing fine
 -> END
@@ -17,23 +18,24 @@ I hope she's doing fine
 Steve: hey! how are you?
 ```
 
-In game, NarrativeCraft will check if an entity named "Steve" is here, if found, the dialog will be rendered for him to show that he is talking
+В игре NarrativeCraft проверит, есть ли сущность с именем «Steve». Если найдена, диалог отобразится от его лица.
 
-but
+Но:
+
 ```
 I hope she's doing fine
 ```
 
-Have no characters assigned, so it will render a dialog on the gui. This can be used for :
-- Minded dialog
-- Explanation
-- Dialog that other characters cannot hear
+Не имеет назначенного персонажа, поэтому диалог отобразится на GUI. Это можно использовать для:
+- Мысленного диалога
+- Пояснений
+- Диалога, который не слышат другие персонажи
 
-## Variables
+## Переменные
 
-You can put your variables inside a dialog or tags
+Вы можете подставлять переменные в диалог или теги.
 
-Example:
+Пример:
 
 ```ink
 VAR eat_apple = 6
@@ -41,38 +43,38 @@ VAR eat_apple = 6
 Jake: I ate %eat_apple% apple!
 ```
 
-## Text Effects
+## Текстовые эффекты
 
-You can apply animated text effects to dialog using inline tags.
+К диалогу можно применять анимированные текстовые эффекты с помощью инлайн-тегов.
 
-### Syntax
+### Синтаксис
 
 `[<effect> (param1=value1 param2=value2)]<text>[/<effect>]`
 
-Effects apply **only** to the enclosed text. All parameters are optional unless stated otherwise.
+Эффекты применяются **только** к заключённому в них тексту. Все параметры необязательны, если не указано иное.
 
-### Available Effects
+### Доступные эффекты
 
 #### `wave`
 
-Applies a horizontal wave motion to the text.
+Применяет горизонтальное волнообразное движение к тексту.
 
 #### `shake`
 
-Applies a chaotic shaking motion.
+Применяет хаотичное дрожание.
 
-**Parameters:**
+**Параметры:**
 
-- `time` _(float, optional)_ interval between shakes. Lower = faster movement.
-- `force` _(float, optional)_ intensity of the shake.
+- `time` _(float, необязательный)_ интервал между дрожаниями. Меньше = быстрее движение.
+- `force` _(float, необязательный)_ интенсивность дрожания.
 
 #### `wait`
 
-**Parameters:**
+**Параметры:**
 
-- `time` _(float)_ Value to wait before the text continue to render
+- `time` _(float)_ Время ожидания перед продолжением отрисовки текста.
 
-### Examples
+### Примеры
 
 - `Mark: [shake force=0.1]What did you just say?[/shake]`
 - `Jade: [wave]I'm just chilling[/wave]`

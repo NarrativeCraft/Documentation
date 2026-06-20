@@ -1,10 +1,10 @@
 # Ink Actions
 
-Ink actions are classes bound to an Ink tag keyword (`# keyword:arg1:arg2`). When that keyword appears in a script, the action is instantiated and executed.
+Ink actions — это классы, привязанные к ключевому слову в Ink-теге (`# keyword:arg1:arg2`). Когда такое ключевое слово появляется в скрипте, действие создаётся и выполняется.
 
-## Creating an Ink action
+## Создание Ink action
 
-Extend `InkAction` and annotate it with `@InkCommand`:
+Расширьте `InkAction` и аннотируйте его `@InkCommand`:
 
 ```java
 @InkCommand(
@@ -33,27 +33,27 @@ public class TeleportAction extends InkAction {
 }
 ```
 
-`doValidate` runs first and receives the parsed arguments. Read and store everything you need there, because `doExecute` only receives the player session.
+`doValidate` выполняется первым и получает разобранные аргументы. Читайте и сохраняйте всё, что нужно, там, потому что `doExecute` получает только сессию игрока.
 
-## Reading arguments
+## Чтение аргументов
 
-Use the typed accessors on `ParsedCommand`:
+Используйте типизированные геттеры на `ParsedCommand`:
 
 ```java
 command.getString("name")    // String
 command.getInt("count")      // int
 command.getFloat("duration") // float
 command.getBoolean("loop")   // boolean
-command.flag("block")        // boolean, true if the flag was present in the tag
+command.flag("block")        // boolean, true если флаг присутствовал в теге
 ```
 
-See [Syntax](/api/ink-syntax) for how to declare argument types in `@InkCommand`.
+См. [Синтаксис](/ru/api/ink-syntax) для описания типов аргументов в `@InkCommand`.
 
-## Client-side Ink actions
+## Ink actions на стороне клиента
 
-Server actions run on the server, client actions run on the client. The split is done through inheritance rather than duplication.
+Серверные действия выполняются на сервере, клиентские — на клиенте. Разделение делается через наследование, а не дублирование.
 
-Start with a base class where `doExecute` returns `InkActionResult.ignored()`, this is what the server sees:
+Начните с базового класса, где `doExecute` возвращает `InkActionResult.ignored()` — это то, что видит сервер:
 
 ```java
 @InkCommand(
@@ -78,74 +78,74 @@ public class ShakeAction extends InkAction {
 }
 ```
 
-Then create a `Client`-prefixed subclass that overrides `doExecute` with the actual client logic:
+Затем создайте подкласс с префиксом `Client`, переопределяющий `doExecute` с реальной клиентской логикой:
 
 ```java
 public class ClientShakeAction extends ShakeAction {
 
     @Override
     protected InkActionResult doExecute(IPlayerSession session) {
-        // client-side screen shake logic
+        // клиентская логика дрожания экрана
         return InkActionResult.ok();
     }
 }
 ```
 
-## Registering
+## Регистрация
 
-Register both classes through your `AddonContext`:
+Зарегистрируйте оба класса через ваш `AddonContext`:
 
 ```java
 ctx.registerInkAction(ShakeAction.class, ShakeAction::new);
 ctx.registerInkAction(ClientShakeAction.class, ClientShakeAction::new);
 ```
 
-## Multi-tick actions
+## Многотиковые действия
 
-If your action runs over multiple ticks, override the relevant lifecycle methods:
+Если ваше действие выполняется несколько тиков, переопределите соответствующие методы жизненного цикла:
 
 ```java
 @Override
 public void tick() {
-    // called every server tick while isRunning
+    // вызывается каждый серверный тик, пока isRunning
 }
 
 @Override
 public void partialTick(float partialTick) {
-    // called every frame on the client
+    // вызывается каждый кадр на клиенте
 }
 
 @Override
 public void render(GuiGraphicsExtractor graphics, float partialTick) {
-    // client-side rendering
+    // отрисовка на клиенте
 }
 
 @Override
 public void stop() {
-    // cleanup when the action ends
+    // очистка при завершении действия
 }
 ```
 
-Set `blocking = true` in `doValidate` if the action should pause the Ink script until it finishes.
+Установите `blocking = true` в `doValidate`, если действие должно приостанавливать Ink-скрипт до завершения.
 
 ## InkActionResult
 
-Returned by both `doValidate` and `doExecute`:
+Возвращается методами `doValidate` и `doExecute`:
 
 ```java
-InkActionResult.ok()           // success
-InkActionResult.ignored()      // this side doesn't handle it
-InkActionResult.block()        // pauses the action queue
-InkActionResult.error("msg")   // validation or execution failure
-InkActionResult.warn("msg")    // non-fatal warning
+InkActionResult.ok()           // успех
+InkActionResult.ignored()      // эта сторона не обрабатывает
+InkActionResult.block()        // приостанавливает очередь действий
+InkActionResult.error("msg")   // ошибка валидации или выполнения
+InkActionResult.warn("msg")    // нефатальное предупреждение
 ```
 
 ## InkActionUtil
 
 ```java
-// converts a time value (e.g. 2.5, "minute") to seconds
+// преобразует время (например 2.5, "minute") в секунды
 double seconds = InkActionUtil.getSecondsFromTimeValue(2.5, "minute");
 
-// replaces %variable% with their Ink story value
+// заменяет %variable% на значения из Ink-сюжета
 String resolved = InkActionUtil.parseVariables(story, "Hello %player_name%!");
 ```

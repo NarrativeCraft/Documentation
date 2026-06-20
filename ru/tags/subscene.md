@@ -1,42 +1,42 @@
 # Subscene
 
-Plays or stops a named subscene, which is a group of animations that run together. Supports looping and blocking until all animations in the group finish.
+Воспроизводит или останавливает именованную подсцену — группу анимаций, работающих вместе. Поддерживает зацикливание и блокировку до завершения всех анимаций в группе.
 
-## Side
+## Сторона
 SERVER
 
-## Syntax
+## Синтаксис
 
 ```
 subscene <action:string> <subsceneName:string> [loop:boolean=false] [unique:boolean=false] [--block]
 ```
 
-## Parameters
+## Параметры
 
-- `action` *(string, required)*: What to do. Accepted values: `play`, `stop`.
-- `subsceneName` *(string, required)*: Name of the subscene as defined in the scene editor.
-- `loop` *(boolean, optional)*: If `true`, all animations in the subscene restart when they all finish. Defaults to `false`.
-- `unique` *(boolean, optional)*: If `true`, character entities are killed when the subscene ends. Defaults to `false`.
-- `--block` *(flag, optional)*: Pauses story progression until all animations finish. Only applies to `play`.
+- `action` *(string, обязательный)*: Что делать. Допустимые значения: `play`, `stop`.
+- `subsceneName` *(string, обязательный)*: Имя подсцены, заданное в редакторе сцен.
+- `loop` *(boolean, необязательный)*: Если `true`, все анимации в подсцене перезапускаются после завершения. По умолчанию `false`.
+- `unique` *(boolean, необязательный)*: Если `true`, сущности персонажей удаляются после завершения подсцены. По умолчанию `false`.
+- `--block` *(флаг, необязательный)*: Приостанавливает выполнение сюжета до завершения всех анимаций. Работает только с `play`.
 
-## Examples
+## Примеры
 
 ```ink
-// Play a group of characters walking in together
+// Воспроизвести группу персонажей, входящих вместе
 # subscene play guards_enter
 ```
 
 ```ink
-// Play a looping ambient crowd subscene
+// Воспроизвести зацикленную фоновую подсцену толпы
 # subscene play crowd_idle loop:true
 ```
 
 ```ink
-// Play a combat sequence and wait for it to finish
+// Воспроизвести боевую сцену и ждать завершения
 # subscene play battle_intro --block
 ```
 
 ```ink
-// Stop a running subscene
+// Остановить текущую подсцену
 # subscene stop crowd_idle
 ```

@@ -8,6 +8,53 @@ export const ruConfig: LocaleConfig = {
   lang: 'ru',
   themeConfig: {
     versionSwitcher: false,
+    docFooter: {
+      prev: 'Предыдущая страница',
+      next: 'Следующая страница'
+    },
+    darkModeSwitchLabel: 'Оформление',
+    sidebarMenuLabel: 'Боковое меню',
+    returnToTopLabel: 'Наверх',
+    langMenuLabel: 'Сменить язык',
+    outline: {
+      label: 'На этой странице'
+    },
+    lastUpdated: {
+      text: 'Обновлено'
+    },
+    editLink: {
+      text: 'Редактировать эту страницу'
+    },
+    notFound: {
+      title: 'Страница не найдена',
+      quote: 'Но если не сворачивать, можно найти что-то другое.',
+      linkLabel: 'На главную',
+      linkText: 'Вернуться на главную'
+    },
+    search: {
+      provider: 'local',
+      options: {
+        locales: {
+          ru: {
+            translations: {
+              button: {
+                buttonText: 'Поиск',
+                buttonAriaLabel: 'Поиск'
+              },
+              modal: {
+                noResultsText: 'Ничего не найдено',
+                resetButtonTitle: 'Сбросить',
+                footer: {
+                  selectText: 'выбрать',
+                  navigateText: 'перейти',
+                  closeText: 'закрыть'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     nav: [
       { 
         component: 'VersionSwitcher', 

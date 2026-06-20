@@ -1,10 +1,10 @@
-# Sounds
+# Звуки
 
-NarrativeCraft includes default sounds for dialog text and choice appear.
+NarrativeCraft включает стандартные звуки для текста диалога и появления выбора.
 
-To override them, place your `.ogg` files in the following paths within your resource pack:
+Чтобы переопределить их, поместите ваши `.ogg` файлы по следующим путям в вашем ресурс-паке:
 
-- **Dialog sound**: `narrativecraft/assets/sounds/sfx/dialog_sound.ogg`
+- **Звук диалога**: `narrativecraft/assets/sounds/sfx/dialog_sound.ogg`
 
 ```json
 "sfx.dialog_sound": {
@@ -13,7 +13,7 @@ To override them, place your `.ogg` files in the following paths within your res
 }
 ```
 
-- **Choice appear sound**: `narrativecraft/assets/sounds/sfx/choice_appear.ogg`
+- **Звук появления выбора**: `narrativecraft/assets/sounds/sfx/choice_appear.ogg`
 
 ```json
 "sfx.choice_appear": {
@@ -22,4 +22,4 @@ To override them, place your `.ogg` files in the following paths within your res
 }
 ```
 
-Put the JSON entry in `narrativecraft/assets/sounds.json`
+Поместите JSON-запись в `narrativecraft/assets/sounds.json`

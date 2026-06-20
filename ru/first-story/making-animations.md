@@ -1,33 +1,33 @@
-# Making animations
+# Создание анимаций
 
-Now that you have a session, you now can create your first animation.
+Теперь, когда у вас есть сессия, можно создать первую анимацию.
 
-For this first animation, we are going to record ourselves walking and stopping, with the goal of showing two people walking together before stopping to talk.
+Для первой анимации мы запишем, как идём, а затем останавливаемся. Цель — показать двух человек, идущих вместе, а затем останавливающихся для разговора.
 
-To do so, do first `/nc record start`, it will instantly start a recording. Then, after you're done, do `/nc record stop`.
+Сначала выполните `/nc record start` — запись начнётся мгновенно. Затем, когда закончите, выполните `/nc record stop`.
 
-If you failed your recording, you can do `/nc record start` again to start again, or you can discard the recording by doing `/nc record discard`.
+Если запись не удалась, можно выполнить `/nc record start` снова, чтобы начать заново, или отменить запись командой `/nc record discard`.
 
-If you are satisfied, do `/nc record save steve_walk`, and the animation will be saved to that name.
+Если всё устраивает, выполните `/nc record save steve_walk` — анимация сохранится под этим именем.
 
-## Subscene
+## Подсцена
 
-Now that we have our first animation `steve_walk`, we want to create the second animation, synced with the first one.
+Теперь, когда у нас есть первая анимация `steve_walk`, нужно создать вторую анимацию, синхронизированную с первой.
 
-To achieve this, open the story management screen by pressing `N` and click on `Subscenes`. Create a subscene and name it `walk sub`. After you've created the subscene, click the gear icon and assign the animation `steve_walk` and click on `send`.
+Для этого откройте экран управления сюжетом (кнопка `N`) и нажмите `Подсцены`. Создайте подсцену и назовите её `walk sub`. После создания нажмите на иконку шестерёнки, назначьте анимацию `steve_walk` и нажмите `Отправить`.
 
-## Record the second animation
+## Запись второй анимации
 
-Now that we have our subscene defined, leave the story management screen and type `/nc record start` and before proceeding, we are going to add 2 arguments. `with "walk sub"`, giving `/nc record start with "walk sub"`. Doing so will start the recording AND will start the subscene `walk sub` with `steve_walk` assigned.
+Теперь, когда подсцена определена, выйдите из экрана управления сюжетом и введите `/nc record start`. Но перед этим добавим два аргумента: `with "walk sub"`. Получится `/nc record start with "walk sub"`. Так запись начнётся **И** одновременно запустится подсцена `walk sub` с назначенной анимацией `steve_walk`.
 
-Do the second animation, and when you are good `/nc record stop` and `/nc record save alex_walk`.
+Сделайте вторую анимацию и, когда закончите, выполните `/nc record stop` и `/nc record save alex_walk`.
 
-Then assign it to the subscene `walk sub`.
+Затем назначьте её подсцене `walk sub`.
 
-## Assign characters to animations
+## Назначение персонажей анимациям
 
-Now that we have our two animations, we want to assign the correct character to the animations.
+Теперь, когда у нас есть две анимации, нужно назначить правильных персонажей для каждой.
 
-To do so, open the story management screen, go to `Animations` and click the gear icon. The arrow shows what character is assigned to the animation.
+Откройте экран управления сюжетом, перейдите в `Анимации` и нажмите на иконку шестерёнки. Стрелка показывает, какой персонаж назначен анимации.
 
-For `steve_walk` with want Steve to be assigned and `alex_walk` we want Alex to be assigned.
+Для `steve_walk` нужно назначить Steve, а для `alex_walk` — Alex.

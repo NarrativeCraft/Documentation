@@ -1,35 +1,35 @@
 # Shake
 
-Applies a Simplex-noise camera shake effect to the screen. The shake starts at the given strength, then naturally decays over time at the rate you define.
+Применяет эффект дрожания камеры на основе Simplex-шума. Дрожание начинается с заданной силы и естественно затухает с заданной скоростью.
 
-## Side
+## Сторона
 CLIENT
 
-## Syntax
+## Синтаксис
 
 ```
 shake <strength:float> <decayRate:float> <speed:float>
 ```
 
-## Parameters
+## Параметры
 
-- `strength` *(float, required)*: Initial intensity of the shake in pixels. Higher values produce a more violent shake.
-- `decayRate` *(float, required)*: How fast the shake fades out per tick. Higher values make the shake stop sooner.
-- `speed` *(float, required)*: Speed at which the noise index advances, controlling how fast the camera moves while shaking.
+- `strength` *(float, обязательный)*: Начальная интенсивность дрожания в пикселях. Большие значения создают более сильную тряску.
+- `decayRate` *(float, обязательный)*: Скорость затухания дрожания за тик. Большие значения ускоряют остановку.
+- `speed` *(float, обязательный)*: Скорость продвижения индекса шума, определяющая, как быстро движется камера во время дрожания.
 
-## Examples
+## Примеры
 
 ```ink
-// Subtle rumble, light tremor that fades quickly
+// Лёгкое дрожание, быстро затухает
 # shake 5 4.0 2.0
 ```
 
 ```ink
-// Heavy impact, strong jolt with slow decay
+// Сильный удар, медленное затухание
 # shake 30 2.0 4.0
 ```
 
 ```ink
-// Stop any ongoing shake
+// Остановить любое текущее дрожание
 # shake 0 0 0
 ```

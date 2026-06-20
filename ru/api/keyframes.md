@@ -1,8 +1,8 @@
-# Keyframes
+# Ключевые кадры
 
-## Creating a custom keyframe
+## Создание кастомного ключевого кадра
 
-Extend `Keyframe` and implement `createMenu()`, which returns the popup UI shown when the user clicks the keyframe in the editor:
+Расширьте `Keyframe` и реализуйте `createMenu()`, который возвращает всплывающий UI, появляющийся при нажатии на ключевой кадр в редакторе:
 
 ```java
 public class MyKeyframe extends Keyframe {
@@ -20,11 +20,11 @@ public class MyKeyframe extends Keyframe {
 }
 ```
 
-Implement `KeyframeMenu<MyKeyframe>` to define the editor UI for this keyframe. You need to implement `getContentHeight`, `renderContent`, `applyChanges`, and `initContent`.
+Реализуйте `KeyframeMenu<MyKeyframe>` для определения UI редактора этого ключевого кадра. Нужно реализовать `getContentHeight`, `renderContent`, `applyChanges` и `initContent`.
 
-## Interpolating between keyframes
+## Интерполяция между ключевыми кадрами
 
-Use `findSegment` on your layer to get the two keyframes around the current tick, along with Catmull-Rom control points:
+Используйте `findSegment` на вашем слое, чтобы получить два ключевых кадра вокруг текущего тика, а также контрольные точки Catmull-Rom:
 
 ```java
 List<MyKeyframe> sorted = getSortedKeyframes(MyKeyframe.class);
@@ -39,31 +39,31 @@ if (seg != null) {
         seg.p3().myValue,
         t
     );
-    // apply value
+    // применить значение
 }
 ```
 
-## Easing
+## Плавность
 
-`EasingType` controls the interpolation curve applied to the normalized `t` in `[0, 1]`:
+`EasingType` управляет кривой интерполяции, применяемой к нормализованному `t` в `[0, 1]`:
 
-- `LINEAR` - constant speed
-- `EASE_IN` - starts slow, accelerates
-- `EASE_OUT` - starts fast, decelerates
-- `SMOOTH` - ease in and out
+- `LINEAR` — постоянная скорость
+- `EASE_IN` — начинается медленно, ускоряется
+- `EASE_OUT` — начинается быстро, замедляется
+- `SMOOTH` — плавное начало и конец
 
-## Interpolation utilities
+## Утилиты интерполяции
 
 ```java
-// apply an easing curve to t in [0, 1]
+// применить кривую плавности к t в [0, 1]
 double t2 = Interpolation.applyEasing(EasingType.SMOOTH, t);
 
-// standard lerp
+// стандартная линейная интерполяция
 double v = Interpolation.lerp(a, b, t);
 
-// angular lerp (handles 0 to 360 wrap)
+// угловая интерполяция (обрабатывает переход 0–360)
 double angle = Interpolation.lerpAngle(fromDeg, toDeg, t);
 
-// Catmull-Rom (4 control points)
+// Catmull-Rom (4 контрольные точки)
 double v = Interpolation.catmullRom(p0, p1, p2, p3, t);
 ```

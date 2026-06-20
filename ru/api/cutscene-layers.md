@@ -1,10 +1,10 @@
-# Cutscene Layers
+# Слои катсцен
 
-Cutscene layers are the tracks on the timeline. You can register custom layer types that appear in the editor and execute logic at a given tick.
+Слои катсцен — это треки на временной шкале. Вы можете регистрировать кастомные типы слоёв, которые появятся в редакторе и будут выполнять логику на заданном тике.
 
-## Creating a layer type
+## Создание типа слоя
 
-Implement `ICutsceneLayerType` to describe and factory your layer:
+Реализуйте `ICutsceneLayerType` для описания и создания вашего слоя:
 
 ```java
 public class MyLayerType implements ICutsceneLayerType {
@@ -14,7 +14,7 @@ public class MyLayerType implements ICutsceneLayerType {
 }
 ```
 
-Then extend `CutsceneLayer` for the layer itself. You must implement `createDefaultKeyframe`, which returns a new keyframe placed at the given tick:
+Затем расширьте `CutsceneLayer` для самого слоя. Нужно реализовать `createDefaultKeyframe`, который возвращает новый ключевой кадр на заданном тике:
 
 ```java
 public class MyLayer extends CutsceneLayer {
@@ -25,41 +25,41 @@ public class MyLayer extends CutsceneLayer {
 }
 ```
 
-## Registering
+## Регистрация
 
 ```java
 ctx.registerCutsceneLayer(new MyLayerType());
 ```
 
-## Executing at a tick
+## Выполнение на тике
 
-`ICutsceneLayer.execute(float tick)` is called at each playback tick. It returns `true` if the layer handled the tick, `false` if the tick is outside its keyframe range. The default implementation returns `false`, so override it to apply your layer's effect.
+`ICutsceneLayer.execute(float tick)` вызывается на каждом тике воспроизведения. Возвращает `true`, если слой обработал тик, и `false`, если тик вне диапазона ключевых кадров. Базовая реализация возвращает `false`, поэтому переопределите её для применения эффекта слоя.
 
-Use `isTickCoveredBy(tick)` to guard early, then read your interpolated data and apply it:
+Используйте `isTickCoveredBy(tick)` для ранней проверки, затем читайте интерполированные данные и применяйте их:
 
 ```java
 @Override
 public boolean execute(float tick) {
     if (!isTickCoveredBy(tick)) return false;
-    // interpolate and apply your effect here
+    // интерполировать и применить эффект
     return true;
 }
 ```
 
-## Working with keyframes
+## Работа с ключевыми кадрами
 
-Inside your layer, use these protected helpers:
+Внутри слоя используйте следующие защищённые методы:
 
 ```java
-// keyframes sorted by tick, filtered to a specific subtype
+// ключевые кадры, отсортированные по тику, отфильтрованные по подтипу
 List<K> sorted = getSortedKeyframes(MyKeyframe.class);
 
-// segment bracketing a given tick (used for interpolation)
+// сегмент, обрамляющий заданный тик (используется для интерполяции)
 KeyframeSegment<K> seg = findSegment(sorted, tick);
 
-// tick coverage checks
+// проверка покрытия тика
 boolean covered = isTickCoveredBy(tick);
 boolean exact   = isExactTick(tick);
 ```
 
-See [Keyframes](/api/keyframes) for how to implement a custom `Keyframe` and interpolate between them.
+См. [Ключевые кадры](/ru/api/keyframes) для реализации кастомного `Keyframe` и интерполяции между ними.

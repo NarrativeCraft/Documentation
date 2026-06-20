@@ -1,19 +1,19 @@
-# Syntax
+# Синтаксис
 
-The syntax system parses the `syntax` attribute of `@InkCommand` into a typed spec used to validate and read tag arguments.
+Система синтаксиса разбирает атрибут `syntax` аннотации `@InkCommand` в типизированную спецификацию, используемую для валидации и чтения аргументов тега.
 
-## Syntax grammar
+## Грамматика синтаксиса
 
-| Format | Kind | Description |
+| Формат | Тип | Описание |
 |---|---|---|
-| `<name:type>` | Required positional | Must be provided, in order |
-| `(name:type)` | Optional positional | Can be omitted |
-| `[name:type=default]` | Named optional | Passed as `name=value` |
-| `[--flagname]` | Boolean flag | Present = `true`, absent = `false` |
+| `<name:type>` | Обязательный позиционный | Должен быть указан, по порядку |
+| `(name:type)` | Необязательный позиционный | Можно опустить |
+| `[name:type=default]` | Именованный необязательный | Передаётся как `name=value` |
+| `[--flagname]` | Булев флаг | Присутствует = `true`, отсутствует = `false` |
 
-**Available types (`ArgType`):** `STRING`, `INT`, `FLOAT`, `BOOLEAN`
+**Доступные типы (`ArgType`):** `STRING`, `INT`, `FLOAT`, `BOOLEAN`
 
-Example:
+Пример:
 
 ```
 "shake <amplitude:float> [duration:float=1.0] [--loop]"
@@ -27,7 +27,7 @@ CommandSpec spec = SyntaxParser.parse(keyword, syntaxDeclaration);
 
 ## CommandSpec
 
-Compiled representation of a syntax declaration. Parse a list of tokens against it:
+Скомпилированное представление объявления синтаксиса. Разбирает список токенов по нему:
 
 ```java
 ParsedCommand command = spec.parse(tokens);
@@ -35,12 +35,12 @@ ParsedCommand command = spec.parse(tokens);
 
 ## ParsedCommand
 
-Typed snapshot of a parsed command. Passed to `doValidate` - store it as a field to use it in `doExecute`. See [Reading arguments](/api/ink-actions#reading-arguments).
+Типизированный снимок разобранной команды. Передаётся в `doValidate` — сохраните его как поле для использования в `doExecute`. См. [Чтение аргументов](/ru/api/ink-actions#чтение-аргументов).
 
-## Argument definition records
+## Определения аргументов
 
-| Record | Fields | Represents |
+| Запись | Поля | Представляет |
 |---|---|---|
-| `ArgDef` | `name, ArgType` | Required positional |
-| `NamedArgDef` | `name, ArgType, defaultValue` | Named optional |
-| `FlagDef` | `name` | Boolean flag |
+| `ArgDef` | `name, ArgType` | Обязательный позиционный |
+| `NamedArgDef` | `name, ArgType, defaultValue` | Именованный необязательный |
+| `FlagDef` | `name` | Булев флаг |

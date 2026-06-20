@@ -1,9 +1,9 @@
-# Session
+# Сессия
 
-Now that you have your first chapter and your two scenes, you need to assign yourself a **session**.
+Теперь, когда у вас есть первая глава и две сцены, нужно назначить себе **сессию**.
 
-A session is an assignment of a chapter and a scene, this way, you only work with a specific chapter and scene.
+Сессия — это привязка к главе и сцене, чтобы вы работали только с конкретной главой и сценой.
 
-To do that, type the command `/nc session set 1 "scene one"`. And your session is set to chapter 1 (my chapter) and its scene "scene one".
+Для этого введите команду `/nc session set 1 "scene one"`. Ваша сессия установлена на главу 1 (my chapter) и её сцену «scene one».
 
-If you want to clear your session, do `/nc session clear`.
+Если хотите сбросить сессию, выполните `/nc session clear`.

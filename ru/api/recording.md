@@ -1,10 +1,10 @@
-# Recording
+# Запись
 
-The recording system captures entity actions as binary-serializable records. Custom action types can be registered so your data is captured and replayed correctly.
+Система записи захватывает действия сущностей как бинарно-сериализуемые записи. Можно регистрировать кастомные типы действий, чтобы ваши данные корректно захватывались и воспроизводились.
 
-## Creating a custom action
+## Создание кастомного действия
 
-Extend `AbstractAction` and implement `getId`, `write`, and `read`:
+Расширьте `AbstractAction` и реализуйте `getId`, `write` и `read`:
 
 ```java
 public class MyAction extends AbstractAction {
@@ -32,17 +32,17 @@ public class MyAction extends AbstractAction {
 
     @Override
     public ActionResult execute(IPlaybackContext ctx, IPlaybackSession session) {
-        // apply myValue during playback
+        // применить myValue во время воспроизведения
         return ActionResult.SUCCESS;
     }
 }
 ```
 
-`write` and `read` must be symmetric, write order must match read order exactly.
+`write` и `read` должны быть симметричны — порядок записи должен точно соответствовать порядку чтения.
 
-## Deduplication and rewind
+## Дедупликация и перемотка
 
-Override `differs` to avoid recording identical consecutive frames:
+Переопределите `differs`, чтобы избежать записи одинаковых последовательных кадров:
 
 ```java
 @Override
@@ -54,17 +54,17 @@ public boolean differs(AbstractAction other) {
 }
 ```
 
-Override `createRewindSnapshot` and `shouldExecuteOnRewind` if the action needs to participate in rewind playback for cutscenes:
+Переопределите `createRewindSnapshot` и `shouldExecuteOnRewind`, если действие должно участвовать в перемотке для катсцен:
 
 ```java
 @Override
 public boolean shouldExecuteOnRewind() { return true; }
 ```
 
-## Registering
+## Регистрация
 
 ```java
 ctx.registerRecordingAction(MyAction.ID, MyAction::new);
 ```
 
-The id you pass here must match `getId()` on your action class.
+Переданный id должен совпадать с `getId()` вашего класса действия.

@@ -1,12 +1,12 @@
-# Text Effects
+# Текстовые эффекты
 
-Text effects apply a per-letter offset to dialog text during rendering, allowing animated visual effects like waves, shakes, or bounces.
+Текстовые эффекты применяют пословное смещение к тексту диалога во время отрисовки, позволяя создавать анимированные визуальные эффекты: волны, дрожание, подпрыгивание.
 
-## Creating a text effect
+## Создание текстового эффекта
 
-Implement `ITextEffect`. It receives the letter index, the current tick, the partial tick, and named parameters from the Ink tag. It returns a `Vec2` offset applied to the letter's render position.
+Реализуйте `ITextEffect`. Он получает индекс буквы, текущий тик, частичный тик и именованные параметры из Ink-тега. Возвращает `Vec2` — смещение, применяемое к позиции отрисовки буквы.
 
-It can be a lambda:
+Может быть лямбдой:
 
 ```java
 ITextEffect wave = (letterIndex, tick, partialTick, params) -> {
@@ -16,7 +16,7 @@ ITextEffect wave = (letterIndex, tick, partialTick, params) -> {
 };
 ```
 
-Or a full class if you need state:
+Или полноценным классом, если нужно состояние:
 
 ```java
 public class WaveEffect implements ITextEffect {
@@ -29,10 +29,10 @@ public class WaveEffect implements ITextEffect {
 }
 ```
 
-## Registering
+## Регистрация
 
 ```java
 ctx.registerTextEffect("wave", wave);
 ```
 
-The name you register is what you use in the Ink tag to activate the effect.
+Зарегистрированное имя — это то, что используется в Ink-теге для активации эффекта.

@@ -1,5 +1,5 @@
-# Introduction
+# Введение
 
-Now that you have a basic understanding, we are going to create a little story through the guide, this way you'll have a **good** understanding of the mod
+Теперь, когда у вас есть базовое понимание, мы создадим небольшую историю с помощью этого руководства, чтобы вы разобрались в моде. 
 
-It will be a light story with a cutscene, camera angle, an interaction and scene switching.
+Это будет лёгкое демо с катсценами, ракурсами камеры, взаимодействиями и переключением сцен.
