@@ -8,7 +8,7 @@ CLIENT
 ## Syntax
 
 ```
-fade <fadeIn:float> <stay:float> <fadeOut:float> [color:string=000000]
+fade <fadeIn:float> <stay:float> <fadeOut:float> [color:string=000000] [--clear]
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ fade <fadeIn:float> <stay:float> <fadeOut:float> [color:string=000000]
 - `stay` *(float, required)*: Duration the screen stays fully covered in seconds.
 - `fadeOut` *(float, required)*: Duration of the fade-out phase in seconds.
 - `color` *(string, optional)*: Hex color of the overlay without `#`. Defaults to `000000` (black).
+- `--clear` *(flag, optional)*: Clear all active fade.
 
 ## Examples
 
@@ -33,4 +34,10 @@ fade <fadeIn:float> <stay:float> <fadeOut:float> [color:string=000000]
 ```ink
 // Instant cut to black with a long hold before revealing
 # fade 0 3.0 1.0
+```
+
+
+```ink
+// Clear all active fade
+# fade --clear
 ```
