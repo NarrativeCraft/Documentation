@@ -12,19 +12,6 @@ export const ruConfig: LocaleConfig = {
       prev: 'Предыдущая страница',
       next: 'Следующая страница'
     },
-    darkModeSwitchLabel: 'Оформление',
-    sidebarMenuLabel: 'Боковое меню',
-    returnToTopLabel: 'Наверх',
-    langMenuLabel: 'Сменить язык',
-    outline: {
-      label: 'На этой странице'
-    },
-    lastUpdated: {
-      text: 'Обновлено'
-    },
-    editLink: {
-      text: 'Редактировать эту страницу'
-    },
     notFound: {
       title: 'Страница не найдена',
       quote: 'Но если не сворачивать, можно найти что-то другое.',
