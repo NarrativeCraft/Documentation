@@ -42,7 +42,7 @@ compileOnly 'fr.loudo.narrativecraft:narrativecraft-api:{{VERSION}}+mc{minecraft
 
 ## Версии Minecraft для API
 
-Текущие доступные версии Minecraft: `26.2` и `1.21.1`
+Текущие доступные версии Minecraft: `26.2`, `1.21.1` и `1.20.1`
 
 ## Регистрация аддона
 

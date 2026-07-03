@@ -23,22 +23,22 @@ sound <type:string> <action:string> <name:string> [volume:float=1.0] [pitch:floa
 
 ## Examples
 
-```ink
+```
 // Play a sound effect at full volume
 # sound sfx play minecraft:entity.thunder_clap
 ```
 
-```ink
+```
 // Play a looping music track with fade-in
 # sound song play mymod:music.theme --loop fadeTime:2.0
 ```
 
-```ink
+```
 // Stop a specific track with a fade-out
 # sound song stop mymod:music.theme fadeTime:1.5
 ```
 
-```ink
+```
 // Stop all active sounds immediately
 # sound stop stop all
 ```

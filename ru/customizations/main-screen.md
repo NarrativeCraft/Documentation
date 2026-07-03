@@ -16,7 +16,7 @@
 
 Если хотите, чтобы при показе экрана играла музыка, возьмите ваш трек, конвертируйте в ogg и назовите `main_screen.ogg`.
 
-Затем поместите `main_screen.ogg` в ресурс-пак по пути `narrativecraft/assets/sounds/music/main_screen.ogg`.
+Затем поместите `main_screen.ogg` в ресурс-пак по пути `narrativecraft/sounds/music/main_screen.ogg`.
 
 ## Логотип
 

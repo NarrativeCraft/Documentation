@@ -18,14 +18,14 @@ Go to `chapter_1.ink` and write `-> chapter_1_scene_one`
 
 it will looks like
 
-```ink
+```
 === chapter_1 ===
 -> chapter_1_scene_one
 ```
 
 then go to `scene_one.ink` and you will see this
 
-```ink
+```
 === chapter_1_scene_one ===
 # on_enter
 -> END
@@ -44,7 +44,7 @@ So now, what are we going to do is :
 
 It will looks like this
 
-```ink
+```
 === chapter_1_scene_one ===
 # on_enter
 # cutscene "walk cut" // Play the cutscene
@@ -81,7 +81,7 @@ For example, after scene one, I want the player to start scene two.
 
 It will look like this :
 
-```ink{10}
+```
 === chapter_1_scene_one ===
 # on_enter
 # cutscene "walk cut"
@@ -101,7 +101,7 @@ Now for interactions, earlier we defined `my_zone` and `my_point` stitch.
 
 To executes then when the player interacts with it, you habe to define the stitch on the script
 
-```ink
+```
 = my_zone
 I entered a zone!
 # gameplay

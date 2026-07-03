@@ -19,17 +19,17 @@ shake <strength:float> <decayRate:float> <speed:float>
 
 ## Examples
 
-```ink
+```
 // Subtle rumble, light tremor that fades quickly
 # shake 5 4.0 2.0
 ```
 
-```ink
+```
 // Heavy impact, strong jolt with slow decay
 # shake 30 2.0 4.0
 ```
 
-```ink
+```
 // Stop any ongoing shake
 # shake 0 0 0
 ```

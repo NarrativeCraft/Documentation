@@ -17,7 +17,7 @@ This action takes no parameters.
 
 ## Examples
 
-```ink
+```
 === chapter_1_forest ===
 # on_enter
 The trees close in around you.

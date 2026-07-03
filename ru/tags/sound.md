@@ -23,22 +23,22 @@ sound <type:string> <action:string> <name:string> [volume:float=1.0] [pitch:floa
 
 ## Примеры
 
-```ink
+```
 // Воспроизвести звуковой эффект на полной громкости
 # sound sfx play minecraft:entity.thunder_clap
 ```
 
-```ink
+```
 // Воспроизвести зацикленную музыку с плавным появлением
 # sound song play mymod:music.theme --loop fadeTime:2.0
 ```
 
-```ink
+```
 // Остановить конкретный трек с плавным затуханием
 # sound song stop mymod:music.theme fadeTime:1.5
 ```
 
-```ink
+```
 // Остановить все активные звуки мгновенно
 # sound stop stop all
 ```

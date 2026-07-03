@@ -17,19 +17,19 @@ gameplay [gamemode:string=adventure]
 
 ## Примеры
 
-```ink
+```
 // Вернуть управление игроку после катсцены и переключить на режим выживания
 # cutscene boss_reveal
 # gameplay gamemode:survival
 ```
 
-```ink
+```
 // Вернуть управление после ракурса
 # camera dungeon dramatic_angle
 # gameplay
 ```
 
-```ink
+```
 // Завершить скриптовую последовательность и позволить игроку исследовать
 # wait 2 seconds
 # gameplay

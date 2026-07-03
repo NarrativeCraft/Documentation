@@ -35,7 +35,7 @@ You can put your variables inside a dialog or tags
 
 Example:
 
-```ink
+```
 VAR eat_apple = 6
 
 Jake: I ate %eat_apple% apple!

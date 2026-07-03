@@ -17,17 +17,17 @@ kill <characterName:string>
 
 ## Examples
 
-```ink
+```
 // Despawn the guard character after the scene ends
 # kill guard
 ```
 
-```ink
+```
 // Remove an NPC after their dialogue
 # kill merchant_npc
 ```
 
-```ink
+```
 // Clean up multiple characters at once
 # kill soldier_1
 # kill soldier_2

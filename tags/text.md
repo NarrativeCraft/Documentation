@@ -39,27 +39,27 @@ text <id:string> <action:string> [param1] [param2] [param3] [--block]
 
 ## Examples
 
-```ink
+```
 // Create a centered white subtitle
 # text subtitle create "Hello world"
 ```
 
-```ink
+```
 // Move an existing text to the bottom center
 # text subtitle position bottom
 ```
 
-```ink
+```
 // Change the text color to red
 # text subtitle color FF0000
 ```
 
-```ink
+```
 // Play a typewriter effect and block until it finishes
 # text subtitle type 1.5 --block
 ```
 
-```ink
+```
 // Fade the text out over 1 second then remove it
 # text subtitle fadeout 1.0
 # text subtitle remove

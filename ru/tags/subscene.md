@@ -21,22 +21,22 @@ subscene <action:string> <subsceneName:string> [loop:boolean=false] [unique:bool
 
 ## Примеры
 
-```ink
+```
 // Воспроизвести группу персонажей, входящих вместе
 # subscene play guards_enter
 ```
 
-```ink
+```
 // Воспроизвести зацикленную фоновую подсцену толпы
 # subscene play crowd_idle loop:true
 ```
 
-```ink
+```
 // Воспроизвести боевую сцену и ждать завершения
 # subscene play battle_intro --block
 ```
 
-```ink
+```
 // Остановить текущую подсцену
 # subscene stop crowd_idle
 ```

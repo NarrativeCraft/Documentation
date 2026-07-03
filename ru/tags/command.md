@@ -17,17 +17,17 @@ command <commandValue:string>
 
 ## Примеры
 
-```ink
+```
 // Выдать игроку алмазный меч
 # command "give @p diamond_sword 1"
 ```
 
-```ink
+```
 // Выдать кастомное достижение
 # command "advancement grant @p only mymod:secret_found"
 ```
 
-```ink
+```
 // Показать заголовок на экране
 # command "title @p title \{\"text\":\"Chapter 2\",\"bold\":true\}"
 ```

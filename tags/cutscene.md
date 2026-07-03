@@ -17,17 +17,17 @@ cutscene <cutsceneName:string>
 
 ## Examples
 
-```ink
+```
 // Play the opening cutscene
 # cutscene intro_sequence
 ```
 
-```ink
+```
 // Trigger a cutscene before a boss fight
 # cutscene boss_reveal
 ```
 
-```ink
+```
 // Play the ending credits cutscene
 # cutscene ending_credits
 ```

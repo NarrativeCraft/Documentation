@@ -15,7 +15,7 @@ When you're done setting up your scene, save and leave.
 
 If you want to play music when the screen is shown, take your music, convert it to ogg, and name it exactly `main_screen.ogg`.
 
-Then, in your resource pack, place your `main_screen.ogg` in `narrativecraft/assets/sounds/music/main_screen.ogg`
+Then, in your resource pack, place your `main_screen.ogg` in `narrativecraft/sounds/music/main_screen.ogg`
 
 ## Logo
 

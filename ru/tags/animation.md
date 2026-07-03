@@ -21,22 +21,22 @@ animation <action:string> <animationName:string> [loop:boolean=false] [unique:bo
 
 ## Примеры
 
-```ink
+```
 // Воспроизвести анимацию ходьбы без блокировки
 # animation play guard_patrol
 ```
 
-```ink
+```
 // Воспроизвести зацикленную анимацию бездействия
 # animation play npc_idle loop:true
 ```
 
-```ink
+```
 // Воспроизвести анимацию смерти и ждать завершения
 # animation play boss_death --block
 ```
 
-```ink
+```
 // Остановить текущую анимацию
 # animation stop guard_patrol
 ```

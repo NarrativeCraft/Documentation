@@ -18,17 +18,17 @@ camera <parentName:string> <childName:string>
 
 ## Examples
 
-```ink
+```
 // Switch to a close-up view of the throne room
 # camera throne_room close_up
 ```
 
-```ink
+```
 // Move to the wide establishing shot
 # camera forest_entry wide_shot
 ```
 
-```ink
+```
 // Cut to a dramatic low-angle view
 # camera dungeon low_angle
 ```

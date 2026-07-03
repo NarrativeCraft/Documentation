@@ -37,7 +37,7 @@ I hope she's doing fine
 
 Пример:
 
-```ink
+```
 VAR eat_apple = 6
 
 Jake: I ate %eat_apple% apple!

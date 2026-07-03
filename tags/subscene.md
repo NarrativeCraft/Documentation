@@ -21,22 +21,22 @@ subscene <action:string> <subsceneName:string> [loop:boolean=false] [unique:bool
 
 ## Examples
 
-```ink
+```
 // Play a group of characters walking in together
 # subscene play guards_enter
 ```
 
-```ink
+```
 // Play a looping ambient crowd subscene
 # subscene play crowd_idle loop:true
 ```
 
-```ink
+```
 // Play a combat sequence and wait for it to finish
 # subscene play battle_intro --block
 ```
 
-```ink
+```
 // Stop a running subscene
 # subscene stop crowd_idle
 ```

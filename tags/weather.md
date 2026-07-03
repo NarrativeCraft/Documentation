@@ -18,17 +18,17 @@ weather <type:string> [--instant]
 
 ## Examples
 
-```ink
+```
 // Clear the sky at the start of a hopeful scene
 # weather clear
 ```
 
-```ink
+```
 // Start a storm instantly for a dramatic moment
 # weather thunder --instant
 ```
 
-```ink
+```
 // Transition to rain as tension builds
 # weather rain
 ```

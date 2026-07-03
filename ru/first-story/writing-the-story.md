@@ -18,14 +18,14 @@
 
 Это будет выглядеть так:
 
-```ink
+```
 === chapter_1 ===
 -> chapter_1_scene_one
 ```
 
 Затем перейдите в `scene_one.ink`, вы увидите:
 
-```ink
+```
 === chapter_1_scene_one ===
 # on_enter
 -> END
@@ -43,7 +43,7 @@
 
 Это будет выглядеть так:
 
-```ink
+```
 === chapter_1_scene_one ===
 # on_enter
 # cutscene "walk cut" // Воспроизвести катсцену
@@ -78,7 +78,7 @@ Steve: Nice, let's explore the area!
 
 Например, после сцены 1 игрок должен начать сцену 2:
 
-```ink{10}
+```
 === chapter_1_scene_one ===
 # on_enter
 # cutscene "walk cut"
@@ -97,7 +97,7 @@ Steve: Nice, let's explore the area!
 
 Чтобы они выполнялись при взаимодействии игрока, нужно определить эти переходы в скрипте:
 
-```ink
+```
 = my_zone
 I entered a zone!
 # gameplay

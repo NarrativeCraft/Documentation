@@ -17,17 +17,17 @@ cutscene <cutsceneName:string>
 
 ## Примеры
 
-```ink
+```
 // Воспроизвести вступительную катсцену
 # cutscene intro_sequence
 ```
 
-```ink
+```
 // Запустить катсцену перед битвой с боссом
 # cutscene boss_reveal
 ```
 
-```ink
+```
 // Воспроизвести финальную катсцену
 # cutscene ending_credits
 ```

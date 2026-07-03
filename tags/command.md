@@ -17,17 +17,17 @@ command <commandValue:string>
 
 ## Examples
 
-```ink
+```
 // Give the player a diamond sword
 # command "give @p diamond_sword 1"
 ```
 
-```ink
+```
 // Trigger a custom advancement
 # command "advancement grant @p only mymod:secret_found"
 ```
 
-```ink
+```
 // Play a title screen message
 # command "title @p title \{"text":"Chapter 2","bold":true\}"
 ```

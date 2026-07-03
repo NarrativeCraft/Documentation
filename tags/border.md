@@ -25,22 +25,22 @@ border <verb:string> [up:int=0] [right:int=0] [down:int=0] [left:int=0] [color:s
 
 ## Examples
 
-```ink
+```
 // Instantly add cinematic black bars top and bottom
 # border set up:60 down:60
 ```
 
-```ink
+```
 // Animate borders in over 1 second with smooth easing
 # border in up:60 down:60 duration:1.0
 ```
 
-```ink
+```
 // Animate borders out over 0.5 seconds
 # border out duration=0.5
 ```
 
-```ink
+```
 // Remove all borders instantly
 # border clear
 ```

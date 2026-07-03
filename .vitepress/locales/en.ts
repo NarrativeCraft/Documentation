@@ -92,6 +92,8 @@ export const enConfig: LocaleConfig = {
           items: [
             { text: 'Main Screen', link: '/customizations/main-screen' },
             { text: 'Sounds', link: '/customizations/sounds' },
+            { text: 'Interaction point', link: '/customizations/interaction-point' },
+            { text: 'Addons', link: '/customizations/addons' },
           ]
         },
         {

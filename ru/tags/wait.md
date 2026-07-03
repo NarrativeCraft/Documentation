@@ -18,17 +18,17 @@ wait <duration:float> <unit:string>
 
 ## Примеры
 
-```ink
+```
 // Подождать 3 секунды перед продолжением
 # wait 3 seconds
 ```
 
-```ink
+```
 // Короткая пауза в полсекунды
 # wait 0.5 seconds
 ```
 
-```ink
+```
 // Подождать 1 минуту
 # wait 1 minute
 ```

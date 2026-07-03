@@ -21,23 +21,23 @@ fade <fadeIn:float> <stay:float> <fadeOut:float> [color:string=000000] [--clear]
 
 ## Examples
 
-```ink
+```
 // Classic black fade, short and snappy
 # fade 0.5 0.5 0.5
 ```
 
-```ink
+```
 // Slow white flash for a dream sequence
 # fade 1.5 2.0 1.5 FFFFFF
 ```
 
-```ink
+```
 // Instant cut to black with a long hold before revealing
 # fade 0 3.0 1.0
 ```
 
 
-```ink
+```
 // Clear all active fade
 # fade --clear
 ```

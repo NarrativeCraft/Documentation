@@ -39,27 +39,27 @@ text <id:string> <action:string> [param1] [param2] [param3] [--block]
 
 ## Примеры
 
-```ink
+```
 // Создать центрированный белый субтитр
 # text subtitle create "Hello world"
 ```
 
-```ink
+```
 // Переместить существующий текст в нижний центр
 # text subtitle position bottom
 ```
 
-```ink
+```
 // Изменить цвет текста на красный
 # text subtitle color FF0000
 ```
 
-```ink
+```
 // Воспроизвести эффект печати с блокировкой до завершения
 # text subtitle type 1.5 --block
 ```
 
-```ink
+```
 // Плавно скрыть текст за 1 секунду, затем удалить
 # text subtitle fadeout 1.0
 # text subtitle remove

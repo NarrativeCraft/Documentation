@@ -18,17 +18,17 @@ camera <parentName:string> <childName:string>
 
 ## Примеры
 
-```ink
+```
 // Переключиться на крупный план тронного зала
 # camera throne_room close_up
 ```
 
-```ink
+```
 // Перейти к широкому общему плану
 # camera forest_entry wide_shot
 ```
 
-```ink
+```
 // Резкий переход на драматичный нижний ракурс
 # camera dungeon low_angle
 ```

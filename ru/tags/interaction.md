@@ -18,17 +18,17 @@ interaction <action:string> <interactionName:string>
 
 ## Примеры
 
-```ink
+```
 // Активировать зону взаимодействия у двери замка
 # interaction start door_to_castle
 ```
 
-```ink
+```
 // Удалить взаимодействие после использования
 # interaction remove door_to_castle
 ```
 
-```ink
+```
 // Сменить одну зону взаимодействия на другую
 # interaction remove puzzle_step_1
 # interaction start puzzle_step_2

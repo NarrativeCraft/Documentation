@@ -24,17 +24,17 @@ time <action:string> <from:string> [to:string] [for:float=0] [unit:string=second
 
 ## Examples
 
-```ink
+```
 // Jump instantly to dawn
 # time set day
 ```
 
-```ink
+```
 // Transition smoothly from noon to night over 10 seconds
 # time set noon to:night for:10
 ```
 
-```ink
+```
 // Add 2000 ticks to the current time
 # time add 2000
 ```

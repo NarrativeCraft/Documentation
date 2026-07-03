@@ -24,17 +24,17 @@ time <action:string> <from:string> [to:string] [for:float=0] [unit:string=second
 
 ## Примеры
 
-```ink
+```
 // Мгновенно переключиться на рассвет
 # time set day
 ```
 
-```ink
+```
 // Плавно перейти от полудня к ночи за 10 секунд
 # time set noon to:night for:10
 ```
 
-```ink
+```
 // Добавить 2000 тиков к текущему времени
 # time add 2000
 ```
