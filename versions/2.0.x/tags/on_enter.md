@@ -8,16 +8,17 @@ SERVER
 ## Syntax
 
 ```
-on_enter <knotName:string>
+on_enter
 ```
 
 ## Parameters
 
-- `knotName` *(string, required)*: The knot name of your current scene. Do not touch this! Must be equals to the current knot name of the scene.
+This action takes no parameters.
+
 ## Examples
 
 ```
 === chapter_1_forest ===
-# on_enter chapter_1_forest
+# on_enter
 The trees close in around you.
 ```

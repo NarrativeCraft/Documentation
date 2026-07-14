@@ -1,0 +1,10 @@
+{
+  "/": [
+    {
+      "text": "Introduction",
+      "items": [
+        { "text": "C'est quoi NarrativeCraft ?", "link": "/introduction/what-is-narrativecraft" }
+      ]
+    }
+  ]
+}

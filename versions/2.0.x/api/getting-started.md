@@ -3,7 +3,7 @@
 Add the NarrativeCraft API as a `compileOnly` dependency in your mod. It gives you access to all public interfaces without bundling the mod itself.
 
 :::info
-Current API version of NarrativeCraft is **2**
+Current API version of NarrativeCraft is **1**
 :::
 
 ## Gradle

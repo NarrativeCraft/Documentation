@@ -1,0 +1,104 @@
+{
+  "/api/": [
+    {
+      "text": "Справочник API",
+      "items": [
+        { "text": "Начало работы", "link": "/api/getting-started" }
+      ]
+    },
+    {
+      "text": "Ядро",
+      "items": [
+        { "text": "События", "link": "/api/events" }
+      ]
+    },
+    {
+      "text": "Ink Actions",
+      "items": [
+        { "text": "Ink Actions", "link": "/api/ink-actions" },
+        { "text": "Синтаксис", "link": "/api/ink-syntax" }
+      ]
+    },
+    {
+      "text": "Катсцены",
+      "items": [
+        { "text": "Слои", "link": "/api/cutscene-layers" },
+        { "text": "Ключевые кадры", "link": "/api/keyframes" }
+      ]
+    },
+    {
+      "text": "Диалог",
+      "items": [
+        { "text": "Текстовые эффекты", "link": "/api/text-effects" }
+      ]
+    },
+    {
+      "text": "Запись",
+      "items": [
+        { "text": "Запись", "link": "/api/recording" }
+      ]
+    }
+  ],
+  "/": [
+    {
+      "text": "Введение",
+      "items": [
+        { "text": "Что такое NarrativeCraft?", "link": "/introduction/what-is-narrativecraft" },
+        { "text": "Предварительные требования", "link": "/introduction/prerequisites" },
+        { "text": "Структурирование", "link": "/introduction/structuration" }
+      ]
+    },
+    {
+      "text": "Первая история",
+      "items": [
+        { "text": "Предварительные требования", "link": "/first-story/introduction" },
+        { "text": "Создание персонажа", "link": "/first-story/create-your-characters" },
+        { "text": "Первая глава и сцены", "link": "/first-story/first-chapter-and-scenes" },
+        { "text": "Сессия", "link": "/first-story/session" },
+        { "text": "Создание анимаций", "link": "/first-story/making-animations" },
+        { "text": "Первая катсцена", "link": "/first-story/first-cutscene" },
+        { "text": "Первый ракурс", "link": "/first-story/first-camera-angle" },
+        { "text": "Первое взаимодействие", "link": "/first-story/first-interaction" },
+        { "text": "Написание сюжета", "link": "/first-story/writing-the-story" },
+        { "text": "Запустите сюжет", "link": "/first-story/play-the-story" }
+      ]
+    },
+    {
+      "text": "Диалоги и текст",
+      "items": [
+        { "text": "Диалог", "link": "/dialog-and-text/dialog" },
+        { "text": "Текст", "link": "/dialog-and-text/text" }
+      ]
+    },
+    {
+      "text": "Кастомизация",
+      "items": [
+        { "text": "Главный экран", "link": "/customizations/main-screen" },
+        { "text": "Звуки", "link": "/customizations/sounds" }
+      ]
+    },
+    {
+      "text": "Теги",
+      "collapsed": false,
+      "items": [
+        { "text": "Анимации", "link": "/tags/animation" },
+        { "text": "Граница", "link": "/tags/border" },
+        { "text": "Камера", "link": "/tags/camera" },
+        { "text": "Command", "link": "/tags/command" },
+        { "text": "Катсцена", "link": "/tags/cutscene" },
+        { "text": "Затемнение", "link": "/tags/fade" },
+        { "text": "Геймплей", "link": "/tags/gameplay" },
+        { "text": "Взаимодействие", "link": "/tags/interaction" },
+        { "text": "Убийство", "link": "/tags/kill" },
+        { "text": "При входе", "link": "/tags/on_enter" },
+        { "text": "Тряска", "link": "/tags/shake" },
+        { "text": "Звук", "link": "/tags/sound" },
+        { "text": "Подсцена", "link": "/tags/subscene" },
+        { "text": "Текст", "link": "/tags/text" },
+        { "text": "Время", "link": "/tags/time" },
+        { "text": "Ожидание", "link": "/tags/wait" },
+        { "text": "Погода", "link": "/tags/weather" }
+      ]
+    }
+  ]
+}
