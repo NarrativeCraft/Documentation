@@ -88,6 +88,15 @@ export const enConfig: LocaleConfig = {
           ]
         },
         {
+          text: 'Locale',
+          items: [
+            { text: 'Introduction', link: '/locale/introduction' },
+            { text: 'Translation keys', link: '/locale/translation-keys' },
+            { text: 'Translation files', link: '/locale/translation-files' },
+            { text: 'Managing locales', link: '/locale/managing-locales' },
+          ]
+        },
+        {
           text: 'Customizations',
           items: [
             { text: 'Main Screen', link: '/customizations/main-screen' },

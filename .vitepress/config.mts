@@ -7,7 +7,7 @@ import defineVersionedConfig from 'vitepress-versioning-plugin'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const latestVersion = '2.1.3'
+const latestVersion = '2.2.0'
 
 export default defineVersionedConfig({
   title: "NarrativeCraft",
