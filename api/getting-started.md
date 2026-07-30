@@ -1,91 +1,190 @@
-# Getting Started
+# Getting started
 
-Add the NarrativeCraft API as a `compileOnly` dependency in your mod. It gives you access to all public interfaces without bundling the mod itself.
+The NarrativeCraft API lets your mod listen to story events, inspect narrative data, control player stories, and register custom Ink actions, recording actions, text effects, and cutscene layers.
 
 :::info
-Current API version of NarrativeCraft is **2**
+Current API version of NarrativeCraft is **3**
 :::
 
-## Gradle
+## Add the dependency
 
-Add the repository in your `settings.gradle` (or `build.gradle` depending on your setup), then declare the dependency in your `build.gradle`:
+Add LOUDO's Maven repository:
 
 ```groovy
-maven {
-    name "loudo"
-    url "https://maven.loudo.dev"
+repositories {
+    maven {
+        name = "loudo"
+        url = "https://maven.loudo.dev"
+    }
 }
 ```
 
+Then add the API as a compile-only dependency:
+
 ```groovy
-compileOnly 'fr.loudo.narrativecraft:narrativecraft-api:{{VERSION}}+mc{minecraft_version}'
+dependencies {
+    compileOnly "fr.loudo.narrativecraft:narrativecraft-api:{{VERSION}}+mc26.2"
+}
 ```
 
-## Maven
+NarrativeCraft must still be installed at runtime. Declare it as a required dependency in your loader metadata so that your initializer runs after NarrativeCraft.
 
-Add the repository and dependency in your `pom.xml`:
+For Maven projects:
 
 ```xml
-<repository>
-    <id>loudo</id>
-    <url>https://maven.loudo.dev</url>
-</repository>
+<repositories>
+    <repository>
+        <id>loudo</id>
+        <url>https://maven.loudo.dev</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>fr.loudo.narrativecraft</groupId>
+        <artifactId>narrativecraft-api</artifactId>
+        <version>{{VERSION}}+mc26.2</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
 ```
 
-```xml
-<dependency>
-    <groupId>fr.loudo.narrativecraft</groupId>
-    <artifactId>narrativecraft-api</artifactId>
-    <version>{{VERSION}}+mc{minecraft_version}</version>
-</dependency>
-```
 
 ## Minecraft versions for API
 
 Current minecraft versions available: `26.2`, `1.21.1` and `1.20.1`
 
-## Registering your addon
+## Create an addon
 
-Everything goes through an `AddonContext`. Create one in your mod initializer, before any registration call:
+Access the API from your mod initializer, after NarrativeCraft has initialized:
 
 ```java
-AddonContext ctx = NarrativeCraftAPI.getInstance().createAddon(
-    "my-mod-id",        // your mod id
-    "My Addon",         // display name
-    "A brief description",
-    "AuthorName",
-    null,               // homeLink, nullable. Links to your mod (e.g Modrinth)
-    NarrativeCraftAPI.VERSION
-);
+public final class MyAddon {
+
+    public static final String MOD_ID = "my_addon";
+    private static AddonContext context;
+
+    public static void initialize() {
+        NarrativeCraftAPI api = NarrativeCraftAPI.getInstance();
+
+        context = api.createAddon(
+            MOD_ID,
+            "My Addon",
+            "Adds new narrative tools",
+            "DeveloperName",
+            "https://example.com/my-addon",
+            NarrativeCraftAPI.VERSION
+        );
+    }
+
+    public static AddonContext getContext() {
+        return context;
+    }
+}
 ```
 
-The last argument is your target API version. It must equal `NarrativeCraftAPI.VERSION` exactly. If it doesn't, the addon is set to `DISABLED` and every `register*` call silently becomes a no-op. No crash, but nothing gets registered. Always pass `NarrativeCraftAPI.VERSION` directly rather than a hardcoded integer, so the check stays in sync automatically.
+Do not call `NarrativeCraftAPI.getInstance()` from an eagerly initialized static field. It throws an `IllegalStateException` when NarrativeCraft has not initialized the API yet.
 
-You can guard against a disabled addon if you need to:
+`NarrativeCraftAPI.VERSION` is the public API compatibility number. It is currently `3`; it is separate from the NarrativeCraft release number `2.2.1`.
+
+## API entry point
+
+`NarrativeCraftAPI` exposes:
+
+| Method | Purpose |
+|---|---|
+| `getInstance()` | Returns the initialized API singleton |
+| `createAddon(...)` | Creates and registers an addon context |
+| `getAddonRegistry()` | Returns all addon contexts |
+| `getModId()` | Returns NarrativeCraft's mod ID |
+| `getChapterManager()` | Returns loaded chapters |
+| `getCharacterManager()` | Returns global story characters |
+| `getPlayerSessionManager()` | Returns NarrativeCraft player sessions |
+| `getStoryHandlerManager()` | Starts and stops stories |
+| `getRecordingManager()` | Returns active recordings and recorded entity data |
+
+## Addon compatibility
+
+The API version passed to `createAddon()` must equal `NarrativeCraftAPI.VERSION`.
 
 ```java
-if (ctx.isDisabled()) {
-    // incompatible API version, bail out
+if (context.isDisabled()) {
     return;
 }
 ```
 
-## Registering extensions
+An incompatible addon is marked as `DISABLED`. Its `register*` methods become no-ops and NarrativeCraft writes a warning to the log.
 
-Once you have a context, use it to register everything your addon provides:
+You can inspect the state and metadata later:
 
 ```java
-ctx.registerEvent(StoryStartEvent.class, event -> { ... });
-ctx.registerInkAction(MyInkAction.class, MyInkAction::new);
-ctx.registerCutsceneLayer(new MyLayerType());
-ctx.registerTextEffect("my-effect", new MyTextEffect());
-ctx.registerRecordingAction("my_action", tick -> new MyAction(tick));
+context.getState();
+context.isEnabled();
+context.isDisabled();
+
+context.getModId();
+context.getName();
+context.getDescription();
+context.getAuthor();
+context.getHomeLink();
+context.getApiVersion();
+context.getApi();
 ```
 
-Each registration type has its own page:
+## Register extensions
 
-- [Events](/api/events)
-- [Ink Actions](/api/ink-actions)
-- [Cutscene Layers](/api/cutscene-layers)
-- [Text Effects](/api/text-effects)
-- [Recording](/api/recording)
+Use the same `AddonContext` for every extension provided by your addon:
+
+```java
+context.registerEvent(StoryStartEvent.class, event -> {
+    // React to the story.
+});
+
+context.registerInkAction(GiveTokenAction.class, GiveTokenAction::new);
+context.registerRecordingAction(SetGlowAction.ID, SetGlowAction::new);
+context.registerTextEffect("bounce", new BounceTextEffect());
+context.registerCutsceneLayer(new SubtitleLayerType());
+```
+
+Register extensions during initialization, before a story, recording, or cutscene that uses them is loaded.
+
+| Method | Purpose |
+|---|---|
+| `registerEvent()` | Subscribe to a NarrativeCraft event |
+| `unregisterEvent()` | Remove a previously registered listener |
+| `registerInkAction()` | Add a custom Ink tag action |
+| `registerRecordingAction()` | Add a binary recording action |
+| `registerTextEffect()` | Add an animated dialog text effect |
+| `registerCutsceneLayer()` | Add a persistent cutscene timeline layer |
+
+The registration interfaces used internally by NarrativeCraft are public contracts, but addons normally access them through these `AddonContext` methods.
+
+## Inspect installed addons
+
+The addon registry exposes every addon context created in the current game:
+
+```java
+AddonRegistry registry = NarrativeCraftAPI.getInstance().getAddonRegistry();
+
+for (AddonContext addon : registry.getEnabled()) {
+    System.out.println(addon.getName());
+}
+```
+
+`getAll()` includes enabled and disabled addons. `getEnabled()` includes only contexts whose API version is compatible. Both returned lists are read-only.
+
+## Access NarrativeCraft data
+
+The API entry point also provides managers for runtime data:
+
+```java
+NarrativeCraftAPI api = NarrativeCraftAPI.getInstance();
+
+api.getChapterManager();
+api.getCharacterManager();
+api.getPlayerSessionManager();
+api.getStoryHandlerManager();
+api.getRecordingManager();
+```
+
+Continue with [Narrative data](/api/narrative-data) to find chapters, scenes, and narrative entries, or [Sessions and stories](/api/sessions-and-stories) to work with a player's running story.

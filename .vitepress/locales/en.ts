@@ -26,6 +26,8 @@ export const enConfig: LocaleConfig = {
         {
           text: 'Core',
           items: [
+            { text: 'Narrative Data', link: '/api/narrative-data' },
+            { text: 'Sessions and Stories', link: '/api/sessions-and-stories' },
             { text: 'Events', link: '/api/events' },
           ]
         },

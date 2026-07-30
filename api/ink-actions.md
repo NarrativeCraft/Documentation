@@ -1,21 +1,27 @@
 # Ink Actions
 
-Ink actions are classes bound to an Ink tag keyword (`# keyword:arg1:arg2`). When that keyword appears in a script, the action is instantiated and executed.
+Ink actions turn Ink tags into addon behavior. A tag is parsed and validated by NarrativeCraft, then a fresh instance of the registered action runs on either the server or the client.
 
-## Creating an Ink action
+Use [Ink Syntax](/api/ink-syntax) for the complete argument grammar.
 
-Extend `InkAction` and annotate it with `@InkCommand`:
+## Create a server action
+
+Extend `InkAction` and annotate the class with `@InkCommand`. The first token in `syntax` must match `keyword`.
+
+This action teleports the player and finishes immediately:
 
 ```java
 @InkCommand(
     keyword = "teleport",
-    description = "Teleports the player",
+    description = "Teleports the player to a position.",
     syntax = "teleport <x:float> <y:float> <z:float>",
     side = Side.SERVER
 )
-public class TeleportAction extends InkAction {
+public final class TeleportInkAction extends InkAction {
 
-    private float x, y, z;
+    private double x;
+    private double y;
+    private double z;
 
     @Override
     protected InkActionResult doValidate(ParsedCommand command, IScene scene) {
@@ -28,46 +34,72 @@ public class TeleportAction extends InkAction {
     @Override
     protected InkActionResult doExecute(IPlayerSession session) {
         session.getPlayer().teleportTo(x, y, z);
+        isRunning = false;
         return InkActionResult.ok();
     }
 }
 ```
 
-`doValidate` runs first and receives the parsed arguments. Read and store everything you need there, because `doExecute` only receives the player session.
+`doValidate` and `doExecute` are the two protected methods every action must implement:
 
-## Reading arguments
+1. `doValidate(ParsedCommand, IScene)` reads the parsed arguments, stores any values needed later, and checks story-specific requirements.
+2. `doExecute(IPlayerSession)` performs the action.
 
-Use the typed accessors on `ParsedCommand`:
+Return an error from validation when the tag is syntactically valid but cannot be used in the current scene:
 
 ```java
-command.getString("name")    // String
-command.getInt("count")      // int
-command.getFloat("duration") // float
-command.getBoolean("loop")   // boolean
-command.flag("block")        // boolean, true if the flag was present in the tag
+if (scene.getCharacterManager().getByName(characterName) == null) {
+    return InkActionResult.error("Unknown character: " + characterName);
+}
 ```
 
-See [Syntax](/api/ink-syntax) for how to declare argument types in `@InkCommand`.
+Syntax and type errors are already reported before `doValidate` is called.
 
-## Client-side Ink actions
+## Register the action
 
-Server actions run on the server, client actions run on the client. The split is done through inheritance rather than duplication.
+Register the annotated class and a factory during your common addon initialization:
 
-Start with a base class where `doExecute` returns `InkActionResult.ignored()`, this is what the server sees:
+```java
+addon.registerInkAction(TeleportInkAction.class, TeleportInkAction::new);
+```
+
+The action class inherits its keyword, syntax and execution side from `@InkCommand`. NarrativeCraft creates a new action instance for each processed tag.
+
+The Ink tag is then:
+
+```ink
+# teleport 12.5 64 -30
+```
+
+## Create a client action
+
+Client actions use a common base class and a client-only subclass. This keeps client classes out of code that can be loaded by a dedicated server.
+
+The common class declares and validates the command:
 
 ```java
 @InkCommand(
-    keyword = "shake",
-    syntax = "shake <amplitude:float>",
+    keyword = "flash",
+    description = "Flashes the screen for a duration.",
+    syntax = "flash <duration:float> [color:string=FFFFFF] [--block]",
     side = Side.CLIENT
 )
-public class ShakeAction extends InkAction {
+public class FlashInkAction extends InkAction {
 
-    protected float amplitude;
+    protected int durationTicks;
+    protected int color;
 
     @Override
     protected InkActionResult doValidate(ParsedCommand command, IScene scene) {
-        amplitude = command.getFloat("amplitude");
+        durationTicks = Math.max(1, (int) (command.getFloat("duration") * 20));
+
+        try {
+            color = Integer.parseInt(command.getString("color"), 16);
+        } catch (NumberFormatException exception) {
+            return InkActionResult.error("The flash color must be hexadecimal.");
+        }
+
+        blocking = command.flag("block");
         return InkActionResult.ok();
     }
 
@@ -78,74 +110,166 @@ public class ShakeAction extends InkAction {
 }
 ```
 
-Then create a `Client`-prefixed subclass that overrides `doExecute` with the actual client logic:
+The client-only subclass performs the visual work:
 
 ```java
-public class ClientShakeAction extends ShakeAction {
+public final class ClientFlashInkAction extends FlashInkAction {
+
+    private int elapsedTicks;
 
     @Override
     protected InkActionResult doExecute(IPlayerSession session) {
-        // client-side screen shake logic
+        elapsedTicks = 0;
         return InkActionResult.ok();
+    }
+
+    @Override
+    public void tick() {
+        if (++elapsedTicks >= durationTicks) {
+            isRunning = false;
+        }
+    }
+
+    @Override
+    public void render(GuiGraphicsExtractor graphics, float partialTick) {
+        if (!isRunning()) return;
+        graphics.fill(
+            0,
+            0,
+            graphics.guiWidth(),
+            graphics.guiHeight(),
+            ARGB.color(120, color)
+        );
     }
 }
 ```
 
-## Registering
-
-Register both classes through your `AddonContext`:
+Register only the common class during common initialization:
 
 ```java
-ctx.registerInkAction(ShakeAction.class, ShakeAction::new);
-ctx.registerInkAction(ClientShakeAction.class, ClientShakeAction::new);
+addon.registerInkAction(FlashInkAction.class, FlashInkAction::new);
 ```
 
-## Multi-tick actions
-
-If your action runs over multiple ticks, override the relevant lifecycle methods:
+Register the client implementation during client initialization:
 
 ```java
+addon.registerInkAction(ClientFlashInkAction.class, ClientFlashInkAction::new);
+```
+
+Because `@InkCommand` is inherited, both classes use the same keyword. On a physical client, the second registration supplies the client implementation. Never load or register `ClientFlashInkAction` from common initialization.
+
+Example tags:
+
+```ink
+# flash 0.5 color:FFCC00
+# flash 1.5 color:FF0000 --block
+```
+
+## `isRunning`: instant or persistent actions
+
+Every new `InkAction` starts with `isRunning == false`. When NarrativeCraft calls `execute()`, the API sets it to `true` before entering your `doExecute()` method.
+
+What you do with that state determines the action's lifetime.
+
+An **instant action** performs all its work in `doExecute()` and immediately sets the state back to `false`:
+
+```java
+@Override
+protected InkActionResult doExecute(IPlayerSession session) {
+    performImmediateWork();
+    isRunning = false;
+    return InkActionResult.ok();
+}
+```
+
+A **persistent action** leaves the state as `true`. NarrativeCraft keeps the instance active and calls its lifecycle methods until the action changes the state to `false`:
+
+```java
+@Override
+protected InkActionResult doExecute(IPlayerSession session) {
+    elapsedTicks = 0;
+    return InkActionResult.ok(); // isRunning remains true
+}
+
 @Override
 public void tick() {
-    // called every server tick while isRunning
-}
+    updateEffect();
 
-@Override
-public void partialTick(float partialTick) {
-    // called every frame on the client
+    if (++elapsedTicks >= durationTicks) {
+        isRunning = false;
+    }
 }
+```
 
-@Override
-public void render(GuiGraphicsExtractor graphics, float partialTick) {
-    // client-side rendering
-}
+You normally do not need to call `isRunning = true;` inside `doExecute()`, because `execute()` has already done it.
 
+While a server action is running, NarrativeCraft calls `tick()` once per server tick. While a client action is running, NarrativeCraft calls:
+
+- `tick()` once per client tick;
+- `partialTick(float)` while rendering between ticks;
+- `render(GuiGraphicsExtractor, float)` during HUD rendering;
+- `render(PoseStack, float)` during world rendering.
+
+When `isRunning` becomes `false`, NarrativeCraft removes the action from the active list. A blocking action also releases the Ink tag queue at that point.
+
+Use `isRunning = false;` when the action completes normally. Use `stop()` when it must be cancelled or needs cleanup:
+
+```java
 @Override
 public void stop() {
-    // cleanup when the action ends
+    releaseTemporaryResources();
+    super.stop();
 }
 ```
 
-Set `blocking = true` in `doValidate` if the action should pause the Ink script until it finishes.
+The default `stop()` implementation sets `isRunning` to `false`, which is why an override must call `super.stop()`.
 
-## InkActionResult
+For a non-blocking persistent server action, return `InkActionResult.ok()` and leave `isRunning` as `true`: later Ink tags continue while the action receives ticks. For a blocking server action, return `InkActionResult.block()` instead. For a blocking client action, set `blocking = true` during `doValidate`. In both blocking cases, the Ink tag queue waits until the action is no longer running.
 
-Returned by both `doValidate` and `doExecute`:
+## Results
+
+`InkActionResult` provides these factories:
+
+| Factory | Meaning |
+| --- | --- |
+| `ok()` | The action was accepted. Finish its running state yourself if it is immediate. |
+| `ignored()` | The action intentionally did nothing on this side. |
+| `block()` | A server action started and pauses the tag queue until it finishes. |
+| `warn(message)` | The action produced a non-fatal warning. |
+| `error(message)` | Validation or execution failed. |
+
+The result record exposes `status()`, `errorMessage()`, `isOk()`, `isIgnore()`, `isBlock()`, `isWarn()` and `isError()`. `isOk()` is also `true` for an ignored result.
+
+## Action methods
+
+NarrativeCraft calls `validate()` and `execute()` for you. It also assigns the `instanceId` used to match a running client action with the server.
+
+| Method | Use |
+| --- | --- |
+| `getKeyword()` | Returns the annotation keyword. |
+| `getSide()` | Returns the annotation execution side. |
+| `getInstanceId()` / `setInstanceId(long)` | Reads or assigns the runtime action identifier. Assignment is normally framework-managed. |
+| `isRunning()` / `setRunning(boolean)` | Reads or changes whether the instance remains active and receives lifecycle callbacks. |
+| `isBlocking()` | Reports whether the action pauses the tag queue. |
+| `tick()` | Updates a running action once per game tick. |
+| `partialTick(float)` | Updates a client action between game ticks. |
+| `render(GuiGraphicsExtractor, float)` | Draws two-dimensional client UI. |
+| `render(PoseStack, float)` | Draws with a pose stack when that rendering path is needed. |
+| `stop()` | Stops the action; override it to add cleanup. |
+
+## Time conversion
+
+`InkActionUtil.getSecondsFromTimeValue(value, unit)` converts values whose unit contains `second`, `minute` or `hour`:
 
 ```java
-InkActionResult.ok()           // success
-InkActionResult.ignored()      // this side doesn't handle it
-InkActionResult.block()        // pauses the action queue
-InkActionResult.error("msg")   // validation or execution failure
-InkActionResult.warn("msg")    // non-fatal warning
+double duration = InkActionUtil.getSecondsFromTimeValue(2.5, "minutes");
+if (duration < 0) {
+    return InkActionResult.error("Unknown time unit.");
+}
 ```
 
-## InkActionUtil
+The method returns `-1` for an unsupported unit.
 
-```java
-// converts a time value (e.g. 2.5, "minute") to seconds
-double seconds = InkActionUtil.getSecondsFromTimeValue(2.5, "minute");
+## Dispatcher contract
 
-// replaces %variable% with their Ink story value
-String resolved = InkActionUtil.parseVariables(story, "Hello %player_name%!");
-```
+`InkTagDispatcher.register(Class<T>, Supplier<T>)` is the public registry contract used to associate an annotated action with its factory. NarrativeCraft owns the dispatcher, so addon code should use `AddonContext.registerInkAction` rather than trying to obtain the dispatcher directly.
