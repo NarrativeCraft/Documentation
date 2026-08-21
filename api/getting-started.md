@@ -3,7 +3,8 @@
 The NarrativeCraft API lets your mod listen to story events, inspect narrative data, control player stories, and register custom Ink actions, recording actions, text effects, and cutscene layers.
 
 :::info
-Current API version of NarrativeCraft is **3**
+- Current API major version of NarrativeCraft is **3**
+- Current API latest version of NarrativeCraft is **3.0.0**
 :::
 
 ## Add the dependency
@@ -23,7 +24,7 @@ Then add the API as a compile-only dependency:
 
 ```groovy
 dependencies {
-    compileOnly "fr.loudo.narrativecraft:narrativecraft-api:{{VERSION}}+mc26.2"
+    compileOnly "fr.loudo.narrativecraft:narrativecraft-api-26.2:3.0.0"
 }
 ```
 
@@ -42,8 +43,8 @@ For Maven projects:
 <dependencies>
     <dependency>
         <groupId>fr.loudo.narrativecraft</groupId>
-        <artifactId>narrativecraft-api</artifactId>
-        <version>{{VERSION}}+mc26.2</version>
+        <artifactId>narrativecraft-api-26.2</artifactId>
+        <version>3.0.0</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
@@ -84,8 +85,6 @@ public final class MyAddon {
 ```
 
 Do not call `NarrativeCraftAPI.getInstance()` from an eagerly initialized static field. It throws an `IllegalStateException` when NarrativeCraft has not initialized the API yet.
-
-`NarrativeCraftAPI.VERSION` is the public API compatibility number. It is currently `3`; it is separate from the NarrativeCraft release number `2.2.1`.
 
 ## API entry point
 
