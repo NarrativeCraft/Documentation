@@ -50,5 +50,5 @@ The door is locked. I need to find the key first.
 
 ```
 // Only a stack renamed "Rusty Key" counts
-# item_requirement key minecraft:tripwire_hook 1 "Rusty Key"
+# item_requirement key minecraft:tripwire_hook 1 customName:"Rusty Key"
 ```

@@ -26,8 +26,3 @@ command <commandValue:string>
 // Trigger a custom advancement
 # command "advancement grant @p only mymod:secret_found"
 ```
-
-```
-// Play a title screen message
-# command "title @p title \{"text":"Chapter 2","bold":true\}"
-```
