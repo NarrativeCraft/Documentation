@@ -23,7 +23,7 @@ item_requirement <redirect_fail_stitch:string> <itemId:string> [amount:int=1] [c
 The stitch played on failure is not `redirect_fail_stitch` itself. NarrativeCraft builds its name as:
 
 ```
-on_<redirect_fail_stitch>_item_requierement_fail
+on_<redirect_fail_stitch>_item_requirement_fail
 ```
 
 So `# item_requirement key minecraft:tripwire_hook` redirects to the stitch `on_key_item_requireement_fail`.
@@ -38,7 +38,7 @@ When the player carries enough items, nothing happens and the story continues to
 The door unlocks.
 -> DONE
 
-= on_key_item_requierement_fail
+= on_key_item_requirement_fail
 The door is locked. I need to find the key first.
 -> DONE
 ```
