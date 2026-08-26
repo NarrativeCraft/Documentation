@@ -27,32 +27,6 @@ The name is resolved the same way as anywhere else in the story, so `user` targe
 
 Only one `@char(...)` is resolved per command.
 
-## Quotes
-
-A tag value can be quoted with `"` or `'`. Inside a quoted value the other quote character is a plain character, so a command containing double quotes can be wrapped in single quotes:
-
-```
-# command 'say "Watch out!"'
-```
-
-To use the same quote character inside the value, escape it with `\`:
-
-```
-# command "say \"Watch out!\""
-```
-
-An unclosed quote fails validation when the story is compiled.
-
-Curly braces are Ink syntax and must be escaped in every case, whichever quote character wraps the value:
-
-```
-# command "tellraw @p \{\"text\":\"Chapter 2\"\}"
-```
-
-```
-# command 'tellraw @p \{"text":"Chapter 2"\}'
-```
-
 ## Examples
 
 ```
@@ -66,6 +40,6 @@ Curly braces are Ink syntax and must be escaped in every case, whichever quote c
 ```
 
 ```
-// Make the main character glow
-# command "effect give @char(user) minecraft:glowing 10 0 true"
+// Give cake with the custom name "Super cake" (1.20.1)
+# command "/give cake\{display:\{Name:'\{"text":"super cake"\}'\}\} 1"
 ```
