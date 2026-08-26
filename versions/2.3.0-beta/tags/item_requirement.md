@@ -45,10 +45,10 @@ The door is locked. I need to find the key first.
 
 ```
 // Three coins are needed
-# item_requirement payment minecraft:gold_nugget 3
+# item_requirement payment minecraft:gold_nugget amount:3
 ```
 
 ```
 // Only a stack renamed "Rusty Key" counts
-# item_requirement key minecraft:tripwire_hook 1 customName:"Rusty Key"
+# item_requirement key minecraft:tripwire_hook amount:1 customName:"Rusty Key"
 ```
