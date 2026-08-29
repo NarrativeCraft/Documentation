@@ -11,7 +11,8 @@
       "items": [
         { "text": "Narrative Data", "link": "/api/narrative-data" },
         { "text": "Sessions and Stories", "link": "/api/sessions-and-stories" },
-        { "text": "Events", "link": "/api/events" }
+        { "text": "Events", "link": "/api/events" },
+        { "text": "Signals", "link": "/api/signals" }
       ]
     },
     {
@@ -116,6 +117,43 @@
         { "text": "Timed Choice", "link": "/tags/timed_choice" },
         { "text": "Wait", "link": "/tags/wait" },
         { "text": "Weather", "link": "/tags/weather" }
+      ]
+    },
+    {
+      "text": "Signals",
+      "collapsed": true,
+      "items": [
+        { "text": "Introduction", "link": "/signals/introduction" },
+        { "text": "On Character Despawn", "link": "/signals/on_character_despawn" },
+        { "text": "On Character Spawn", "link": "/signals/on_character_spawn" },
+        { "text": "On Game Focus Gained", "link": "/signals/on_game_focus_gained" },
+        { "text": "On Game Focus Lost", "link": "/signals/on_game_focus_lost" },
+        { "text": "On Key Pressed", "link": "/signals/on_key_pressed" },
+        { "text": "On Perspective Change", "link": "/signals/on_perspective_change" },
+        { "text": "On Player Attack Entity", "link": "/signals/on_player_attack_entity" },
+        { "text": "On Player Break Block", "link": "/signals/on_player_break_block" },
+        { "text": "On Player Change Held Item", "link": "/signals/on_player_change_held_item" },
+        { "text": "On Player Close Container", "link": "/signals/on_player_close_container" },
+        { "text": "On Player Death", "link": "/signals/on_player_death" },
+        { "text": "On Player Enter Zone", "link": "/signals/on_player_enter_zone" },
+        { "text": "On Player Fall", "link": "/signals/on_player_fall" },
+        { "text": "On Player Hurt", "link": "/signals/on_player_hurt" },
+        { "text": "On Player Item Pickup", "link": "/signals/on_player_item_pickup" },
+        { "text": "On Player Jump", "link": "/signals/on_player_jump" },
+        { "text": "On Player Kill Entity", "link": "/signals/on_player_kill_entity" },
+        { "text": "On Player Leave Zone", "link": "/signals/on_player_leave_zone" },
+        { "text": "On Player Place Block", "link": "/signals/on_player_place_block" },
+        { "text": "On Player Respawn", "link": "/signals/on_player_respawn" },
+        { "text": "On Player Right Click Block", "link": "/signals/on_player_right_click_block" },
+        { "text": "On Player Right Click Entity", "link": "/signals/on_player_right_click_entity" },
+        { "text": "On Player Sneak", "link": "/signals/on_player_sneak" },
+        { "text": "On Player Sprint", "link": "/signals/on_player_sprint" },
+        { "text": "On Player Swing Hand", "link": "/signals/on_player_swing_hand" },
+        { "text": "On Player Use Item", "link": "/signals/on_player_use_item" },
+        { "text": "On Player Use Item On Block", "link": "/signals/on_player_use_item_on_block" },
+        { "text": "On Screen Close", "link": "/signals/on_screen_close" },
+        { "text": "On Screen Open", "link": "/signals/on_screen_open" },
+        { "text": "On Screenshot Taken", "link": "/signals/on_screenshot_taken" }
       ]
     }
   ]

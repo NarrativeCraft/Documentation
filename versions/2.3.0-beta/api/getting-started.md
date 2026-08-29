@@ -143,6 +143,7 @@ context.registerInkAction(GiveTokenAction.class, GiveTokenAction::new);
 context.registerRecordingAction(SetGlowAction.ID, SetGlowAction::new);
 context.registerTextEffect("bounce", new BounceTextEffect());
 context.registerCutsceneLayer(new SubtitleLayerType());
+context.registerSignal(SignalTokenGiven.SIGNAL_TYPE);
 ```
 
 Register extensions during initialization, before a story, recording, or cutscene that uses them is loaded.
@@ -155,6 +156,8 @@ Register extensions during initialization, before a story, recording, or cutscen
 | `registerRecordingAction()` | Add a binary recording action |
 | `registerTextEffect()` | Add an animated dialog text effect |
 | `registerCutsceneLayer()` | Add a persistent cutscene timeline layer |
+| `registerSignal()` | Add a custom signal the story can react to |
+| `registerClientSignal()` | Add a custom signal emitted from the client |
 
 The registration interfaces used internally by NarrativeCraft are public contracts, but addons normally access them through these `AddonContext` methods.
 
