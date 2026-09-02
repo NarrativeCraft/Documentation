@@ -6,7 +6,7 @@ To access **character manager** press `n` and click on `C` button on the left.
 
 Here, will be stored all your characters. At first, it will be empty, so click on the `+` button and create a character.
 
-We will call it `Steve`. Before saving, we will label him as a **main character**. A main character is the character that will be the center of the story. Click on `Main Character Settings` and set `Main Character` from `no` to `yes`. The button `Skin` will be enabled.
+We will call it `Steve`. Before saving, we will label him as a **main character**. A main character is the character that will be the center of the story. Click on `Settings`, then `Main Character Settings`, and set `Main Character` from `no` to `yes`. The button `Skin` will be enabled.
 
 The `Skin` button has 3 modes :
 
@@ -33,3 +33,19 @@ Create a second character, call it `Alex`, we will need it for later.
 If you want to assign a skin to your character, go to the `narrativecraft` folder of your world and go to the `characters` and enter your character folder.
 
 Just place your skin, and it must be named `skin.png` in order to work.
+
+## Custom NBT
+
+From the character edit screen, click `Settings` then `Custom NBT` to attach NBT data to a character.
+
+The value is written in SNBT, the same format vanilla commands use:
+
+```
+{Invulnerable:1b,Glowing:1b}
+```
+
+It is applied every time the character entity spawns in the story. Keys defined here override the ones captured during the recording, so use it for properties that must always hold, such as equipment, attributes or flags.
+
+Invalid SNBT is ignored silently, the entity spawns with its recorded data only.
+
+Custom NBT is available on global characters, not on scene NPCs.

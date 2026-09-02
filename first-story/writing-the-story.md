@@ -127,4 +127,28 @@ There are two types of tag :
 
 [cutscene](/tags/cutscene) is a blocking tag, it waits for the cutscene to finish before continuing the story
 
+### Writing arguments
+
+Every argument can be written either as a plain value in its declared order, or as `name:value` in any order. These three lines are equivalent:
+
+```
+# animation play guard_patrol
+# animation action:play animationName:guard_patrol
+# animation animationName:guard_patrol action:play
+```
+
+Use quotes when a value contains spaces. Both `"` and `'` work, and the other quote character is a plain character inside the value:
+
+```
+# cutscene "walk cut"
+# command 'say "Watch out!"'
+```
+
+An Ink variable can be used in a tag value with `{variable}`. It is left untouched when the story is compiled and replaced by its value when the tag runs:
+
+```
+VAR guard_state = "patrol"
+# animation play {guard_state}
+```
+
 When the script is done, save it `CTRL + S` and go back in game and execute `/nc story reload`. It will compile the story, and will do validation on tags and the story itself. If everything goes well the story will compile successfully, but if there are errors the story will not compile and will tell you exactly where you made the error.

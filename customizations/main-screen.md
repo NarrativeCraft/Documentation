@@ -30,3 +30,13 @@ Go back to story manager, click the gear icon, then click `World Settings` and s
 Now, when you will join your world, the main screen will appear.
 
 To leave the main screen **without** leaving the world, just press ctrl left 10 times and a button `Leave Screen` will appear at up right of the screen.
+
+The main screen is also shown again when the player finishes the story, under the same conditions: singleplayer, `Show Main Screen on Join` set to `yes`, and a main screen with at least one camera view.
+
+## Other world settings
+
+`World Settings` also exposes:
+
+- `Show Name Of Global Characters`: whether the name tag of global characters is rendered above them during the story. Defaults to `yes`.
+
+Settings are stored per world, next to your story data.

@@ -77,3 +77,29 @@ Applies a chaotic shaking motion.
 - `Mark: [shake force=0.1]What did you just say?[/shake]`
 - `Jade: [wave]I'm just chilling[/wave]`
 - `Jake: I'm... [wait time=1]I'm sorry.`
+
+## Images
+
+You can render an image inside a dialog with `[img <path>]`.
+
+The path is resolved like the [image tag](/tags/image#image-path): a bare path is looked up in `textures/nc_images/` of the `minecraft` namespace and `.png` is appended when missing. An image that cannot be loaded is skipped.
+
+Placement decides how the image is drawn:
+
+- At the start or the end of the line, the image becomes a **side image**. It is rendered in a gutter next to the text, larger than a line, and is visible immediately.
+- Anywhere else, the image is **inline**. It flows with the text at about twice the line height and appears when the typewriter reaches it.
+
+```
+// Portrait on the left of the dialog
+Clara: [img clara/happy] I'm feeling good right now!
+```
+
+```
+// Icon in the middle of the sentence
+Jake: I found this [img items/key] in the kitchen.
+```
+
+```
+// Portraits on both sides
+Clara: [img clara/happy] Nice to meet you! [img items/flower]
+```

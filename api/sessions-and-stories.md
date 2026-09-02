@@ -22,6 +22,8 @@ The session exposes:
 | Method | Purpose |
 |---|---|
 | `getPlayer()` | Get the associated `ServerPlayer` |
+| `getChapter()` | Get the chapter the player is currently in, or `null` |
+| `getScene()` | Get the scene the player is currently in, or `null` |
 | `isGameplayMode()` | Check whether normal player gameplay is enabled |
 | `setGameplayMode(boolean)` | Change gameplay mode |
 | `isClientSide()` | Check whether this is the client-side session |
@@ -29,6 +31,15 @@ The session exposes:
 | `getActiveClientInkActions()` | Get client Ink actions that are still active |
 
 `getActiveClientInkActions()` is primarily useful from client-side Ink action code. Treat the returned list as NarrativeCraft-owned state.
+
+`getChapter()` and `getScene()` follow the player through the story, so they are the cheapest way to get the scene an Ink action needs:
+
+```java
+IScene scene = session.getScene();
+if (scene != null) {
+    ICharacter guard = api.getCharacterManager().resolveCharacter("Guard", scene);
+}
+```
 
 ## Start a story
 
@@ -120,6 +131,26 @@ if (!story.hasAlreadyInteracted(interactionId)) {
 
 `getInteractionIds()` exposes the current set for inspection. Use `addInteractionId()` to add an entry instead of mutating that set directly.
 
+## Saved position
+
+A story handler can remember where the player stood, so a resumed story puts them back there instead of at their current position:
+
+```java
+story.setLastPosition(UserPosition.of(session.getPlayer()));
+UserPosition resumePoint = story.getLastPosition();
+```
+
+`UserPosition` is a record in `fr.loudo.narrativecraft.api.utils` holding `x`, `y`, `z`, `xRot` and `yRot`:
+
+| Member | Purpose |
+|---|---|
+| `of(Entity)` | Build a position from an entity |
+| `of(Vec3, float xRot, float yRot)` | Build a position from raw values |
+| `position()` | Read the coordinates as a `Vec3` |
+| `serialize()` / `deserialize(JsonObject)` | Convert to and from the save format |
+
+`getLastPosition()` returns `null` when no position was stored. NarrativeCraft applies it when the story resumes, and the [save tag](/tags/save) writes it with `--include_last_position`.
+
 ## Story completion
 
 There is a difference between stopping a running story and marking the full story as finished:
@@ -159,5 +190,7 @@ Use `setFinishedStory()` when implementing a deliberate reset or save-management
 | `addInteractionId()` | Remember one interaction UUID |
 | `hasFinishedStory()` | Read the saved completion flag |
 | `setFinishedStory()` | Change the completion flag |
+| `getLastPosition()` | Read the stored resume position |
+| `setLastPosition()` | Change the stored resume position |
 
 `onChoiceSelected(int)` and `onTagsDrained()` are public lifecycle callbacks used by NarrativeCraft after a player selects a choice or the Ink action queue finishes. Addons normally observe these moments through [events](/api/events) or implement their behavior as Ink actions instead of invoking the callbacks manually.

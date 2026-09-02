@@ -3,8 +3,8 @@
 The NarrativeCraft API lets your mod listen to story events, inspect narrative data, control player stories, and register custom Ink actions, recording actions, text effects, and cutscene layers.
 
 :::info
-- Current API major version of NarrativeCraft is **3**
-- Current API latest version of NarrativeCraft is **3.0.0**
+- Current API major version of NarrativeCraft is **4**
+- Current API latest version of NarrativeCraft is **4.0.0**
 :::
 
 ## Add the dependency
@@ -24,7 +24,7 @@ Then add the API as a compile-only dependency:
 
 ```groovy
 dependencies {
-    compileOnly "fr.loudo.narrativecraft:narrativecraft-api-26.2:3.0.0"
+    compileOnly "fr.loudo.narrativecraft:narrativecraft-api-26.2:3.1.0-beta"
 }
 ```
 
@@ -44,7 +44,7 @@ For Maven projects:
     <dependency>
         <groupId>fr.loudo.narrativecraft</groupId>
         <artifactId>narrativecraft-api-26.2</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.0-beta</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
@@ -143,6 +143,7 @@ context.registerInkAction(GiveTokenAction.class, GiveTokenAction::new);
 context.registerRecordingAction(SetGlowAction.ID, SetGlowAction::new);
 context.registerTextEffect("bounce", new BounceTextEffect());
 context.registerCutsceneLayer(new SubtitleLayerType());
+context.registerSignal(SignalTokenGiven.SIGNAL_TYPE);
 ```
 
 Register extensions during initialization, before a story, recording, or cutscene that uses them is loaded.
@@ -155,6 +156,8 @@ Register extensions during initialization, before a story, recording, or cutscen
 | `registerRecordingAction()` | Add a binary recording action |
 | `registerTextEffect()` | Add an animated dialog text effect |
 | `registerCutsceneLayer()` | Add a persistent cutscene timeline layer |
+| `registerSignal()` | Add a custom signal the story can react to |
+| `registerClientSignal()` | Add a custom signal emitted from the client |
 
 The registration interfaces used internally by NarrativeCraft are public contracts, but addons normally access them through these `AddonContext` methods.
 

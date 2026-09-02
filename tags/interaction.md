@@ -2,6 +2,8 @@
 
 Activates or deactivates a named interaction zone within the current scene. Starting an interaction gives the player the ability to interact with defined triggers in the world.
 
+Several interactions can be active at the same time. Starting one no longer replaces the previous one, so each `start` must be matched by its own `remove` when the zone is no longer needed.
+
 ## Side
 SERVER
 
@@ -21,6 +23,12 @@ interaction <action:string> <interactionName:string>
 ```
 // Activate the door interaction zone
 # interaction start door_to_castle
+```
+
+```
+// Run several interactions at once
+# interaction start door_to_castle
+# interaction start window_to_garden
 ```
 
 ```

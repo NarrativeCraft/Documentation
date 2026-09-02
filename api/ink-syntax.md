@@ -30,6 +30,15 @@ The syntax declaration uses `=` to define a default value. The runtime Ink tag u
 
 Required arguments are read in their declared order. Optional positional arguments are read after all required positional arguments.
 
+Positional arguments can also be passed by name, in any order. Named and unnamed values can be mixed: unnamed values fill the positional arguments that were not given by name, in declaration order.
+
+```ink
+# give_token Alex
+# give_token target:Alex
+```
+
+Because names resolve `name:value` tokens, every argument name in a syntax declaration must be unique. A duplicate name throws an `IllegalArgumentException` when the syntax is compiled. Passing the same positional argument twice throws at parse time.
+
 For example, an optional positional argument can follow the required ones:
 
 ```java
@@ -66,6 +75,14 @@ syntax = "announce <message:string> [audience:string=everyone]"
 | `boolean` | `ArgType.BOOLEAN` | `Boolean` |
 
 Invalid integers, floats, and booleans produce a descriptive validation error before the action executes.
+
+A value containing an Ink expression is left untouched by the parser. `InkAction.VARIABLE_PATTERN` matches `{...}`, and `ArgType.parse()` returns the raw string when it matches:
+
+```java
+public static final Pattern VARIABLE_PATTERN = Pattern.compile("\\{([^}]*)}");
+```
+
+This is what lets `# give_token {chosen_target} amount:{reward}` pass compile-time validation without `{reward}` failing the `int` check. At runtime Ink substitutes the expression before the tag is dispatched, so `doValidate()` receives a real value and no addon code has to handle the raw form.
 
 `ArgType` also exposes the parsing operations directly:
 

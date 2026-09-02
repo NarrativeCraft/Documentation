@@ -26,6 +26,17 @@ The same applies for letter sound.
 
 `default` label is the path of the default letter sound
 
+## Head bobbing
+
+While a character is talking, their head bobs with a noise-based shake. Two advanced fields control it:
+
+- `Bob Speed`: how fast the head moves. Defaults to `2.9`.
+- `Bob Strength`: how far it moves. Defaults to `2.15`.
+
+Set `Bob Strength` to `0` to disable the effect.
+
+Both fields are only available on the global dialog data, not on character or camera view data.
+
 ## Layer
 
 There's 3 types of layer :

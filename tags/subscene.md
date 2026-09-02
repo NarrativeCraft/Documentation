@@ -19,6 +19,12 @@ subscene <action:string> <subsceneName:string> [loop:boolean=false] [unique:bool
 - `unique` *(boolean, optional)*: If `true`, character entities are killed when the subscene ends. Defaults to `false`.
 - `--block` *(flag, optional)*: Pauses story progression until all animations finish. Only applies to `play`.
 
+## Entity reuse
+
+When a character already has an entity in the story and it stands within one block of the animation's first recorded position, that entity plays the animation instead of a new one being spawned.
+
+This keeps a character continuous across consecutive animations. Place the first frame of a follow-up animation on the character's current position to take advantage of it.
+
 ## Examples
 
 ```

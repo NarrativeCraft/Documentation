@@ -1,9 +1,9 @@
 # Gameplay
 
-Restores standard player controls after a cutscene or camera sequence. Puts the player in Adventure mode and teleports them to the main character's last position.
+Restores standard player controls after a cutscene or camera sequence. Puts the player in the requested game mode, teleports them to the main character's last position, and brings the HUD back.
 
 ## Side
-SERVER
+CLIENT_SERVER
 
 ## Syntax
 
@@ -13,7 +13,8 @@ gameplay [gamemode:string=adventure]
 
 ## Parameters
 
-- `gamemode` *(string, optional)*: Set the gameplay of the player when entering in gameplay mode. Default to adventure
+- `gamemode` *(string, optional)*: Game mode applied when entering gameplay mode. Accepted values: `adventure`, `survival`, `creative`, `spectator`. Defaults to `adventure`.
+
 ## Examples
 
 ```

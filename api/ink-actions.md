@@ -34,8 +34,7 @@ public final class TeleportInkAction extends InkAction {
     @Override
     protected InkActionResult doExecute(IPlayerSession session) {
         session.getPlayer().teleportTo(x, y, z);
-        isRunning = false;
-        return InkActionResult.ok();
+        return InkActionResult.singleOk();
     }
 }
 ```
@@ -165,22 +164,60 @@ Example tags:
 # flash 1.5 color:FF0000 --block
 ```
 
+## Run on both sides
+
+`Side.CLIENT_SERVER` runs the same tag on the server and on the client. NarrativeCraft executes the server instance first, then forwards the tag to the client instance.
+
+Declare the side once on the common class:
+
+```java
+@InkCommand(
+    keyword = "gameplay",
+    description = "Gives the controls back to the player.",
+    syntax = "gameplay [gamemode:string=adventure]",
+    side = Side.CLIENT_SERVER
+)
+public class GameplayInkAction extends InkAction { /* server behavior */ }
+```
+
+The client subclass overrides `doExecute` with the client-only half:
+
+```java
+public final class ClientGameplayInkAction extends GameplayInkAction {
+
+    @Override
+    protected InkActionResult doExecute(IPlayerSession session) {
+        UtilsClient.setHudHidden(false);
+        return InkActionResult.singleOk();
+    }
+}
+```
+
+Registration follows the same rule as a client action: the common class during common initialization, the client subclass during client initialization.
+
+| Side | Where `doExecute` runs |
+|---|---|
+| `SERVER` | Server only |
+| `CLIENT` | Client only, after the server validated the tag |
+| `CLIENT_SERVER` | Server, then client |
+
 ## `isRunning`: instant or persistent actions
 
 Every new `InkAction` starts with `isRunning == false`. When NarrativeCraft calls `execute()`, the API sets it to `true` before entering your `doExecute()` method.
 
 What you do with that state determines the action's lifetime.
 
-An **instant action** performs all its work in `doExecute()` and immediately sets the state back to `false`:
+An **instant action** performs all its work in `doExecute()` and returns `singleOk()`, which sets the state back to `false`:
 
 ```java
 @Override
 protected InkActionResult doExecute(IPlayerSession session) {
     performImmediateWork();
-    isRunning = false;
-    return InkActionResult.ok();
+    return InkActionResult.singleOk();
 }
 ```
+
+Setting `isRunning = false;` before returning `ok()` has the same effect and remains valid.
 
 A **persistent action** leaves the state as `true`. NarrativeCraft keeps the instance active and calls its lifecycle methods until the action changes the state to `false`:
 
@@ -212,7 +249,7 @@ While a server action is running, NarrativeCraft calls `tick()` once per server 
 
 When `isRunning` becomes `false`, NarrativeCraft removes the action from the active list. A blocking action also releases the Ink tag queue at that point.
 
-Use `isRunning = false;` when the action completes normally. Use `stop()` when it must be cancelled or needs cleanup:
+Use `singleOk()` or `isRunning = false;` when the action completes normally. Use `stop()` when it must be cancelled or needs cleanup:
 
 ```java
 @Override
@@ -232,13 +269,24 @@ For a non-blocking persistent server action, return `InkActionResult.ok()` and l
 
 | Factory | Meaning |
 | --- | --- |
-| `ok()` | The action was accepted. Finish its running state yourself if it is immediate. |
+| `ok()` | The action was accepted and keeps running in the background. |
+| `singleOk()` | The action was accepted and is finished; NarrativeCraft stops it for you. |
 | `ignored()` | The action intentionally did nothing on this side. |
 | `block()` | A server action started and pauses the tag queue until it finishes. |
 | `warn(message)` | The action produced a non-fatal warning. |
 | `error(message)` | Validation or execution failed. |
 
-The result record exposes `status()`, `errorMessage()`, `isOk()`, `isIgnore()`, `isBlock()`, `isWarn()` and `isError()`. `isOk()` is also `true` for an ignored result.
+The result record exposes `status()`, `errorMessage()`, `isOk()`, `isSingleOk()`, `isIgnore()`, `isBlock()`, `isWarn()` and `isError()`. `isOk()` and `isSingleOk()` are also `true` for an ignored result.
+
+Return `singleOk()` instead of writing `isRunning = false;` yourself when the action does all its work in `doExecute()`:
+
+```java
+@Override
+protected InkActionResult doExecute(IPlayerSession session) {
+    session.getPlayer().teleportTo(x, y, z);
+    return InkActionResult.singleOk();
+}
+```
 
 ## Action methods
 
